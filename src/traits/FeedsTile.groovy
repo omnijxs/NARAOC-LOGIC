@@ -7,24 +7,27 @@ import resources.ArmyUnit
  */
 trait FeedsTile {
 
-    /** COULD BE A TRAIT */
     Integer feedTile(Integer value){
 
-        /** Feed all armies on the tile */
-        def feedableUnitsOnTile = tile.popUnitsOnTile().findAll{ it.class == ArmyUnit }
+        /** Feed all armies on the tile and yourself */
+        def unsortedFeedableUnitsOnTile = tile.popUnitsOnTile().findAll{ it.class == ArmyUnit || it == this}
 
-        /** And yourself */
-        feedableUnitsOnTile.add(this)
-
-        // TODO make the common sort method where the priority of PopUnits is dealt with
-
-        feedableUnitsOnTile.each {
+        /** Sort by default priority */
+        def sortedFeedableUnitsOnTile = prioritySortPopUnits(unsortedFeedableUnitsOnTile)
+        
+        sortedFeedableUnitsOnTile.each {
             if(value)
                 value = it.consume(value)
         }
 
         value
 
+    }
+    
+    // TODO Turn into a trait or a utilityMethod
+    private List<PopUnit> prioritySortPopUnits(List<PopUnit> popUnits){    
+        return popUnits.sort { it.priority && !it.age }
+        
     }
 
 }

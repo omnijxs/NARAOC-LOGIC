@@ -14,7 +14,8 @@ class Farmer extends PopUnit implements FeedsTile {
     
     @Override
     def produce(){
-        return feedTile(2) >= 0 ? feedTile(2) : 0
+        // return feedTile(2) >= 0 ? feedTile(2) : 0 unnecessary null check
+        return feedTile(2)
     }
 
 }
