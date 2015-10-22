@@ -6,10 +6,9 @@ package resources
 class PopUnit {
     
     Tile tile
-    
     Boolean starving
     
-    Integer consume(def food){
+    def consume(def food){
         
         starving = false
             
