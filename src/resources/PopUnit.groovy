@@ -7,6 +7,7 @@ class PopUnit {
     
     Tile tile
     Boolean starving
+    Integer priority
     
     Integer consume(def food){
         starving = false

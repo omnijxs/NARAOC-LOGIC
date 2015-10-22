@@ -6,4 +6,8 @@ package resources
 
 class ArmyUnit extends PopUnit {
     
+    public ArmyUnit(){
+        this.priority = 0
+    }
+    
 }
