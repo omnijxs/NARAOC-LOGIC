@@ -12,10 +12,7 @@ class Tile {
     }
     
     List<PopUnit> popUnitsOnTile(){
-     
-        // TODO does not resolve how to access this list of PopUnits
-        return popUnits.findAll { it.tile == this }
-        
+        return map.game.popUnits.findAll { it.tile == this }        
     }
         
         
