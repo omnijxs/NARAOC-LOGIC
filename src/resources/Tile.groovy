@@ -5,6 +5,12 @@ package resources
  */
 class Tile {
     
+    GameMap map
+    
+    public Tile(GameMap map){
+        this.map = map 
+    }
+    
     List<PopUnit> popUnitsOnTile(){
      
         // TODO does not resolve how to access this list of PopUnits

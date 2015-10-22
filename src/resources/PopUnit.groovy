@@ -12,7 +12,7 @@ class PopUnit {
     Integer consume(def food){
         
         starving = false
-        
+            
         food - 1
     }
     

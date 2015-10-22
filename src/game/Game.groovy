@@ -1,6 +1,6 @@
 package game
 
-import resources.Map
+import resources.GameMap
 import resources.PopUnit
 
 /**
@@ -10,7 +10,8 @@ class Game {
 
     Metadata metadata
 
-    Map map
+    GameMap map
     List<PopUnit> popUnits
     List<Player> players
+    
 }
