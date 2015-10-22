@@ -23,15 +23,15 @@ class FeedTileTest {
 
     @Before
     void setUp(){
-        game = new Game()
+        game = new Game()                       // TODO RETHINK THIS SHIT
         gameMap = new GameMap()
         game.map = gameMap
         gameMap.game = game
 
         emptyTile = new Tile(map: gameMap)
         filledTile = new Tile(map: gameMap)
-        farmer = new Farmer()
-        armyUnit = new ArmyUnit()
+        farmer = new Farmer(starving: true)     // TODO GET RID OF THIS BOILERPLATE!
+        armyUnit = new ArmyUnit(starving: true)
 
         game.map.tiles = [emptyTile, filledTile]
         game.popUnits = [farmer, armyUnit]
@@ -45,16 +45,63 @@ class FeedTileTest {
         armyUnit.tile = filledTile
 
         assert farmer.produce() == 0
+        assert !farmer.starving
+        assert !armyUnit.starving
     }
 
     @Test
     void testFarmerFeedsItself() {
 
         farmer.tile = filledTile
-        armyUnit.tile = emptyTile
 
         assert farmer.produce() == 1
+        assert !farmer.starving
+        assert armyUnit.starving
     }
 
-    // private void getGame()
+    @Test
+    void testFarmerDoesNotFeedNonArmyUnits() {
+
+        PopUnit a = new Farmer(tile: filledTile, starving: true)
+        PopUnit b = new Farmer(tile: filledTile, starving: true)
+
+        game.popUnits.addAll([a, b])
+        farmer.tile = filledTile
+
+        assert farmer.produce() == 1
+        assert !farmer.starving
+        assert a.starving
+        assert b.starving
+    }
+
+    @Test
+    void testFarmerDoesNotReturnNegativeValue() {
+
+        PopUnit a = new ArmyUnit(tile: filledTile, starving: true)
+        PopUnit b = new ArmyUnit(tile: filledTile, starving: true)
+
+        game.popUnits.addAll([a, b])
+
+        farmer.tile = filledTile
+
+        assert farmer.produce() == 0
+
+    }
+
+    @Test
+    void testFarmerFeedsArmyUnitsBeforeSelf() {
+
+        PopUnit a = new ArmyUnit(tile: filledTile, starving: true)
+        PopUnit b = new ArmyUnit(tile: filledTile, starving: true)
+
+        game.popUnits.addAll([a, b])
+
+        farmer.tile = filledTile
+
+        assert farmer.produce() == 0
+        assert farmer.starving
+        assert !a.starving
+        assert !b.starving
+    }
+
 }

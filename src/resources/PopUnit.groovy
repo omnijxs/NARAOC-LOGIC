@@ -9,9 +9,7 @@ class PopUnit {
     Boolean starving
     
     Integer consume(def food){
-        
         starving = false
-            
         food - 1
     }
     
