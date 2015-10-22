@@ -8,7 +8,7 @@ class PopUnit {
     Tile tile
     Boolean starving
     
-    def consume(def food){
+    Integer consume(def food){
         
         starving = false
             

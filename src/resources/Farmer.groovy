@@ -6,21 +6,20 @@ package resources
 
 class Farmer extends PopUnit {
     
-    @Overwrite
+    @Override
     def produce(){
-    
+        Integer value = 2
+        return feedTile(value)
     }
     
-    private Integer feedTile(){      
-    
-        def production 
+    private Integer feedTile(Integer value){
+
+        /** Feed yourself AND all armies on the tile */
+        def armyUnitsOnTile = tile.popUnitsOnTile().findAll{ it == this || it.class == ArmyUnit }
         
-        // TODO null check. MAKE TEST!
-        def armyUnitsOnTile = tile.popUnitsOnTile().findAll{ it != this && it.class == ArmyUnit }
-        
-        armyUnitsOnTile.each { production = it.consume(production) }
-        
-        production
+        armyUnitsOnTile.each { value = it.consume(value) }
+
+        value
         
     }
 }
