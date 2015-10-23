@@ -16,8 +16,9 @@ class Game {
 
     /** NEXT UP:
      *
-     * 1) A solution how to represent demand values in a city
-     * 2) Import preferred algorithm as a trait
+     * 1) Add merchant and farmer
+     * 2) Make sure that everything works with them: esp. preferred - trait. PrioritySort also.
+     * 3)
      *
      */
     
