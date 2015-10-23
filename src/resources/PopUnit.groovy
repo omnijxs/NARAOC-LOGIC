@@ -1,9 +1,11 @@
 package resources
 
+import traits.Preferred
+
 /**
  * Created by Juri on 21.10.2015.
  */
-class PopUnit {
+class PopUnit implements Preferred {
     
     Tile tile
     Boolean starving

@@ -6,6 +6,8 @@ package resources
 class Tile {
     
     GameMap map
+    Integer x
+    Integer y
     
     List<PopUnit> popUnitsOnTile(){
         return map.game.popUnits.findAll { it.tile == this }        

@@ -6,4 +6,6 @@ package resources
 class City {
 
     Tile tile
+    Integer demandForFood
+
 }
