@@ -13,5 +13,12 @@ class Game {
     GameMap map
     List<PopUnit> popUnits
     List<Player> players
+
+    /** NEXT UP:
+     *
+     * 1) A solution how to represent demand values in a city
+     * 2) Import preferred algorithm as a trait
+     *
+     */
     
 }
