@@ -36,6 +36,7 @@ trait Preferred {
     /**
      *  Exponential progession (0, 1, 2, 4, 8, 16, 32...) */
     // TODO requires information about map to calculate river bonuses etc.
+    // TODO make into an own trait
     Integer resolveDistance(px, py, cx, cy){
         return (Math.abs(cx - px) * Math.abs(cx - px)) + (Math.abs(cy - py) * Math.abs(cy - py))
 

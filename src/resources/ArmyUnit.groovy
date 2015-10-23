@@ -11,5 +11,10 @@ class ArmyUnit extends PopUnit {
         this.priority = 0
     }
 
+    @Override
+    void resolvePreferredCity(List<City> cities){
+        preferredCity = null
+    }
+
     
 }
