@@ -5,7 +5,7 @@ import resources.ArmyUnit
 /**
  * Created by Juri on 22.10.2015.
  */
-trait FeedsTile {
+trait FeedsTile implements PopUnitSorter {
 
     Integer feedTile(Integer value){
 
@@ -22,12 +22,6 @@ trait FeedsTile {
 
         value
 
-    }
-    
-    // TODO Turn into a trait or a utilityMethod
-    private List<PopUnit> prioritySortPopUnits(List<PopUnit> popUnits){    
-        return popUnits.sort { it.priority && !it.age }
-        
     }
 
 }
