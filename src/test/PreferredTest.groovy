@@ -1,6 +1,7 @@
 package test
 
 import org.junit.Test
+import resources.common.Product
 import resources.popUnit.ArmyUnit
 import resources.city.City
 import resources.popUnit.Farmer
@@ -26,7 +27,9 @@ class PreferredTest {
     void testNotEnoughDemand() {
 
         PopUnit p = new Farmer(tile: new Tile(x: 2, y: 3))
-        City c = new City(tile: new Tile(x: 1, y: 2), demandForFood: 1)    /** Distance 2 */
+        City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
+
+        c.demand.put(Product.FOOD, 1)
 
         p.resolvePreferredCity([c])
 
@@ -38,7 +41,9 @@ class PreferredTest {
     void testDemandEqualsDistance() {
 
         PopUnit p = new Farmer(tile: new Tile(x: 2, y: 3))
-        City c = new City(tile: new Tile(x: 1, y: 2), demandForFood: 2)    /** Distance 2 */
+        City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
+
+        c.demand.put(Product.FOOD, 2)
 
         p.resolvePreferredCity([c])
 
@@ -50,8 +55,9 @@ class PreferredTest {
     void testEnoughDemand() {
 
         PopUnit p = new Farmer(tile: new Tile(x: 2, y: 3))
-        City c = new City(tile: new Tile(x: 1, y: 2), demandForFood: 3)    /** Distance 2 */
+        City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
+        c.demand.put(Product.FOOD, 3)
         p.resolvePreferredCity([c])
 
         assert p.preferredCity != null
@@ -63,7 +69,9 @@ class PreferredTest {
     void testArmyUnitHasNoPreferredCity() {
 
         PopUnit p = new ArmyUnit(tile: new Tile(x: 2, y: 3))
-        City c = new City(tile: new Tile(x: 1, y: 2), demandForFood: 3)    /** Distance 2 */
+        City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
+
+        c.demand.put(Product.FOOD, 2)
 
         p.resolvePreferredCity([c])
 
@@ -85,8 +93,11 @@ class PreferredTest {
     void testCaseEqualDemandDistanceDecides() {
 
         PopUnit p = new Farmer(tile: new Tile(x: 2, y: 3))
-        City a = new City(tile: new Tile(x: 2, y: 2), demandForFood: 2)    /** Distance 1 */
-        City b = new City(tile: new Tile(x: 3, y: 4), demandForFood: 2)    /** Distance 2 */
+        City a = new City(tile: new Tile(x: 2, y: 2))    /** Distance 1 */
+        City b = new City(tile: new Tile(x: 3, y: 4))    /** Distance 2 */
+
+        a.demand.put(Product.FOOD, 2)
+        b.demand.put(Product.FOOD, 2)
 
         p.resolvePreferredCity([a, b])
 
@@ -98,8 +109,11 @@ class PreferredTest {
     void testCaseHigherDemandDecides() {
 
         PopUnit p = new Farmer(tile: new Tile(x: 2, y: 3))
-        City a = new City(tile: new Tile(x: 2, y: 2), demandForFood: 2)    /** Distance 1 */
-        City b = new City(tile: new Tile(x: 3, y: 4), demandForFood: 4)    /** Distance 2 */
+        City a = new City(tile: new Tile(x: 2, y: 2))    /** Distance 1 */
+        City b = new City(tile: new Tile(x: 3, y: 4))    /** Distance 2 */
+
+        a.demand.put(Product.FOOD, 2)
+        b.demand.put(Product.FOOD, 4)
 
         p.resolvePreferredCity([a, b])
 

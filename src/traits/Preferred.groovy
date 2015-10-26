@@ -1,6 +1,7 @@
 package traits
 
 import resources.city.City
+import resources.common.Product
 
 /**
  * Created by Juri on 23.10.2015.
@@ -18,8 +19,7 @@ trait Preferred {
 
             def distance = resolveDistance(tile.x, tile.y, c.tile.x, c.tile.y)
 
-            // TODO how to identify correct product type?
-            def preferredValue = c.demandForFood - distance
+            def preferredValue =  c.demand.get(product) - distance
 
             if(preferredValue > 0)
                 unsortedResults.put(c, preferredValue)
