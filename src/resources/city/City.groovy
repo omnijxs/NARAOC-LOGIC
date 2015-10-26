@@ -9,19 +9,8 @@ import resources.common.Tile
 class City {
 
     Tile tile
-    Integer demandForFood
-    
-    Map<Product, Integer> demand = [:]
-    
-    public City(){
-     
-        // TODO How can use enum FOOD instead of Product.FOOD?
-        // TODO Consider using a custom Demand object?
 
-        demand.put(Product.FOOD, 0)
-        demand.put(Product.WORK, 0)
-        demand.put(Product.TRADE, 0)
-        
-    }
+    // TODO not the optimal way to bind production of a pop unit and city demand to together!
+    Map<Product, Integer> demand = ['Product.FOOD': 0, 'Product.WORK': 0, 'Product.TRADE':0]
 
 }

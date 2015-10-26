@@ -105,6 +105,8 @@ class PreferredTest {
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         c.demand.put(Product.FOOD, 2)
+        c.demand.put(Product.WORK, 2)
+        c.demand.put(Product.TRADE, 2)
 
         p.resolvePreferredCity([c])
 

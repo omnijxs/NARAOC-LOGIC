@@ -14,12 +14,4 @@ class Game {
     List<PopUnit> popUnits
     List<Player> players
 
-    /** NEXT UP:
-     *
-     * 1) Add merchant and farmer
-     * 2) Make sure that everything works with them: esp. preferred - trait. PrioritySort also.
-     * 3)
-     *
-     */
-    
 }
