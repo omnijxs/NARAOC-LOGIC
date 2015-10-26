@@ -1,4 +1,6 @@
-package resources
+package resources.popUnit
+
+import resources.city.City
 
 /**
  * Created by Juri on 22.10.2015.

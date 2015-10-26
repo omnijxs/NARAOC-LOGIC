@@ -1,7 +1,7 @@
 package game
 
-import resources.GameMap
-import resources.PopUnit
+import resources.common.GameMap
+import resources.popUnit.PopUnit
 
 /**
  * Created by Juri on 21.10.2015.

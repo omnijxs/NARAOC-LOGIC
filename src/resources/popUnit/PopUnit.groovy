@@ -1,5 +1,7 @@
-package resources
+package resources.popUnit
 
+import resources.common.Product
+import resources.common.Tile
 import traits.Preferred
 
 /**
@@ -8,7 +10,7 @@ import traits.Preferred
 class PopUnit implements Preferred {
     
     Tile tile
-    Product product             
+    Product product
     
     Boolean starving
     Integer priority

@@ -1,11 +1,11 @@
 package test
 
 import org.junit.Test
-import resources.ArmyUnit
-import resources.City
-import resources.Farmer
-import resources.PopUnit
-import resources.Tile
+import resources.popUnit.ArmyUnit
+import resources.city.City
+import resources.popUnit.Farmer
+import resources.popUnit.PopUnit
+import resources.common.Tile
 
 /**
  * Created by Juri on 23.10.2015.

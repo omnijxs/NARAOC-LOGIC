@@ -1,5 +1,6 @@
-package resources
+package resources.popUnit
 
+import resources.common.Product
 import traits.FeedsTile
 
 /**

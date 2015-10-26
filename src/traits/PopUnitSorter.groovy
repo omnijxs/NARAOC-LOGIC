@@ -1,6 +1,6 @@
 package traits
 
-import resources.PopUnit
+import resources.popUnit.PopUnit
 
 /**
  * Created by Juri on 23.10.2015.

@@ -1,9 +1,9 @@
 package test
 
 import org.junit.Test
-import resources.ArmyUnit
-import resources.Farmer
-import resources.PopUnit
+import resources.popUnit.ArmyUnit
+import resources.popUnit.Farmer
+import resources.popUnit.PopUnit
 import traits.PopUnitSorter
 
 /**

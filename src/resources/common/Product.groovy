@@ -1,4 +1,4 @@
-package resources
+package resources.common
 
 /**
  * Created by Juri on 26.10.2015.
@@ -8,7 +8,7 @@ enum Product {
     
     FOOD("Food"),
     WORK("Work"),
-    TRADE("Trade)   
+    TRADE("Trade")
     
     final String label
     

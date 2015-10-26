@@ -1,4 +1,6 @@
-package resources
+package resources.popUnit
+
+import resources.common.Product
 
 /**
  * Created by Juri on 26.10.2015.

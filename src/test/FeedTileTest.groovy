@@ -3,11 +3,11 @@ package test
 import game.Game
 import org.junit.Before
 import org.junit.Test
-import resources.ArmyUnit
-import resources.Farmer
-import resources.GameMap
-import resources.PopUnit
-import resources.Tile
+import resources.popUnit.ArmyUnit
+import resources.popUnit.Farmer
+import resources.common.GameMap
+import resources.popUnit.PopUnit
+import resources.common.Tile
 
 /**
  * Created by Juri on 22.10.2015.
