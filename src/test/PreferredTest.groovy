@@ -5,8 +5,10 @@ import resources.common.Product
 import resources.popUnit.ArmyUnit
 import resources.city.City
 import resources.popUnit.Farmer
+import resources.popUnit.Merchant
 import resources.popUnit.PopUnit
 import resources.common.Tile
+import resources.popUnit.Worker
 
 /**
  * Created by Juri on 23.10.2015.
@@ -58,6 +60,37 @@ class PreferredTest {
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         c.demand.put(Product.FOOD, 3)
+
+        p.resolvePreferredCity([c])
+
+        assert p.preferredCity != null
+        assert p.preferredCity == c
+    }
+
+    /** Demand is higher than distance = Worker has a preferred city */
+    @Test
+    void testEnoughDemandForWork() {
+
+        PopUnit p = new Worker(tile: new Tile(x: 2, y: 3))
+        City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
+
+        c.demand.put(Product.WORK, 3)
+
+        p.resolvePreferredCity([c])
+
+        assert p.preferredCity != null
+        assert p.preferredCity == c
+    }
+
+    /** Demand is higher than distance = Merchant has a preferred city */
+    @Test
+    void testEnoughDemandForTrade() {
+
+        PopUnit p = new Merchant(tile: new Tile(x: 2, y: 3))
+        City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
+
+        c.demand.put(Product.TRADE, 3)
+
         p.resolvePreferredCity([c])
 
         assert p.preferredCity != null
