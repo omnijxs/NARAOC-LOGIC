@@ -8,6 +8,8 @@ import traits.Preferred
 class PopUnit implements Preferred {
     
     Tile tile
+    Product product             
+    
     Boolean starving
     Integer priority
     Integer age

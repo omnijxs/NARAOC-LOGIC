@@ -9,6 +9,7 @@ import traits.FeedsTile
 class Farmer extends PopUnit implements FeedsTile {
     
     public Farmer(){
+        this.product = Product.FOOD
         this.age = 0
         this.priority = 2   
     }
