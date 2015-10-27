@@ -12,25 +12,25 @@ trait Preferred {
 
     void resolvePreferredCity(List<City> cities){
 
-        Map<City, Integer> unsortedResults = [:]
-        Map<City, Integer> results = [:]
+        /** If there is no city with a preferredValue higher than zero, the Pop Unit does not produce for any city */
+        preferredCity = null        
+        Integer preferredValue = 0
 
         cities.each { c ->
 
-            def distance = resolveDistance(tile.x, tile.y, c.tile.x, c.tile.y)
+            /** Resolve how far the city is from the Pop Unit*/
+            Integer distance = resolveDistance(tile.x, tile.y, c.tile.x, c.tile.y)
 
-            def preferredValue =  c.demand.get(product) - distance
+            /** The preferredValue is city's demand for the Pop Units' product minus distance to the city */
+            Integer tempPreferredValue =  c.demand.get(product) - distance
 
-            if(preferredValue > 0)
-                unsortedResults.put(c, preferredValue)
+            if(tempPreferredValue > preferredValue ) {
+                preferredCity = c
+                preferredValue = tempPreferredValue
+            }
+                
         }
 
-        if(unsortedResults){
-            results = unsortedResults.sort { -it.value }
-            preferredCity = results?.keySet()?.first()
-        } else {
-            preferredCity = null
-        }
     }
 
     /**

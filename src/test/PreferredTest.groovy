@@ -154,4 +154,6 @@ class PreferredTest {
 
         assert p.preferredCity == b
     }
+    
+    // TODO how to handle the situation if multiple cities have the same preferred value? Currently solution is randomity.
 }
