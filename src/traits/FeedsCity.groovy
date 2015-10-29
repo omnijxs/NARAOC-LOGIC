@@ -5,7 +5,7 @@ import resources.popUnit.ArmyUnit
 /**
  * Created by Juri on 22.10.2015.
  */
-trait FeedsCity implements PopUnitSorter {
+trait FeedsCity implements PopUnitSorter, Feeds {
 
     Integer feedCity(Integer value){
 
@@ -17,13 +17,7 @@ trait FeedsCity implements PopUnitSorter {
         /** Sort by Pop Unit type, production value and age */
         def sortedPopUnits = priorityProductionSortPopUnits(popUnitsOnCityTile)
         
-        // TODO Make into a trait. Used also in FeedsTile.
-        sortedPopUnits.each {
-            if(value)
-                value = it.consume(value)
-        }
-
-        value
+        return feed(sortedPopUnits, value)
 
     }
 

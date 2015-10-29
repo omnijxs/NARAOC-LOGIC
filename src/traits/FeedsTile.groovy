@@ -5,7 +5,7 @@ import resources.popUnit.ArmyUnit
 /**
  * Created by Juri on 22.10.2015.
  */
-trait FeedsTile implements PopUnitSorter {
+trait FeedsTile implements PopUnitSorter, Feeds {
 
     Integer feedTile(Integer value){
 
@@ -15,12 +15,7 @@ trait FeedsTile implements PopUnitSorter {
         /** Sort by default priority */
         def sortedFeedableUnitsOnTile = prioritySortPopUnits(unsortedFeedableUnitsOnTile)
         
-        sortedFeedableUnitsOnTile.each {
-            if(value)
-                value = it.consume(value)
-        }
-
-        value
+        return feed(sortedFeedableUnitsOnTile, value)
 
     }
 
