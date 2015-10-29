@@ -2,11 +2,12 @@ package resources.city
 
 import resources.common.Product
 import resources.common.Tile
+import resources.traits.FeedsCity
 
 /**
  * Created by Juri on 21.10.2015.
  */
-class City {
+class City implements FeedsCity{
 
     Tile tile
 

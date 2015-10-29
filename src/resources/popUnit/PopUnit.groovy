@@ -11,6 +11,7 @@ class PopUnit implements Preferred {
     
     Tile tile
     Product product
+    Integer productValue
     
     Boolean starving
     Integer priority
