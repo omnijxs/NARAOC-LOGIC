@@ -10,12 +10,13 @@ trait FeedsCity implements PopUnitSorter, Feeds {
     Integer feedCity(Integer value){
 
         /** Get all popUnits on the city tile  */
-        def popUnitsOnCityTile = tile.popUnitsOnTile()
+        def popUnitsOnCity = tile.popUnitsOnTile()
         
-        // TODO deal with units producing for the city outside city proper!!!       
+        // TODO deal with units producing for the city outside city proper!!!
+        // def popUnitsOffCity = 
         
         /** Sort by Pop Unit type, production value and age */
-        def sortedPopUnits = priorityProductionSortPopUnits(popUnitsOnCityTile)
+        def sortedPopUnits = priorityProductionSortPopUnits(popUnitsOnCity)
         
         return feed(sortedPopUnits, value)
 

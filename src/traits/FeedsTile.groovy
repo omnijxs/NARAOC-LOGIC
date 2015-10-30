@@ -10,12 +10,12 @@ trait FeedsTile implements PopUnitSorter, Feeds {
     Integer feedTile(Integer value){
 
         /** Feed all armies on the tile and yourself */
-        def unsortedFeedableUnitsOnTile = tile.popUnitsOnTile().findAll{ it.class == ArmyUnit || it == this}
+        def popUnitsOnTile = tile.popUnitsOnTile().findAll{ it.class == ArmyUnit || it == this}
 
         /** Sort by default priority */
-        def sortedFeedableUnitsOnTile = prioritySortPopUnits(unsortedFeedableUnitsOnTile)
+        def sortedPopUnits = prioritySortPopUnits(popUnitsOnTile)
         
-        return feed(sortedFeedableUnitsOnTile, value)
+        return feed(sortedPopUnits, value)
 
     }
 
