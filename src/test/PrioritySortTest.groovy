@@ -22,7 +22,7 @@ class PrioritySortTest implements PopUnitSorter {
 
         List<PopUnit> popUnits = [a, b, c]
 
-        assert prioritySortPopUnits(popUnits) == [a, c, b]
+        assert defaultSort(popUnits) == [a, c, b]
     }
 
     @Test
@@ -34,7 +34,7 @@ class PrioritySortTest implements PopUnitSorter {
 
         List<PopUnit> popUnits = [a, b, c]
 
-        assert prioritySortPopUnits(popUnits) == [c, a, b]
+        assert defaultSort(popUnits) == [c, a, b]
     }
 
     @Test
@@ -48,7 +48,7 @@ class PrioritySortTest implements PopUnitSorter {
 
         List<PopUnit> popUnits = [a, b, c, d, e]
 
-        assert prioritySortPopUnits(popUnits) == [d, e, b, c, a]
+        assert defaultSort(popUnits) == [d, e, b, c, a]
     }
 
     @Test
@@ -64,7 +64,9 @@ class PrioritySortTest implements PopUnitSorter {
 
         List<PopUnit> popUnits = [a, b, c, d, e, f]
 
-        assert prioritySortPopUnits(popUnits) == [e, f, d, b, c, a]
+        assert defaultSort(popUnits) == [e, f, d, b, c, a]
     }
+    
+    // TODO tests for productionSort
 
 }

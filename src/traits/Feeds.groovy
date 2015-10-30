@@ -5,15 +5,15 @@ package traits
  */
 trait Feeds {
 
-    Integer feed(def popUnits, def value){
+    Integer feed(def popUnits, def foodAmount){
         
         // TODO make ignorant if the popUnits parameter is an object or a list
         popUnits.each {
-            if(value)
-                value = it.consume(value)
+            if(foodAmount)
+                foodAmount = it.consume(foodAmount)
         }
 
-        value
+        foodAmount
 
     }
 

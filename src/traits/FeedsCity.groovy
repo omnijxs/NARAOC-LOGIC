@@ -7,7 +7,7 @@ import resources.popUnit.ArmyUnit
  */
 trait FeedsCity implements PopUnitSorter, Feeds {
 
-    Integer feedCity(Integer value){
+    Integer feedCity(Integer foodAmount){
 
         /** Get all popUnits on the city tile  */
         def popUnitsOnCity = tile.popUnitsOnTile()
@@ -16,9 +16,9 @@ trait FeedsCity implements PopUnitSorter, Feeds {
         // def popUnitsOffCity = 
         
         /** Sort by Pop Unit type, production value and age */
-        def sortedPopUnits = priorityProductionSortPopUnits(popUnitsOnCity)
+        def sortedPopUnits = productionSort(popUnitsOnCity)
         
-        return feed(sortedPopUnits, value)
+        return feed(sortedPopUnits, foodAmount)
 
     }
 

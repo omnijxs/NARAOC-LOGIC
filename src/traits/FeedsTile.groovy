@@ -7,15 +7,15 @@ import resources.popUnit.ArmyUnit
  */
 trait FeedsTile implements PopUnitSorter, Feeds {
 
-    Integer feedTile(Integer value){
+    Integer feedTile(Integer foodAmount){
 
         /** Feed all armies on the tile and yourself */
         def popUnitsOnTile = tile.popUnitsOnTile().findAll{ it.class == ArmyUnit || it == this}
 
         /** Sort by default priority */
-        def sortedPopUnits = prioritySortPopUnits(popUnitsOnTile)
+        def sortedPopUnits = defaultSort(popUnitsOnTile)
         
-        return feed(sortedPopUnits, value)
+        return feed(sortedPopUnits, foodAmount)
 
     }
 
