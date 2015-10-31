@@ -13,7 +13,7 @@ class PopUnit implements Preferred {
     Product product
     Integer productAmount
     
-    Boolean starving
+    Boolean starving = true                 // TODO think thru the init process!!!
     Integer priority
     Integer age
     
