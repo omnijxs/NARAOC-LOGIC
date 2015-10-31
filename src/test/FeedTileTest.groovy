@@ -12,14 +12,19 @@ import resources.common.Tile
 /**
  * Created by Juri on 22.10.2015.
  */
+// TODO rename FeedsTileTest
 class FeedTileTest {
 
+    /** Why not use farmer but this... */
+    private class TileFeeder extends PopUnits implements FeedsTile {}
+    
     protected Game game
     protected GameMap gameMap
     protected Tile emptyTile
     protected Tile filledTile
-    protected PopUnit farmer
-    protected PopUnit armyUnit
+    protected PopUnit army
+    protected PopUnit feeder
+    protected PopUnit extra
 
     @Before
     void setUp(){
@@ -29,79 +34,67 @@ class FeedTileTest {
         gameMap.game = game
 
         emptyTile = new Tile(map: gameMap)
-        filledTile = new Tile(map: gameMap)
-        farmer = new Farmer(starving: true)     // TODO GET RID OF THIS BOILERPLATE!
-        armyUnit = new ArmyUnit(starving: true)
+        filledTile = new Tile(map: gameMap) 
+        army = new ArmyUnit()
+        feeder = new TileFeeder()
 
         game.map.tiles = [emptyTile, filledTile]
-        game.popUnits = [farmer, armyUnit]
+        
+        game.popUnits = [a, p]
 
     }
 
     @Test
-    void testFarmerFeedsArmyUnit() {
+    void testFeedArmyUnit() {
 
-        farmer.tile = filledTile
-        armyUnit.tile = filledTile
+        army.tile = filledTile
+        feeder.tile = filledTile
 
-        assert farmer.produce() == 0
-        assert !farmer.starving
-        assert !armyUnit.starving
+        assert feeder.feedTile() == 0            // TODO use productAmount
+        assert !feeder.starving
+        assert !army.starving
     }
 
     @Test
-    void testFarmerFeedsItself() {
+    void testFeedSelf() {
 
-        farmer.tile = filledTile
+        army.tile = emptyTile
+        feeder.tile = filledTile
 
-        assert farmer.produce() == 1
-        assert !farmer.starving
-        assert armyUnit.starving
+        assert feeder.feedTile() == 1
+        assert !feeder.starving
+        assert army.starving
     }
 
     @Test
-    void testFarmerDoesNotFeedNonArmyUnits() {
+    void testDontFeedNonArmyUnits() {
 
-        PopUnit a = new Farmer(tile: filledTile, starving: true)
-        PopUnit b = new Farmer(tile: filledTile, starving: true)
+        extra = new TileFeeder()
+        game.popUnits.add(extra)
+        
+        feeder.tile = filledTile
+        extra.tile = filledTile
 
-        game.popUnits.addAll([a, b])
-        farmer.tile = filledTile
-
-        assert farmer.produce() == 1
-        assert !farmer.starving
-        assert a.starving
-        assert b.starving
+        assert feeder.feedTile() == 1
+        assert !feeder.starving
+        assert extra.starving
     }
 
     @Test
-    void testFarmerDoesNotReturnNegativeValue() {
+    void testFeedArmyUnitsBeforeSelf() {
 
-        PopUnit a = new ArmyUnit(tile: filledTile, starving: true)
-        PopUnit b = new ArmyUnit(tile: filledTile, starving: true)
+        extra = new ArmyUnit()
 
-        game.popUnits.addAll([a, b])
+        game.popUnits.add(extra)
 
-        farmer.tile = filledTile
+        army.tile = filledTile
+        extra.tile = filledTile
+        feeder.tile = filledTile
 
-        assert farmer.produce() == 0
-
-    }
-
-    @Test
-    void testFarmerFeedsArmyUnitsBeforeSelf() {
-
-        PopUnit a = new ArmyUnit(tile: filledTile, starving: true)
-        PopUnit b = new ArmyUnit(tile: filledTile, starving: true)
-
-        game.popUnits.addAll([a, b])
-
-        farmer.tile = filledTile
-
-        assert farmer.produce() == 0
-        assert farmer.starving
-        assert !a.starving
-        assert !b.starving
+        assert feeder.feedTile() == 0
+        assert feeder.starving
+        assert !army.starving
+        assert !extra.starving
     }
 
 }
