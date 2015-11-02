@@ -13,10 +13,11 @@ trait FeedsCity implements PopUnitSorter, Feeds {
         def popUnitsOnCity = tile.popUnitsOnTile()
         
         // TODO deal with units producing for the city outside city proper!!!
-        // def popUnitsOffCity = 
+        // def popUnitsOffCity = tile.map.game.popUnits.findAll { it.tile != this && it.preferredCity == }
         
         /** Sort by Pop Unit type, production value and age */
-        def sortedPopUnits = productionSort(popUnitsOnCity)
+        // def sortedPopUnits = productionSort(popUnitsOnCity)
+        def sortedPopUnits = defaultSort(popUnitsOnCity)
         
         return feed(sortedPopUnits, foodAmount)
 
