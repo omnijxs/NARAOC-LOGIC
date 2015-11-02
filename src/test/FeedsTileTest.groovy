@@ -4,19 +4,18 @@ import game.Game
 import org.junit.Before
 import org.junit.Test
 import resources.popUnit.ArmyUnit
-import resources.popUnit.Farmer
 import resources.common.GameMap
 import resources.popUnit.PopUnit
 import resources.common.Tile
+import traits.FeedsTile
 
 /**
  * Created by Juri on 22.10.2015.
  */
-// TODO rename FeedsTileTest
-class FeedTileTest {
+class FeedsTileTest {
 
     /** Why not use farmer but this... */
-    private class TileFeeder extends PopUnits implements FeedsTile {}
+    private class TileFeeder extends PopUnit implements FeedsTile { }
     
     protected Game game
     protected GameMap gameMap
@@ -36,11 +35,11 @@ class FeedTileTest {
         emptyTile = new Tile(map: gameMap)
         filledTile = new Tile(map: gameMap) 
         army = new ArmyUnit()
-        feeder = new TileFeeder()
+        feeder = new TileFeeder(priority: 2)    // TODO A fancier way of doing te priority sort
 
         game.map.tiles = [emptyTile, filledTile]
         
-        game.popUnits = [a, p]
+        game.popUnits = [army, feeder]
 
     }
 
@@ -50,7 +49,7 @@ class FeedTileTest {
         army.tile = filledTile
         feeder.tile = filledTile
 
-        assert feeder.feedTile() == 0            // TODO use productAmount
+        assert feeder.feedTile(2) == 0            // TODO use productAmount
         assert !feeder.starving
         assert !army.starving
     }
@@ -61,7 +60,7 @@ class FeedTileTest {
         army.tile = emptyTile
         feeder.tile = filledTile
 
-        assert feeder.feedTile() == 1
+        assert feeder.feedTile(2) == 1
         assert !feeder.starving
         assert army.starving
     }
@@ -75,7 +74,7 @@ class FeedTileTest {
         feeder.tile = filledTile
         extra.tile = filledTile
 
-        assert feeder.feedTile() == 1
+        assert feeder.feedTile(2) == 1
         assert !feeder.starving
         assert extra.starving
     }
@@ -91,7 +90,7 @@ class FeedTileTest {
         extra.tile = filledTile
         feeder.tile = filledTile
 
-        assert feeder.feedTile() == 0
+        assert feeder.feedTile(2) == 0
         assert feeder.starving
         assert !army.starving
         assert !extra.starving
