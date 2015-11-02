@@ -7,7 +7,7 @@ import traits.FeedsCity
 /**
  * Created by Juri on 21.10.2015.
  */
-class City implements FeedsCity{
+class City implements FeedsCity {
 
     Tile tile
 

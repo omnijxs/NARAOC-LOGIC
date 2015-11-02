@@ -12,12 +12,13 @@ trait FeedsCity implements PopUnitSorter, Feeds {
         /** Get all popUnits on the city tile  */
         def popUnitsOnCity = tile.popUnitsOnTile()
         
-        // TODO deal with units producing for the city outside city proper!!!
-        // def popUnitsOffCity = tile.map.game.popUnits.findAll { it.tile != this && it.preferredCity == }
+        /** Get all popUnits producing for the city */
+        def popUnitsOffCity = tile.map.game.popUnits.findAll { it.preferredCity == this && it.tile == tile }
+        // TODO logically should filter out ARmyUnit and MagicUnit out! Now they are not included because they can't have a preferred city
         
         /** Sort by Pop Unit type, production value and age */
         // def sortedPopUnits = productionSort(popUnitsOnCity)
-        def sortedPopUnits = defaultSort(popUnitsOnCity)
+        def sortedPopUnits = defaultSort(popUnitsOnCity + popUnitsOffCity)
         
         return feed(sortedPopUnits, foodAmount)
 
