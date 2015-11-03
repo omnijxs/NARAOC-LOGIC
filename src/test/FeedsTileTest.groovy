@@ -13,8 +13,9 @@ import traits.FeedsTile
  * Created by Juri on 22.10.2015.
  */
 class FeedsTileTest {
-
-    /** Why not use farmer but this... */
+// TODO should be class FeedsTileTest implements FeedsTile
+// protected Tile tile // because access to popUnits is behind TILE
+    
     private class TileFeeder extends PopUnit implements FeedsTile { }
     
     protected Game game

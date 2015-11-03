@@ -13,6 +13,7 @@ import resources.popUnit.PopUnit
  * Created by Juri on 2.11.2015.
  */
 class FeedsCityTest {
+    // TODO should be class FeedsCityTest implements FeedsCity
 
     // TODO Do not City class but a generic mocker class!!!
 
