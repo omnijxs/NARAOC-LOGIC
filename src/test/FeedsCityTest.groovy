@@ -23,7 +23,7 @@ class FeedsCityTest {
     protected Tile cityTile
     protected PopUnit armyInsideCity
     protected PopUnit nonArmyInsideCity
-    protected PopUnit nonArmyoutsideCity
+    protected PopUnit nonArmyOutsideCity
 
     @Before
     void setUp(){
@@ -41,7 +41,7 @@ class FeedsCityTest {
 
         armyInsideCity = new ArmyUnit()
         nonArmyInsideCity = new PopUnit(priority: 2)    // TODO A fancier way of doing te priority sort
-        nonArmyoutsideCity = new PopUnit(priority: 2)    // TODO A fancier way of doing te priority sort
+        nonArmyOutsideCity = new PopUnit(priority: 2)    // TODO A fancier way of doing te priority sort
 
         game.map.tiles = [cityTile, nonCityTile]
 
@@ -66,11 +66,31 @@ class FeedsCityTest {
 
         armyInsideCity.tile = cityTile
         nonArmyInsideCity.tile = cityTile
-        nonArmyoutsideCity.tile = cityTile
 
-        // assert city.feedCity(3) == 0
+        nonArmyOutsideCity.tile = nonCityTile
+        nonArmyOutsideCity.preferredCity = city
+        game.popUnits.add(nonArmyOutsideCity)
+
+        assert city.feedCity(3) == 0
         assert !armyInsideCity.starving
         assert !nonArmyInsideCity.starving
-        assert !nonArmyoutsideCity.starving
+        assert !nonArmyOutsideCity.starving
     }
+
+    @Test
+    void testFeedCityTileAndDisregardNonPreferred() {
+
+        armyInsideCity.tile = cityTile
+        nonArmyInsideCity.tile = cityTile
+
+        nonArmyOutsideCity.tile = nonCityTile
+        nonArmyOutsideCity.preferredCity = null
+        game.popUnits.add(nonArmyOutsideCity)
+
+        assert city.feedCity(3) == 1
+        assert !armyInsideCity.starving
+        assert !nonArmyInsideCity.starving
+        assert nonArmyOutsideCity.starving
+    }
+
 }

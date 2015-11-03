@@ -15,7 +15,7 @@ class PopUnit implements Preferred {
     
     Boolean starving = true                 // TODO think thru the init process!!!
     Integer priority
-    Integer age
+    Integer age = 0                         // TODO think thru the init process!!!
     
     Integer consume(def food){
         starving = false
