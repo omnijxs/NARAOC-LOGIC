@@ -6,12 +6,20 @@ import resources.popUnit.PopUnit
 /**
  * Created by Juri on 21.10.2015.
  */
-class Game {
+class GameData {
 
     Metadata metadata
 
-    GameMap map
+    GameMap gameMap
     List<PopUnit> popUnits
     List<Player> players
+
+    public List<PopUnit> getCities(){
+        return gameMap.cities
+    }
+
+    public List<PopUnit> getTiles(){
+        return gameMap.tiles
+    }
 
 }

@@ -1,6 +1,6 @@
 package resources.common
 
-import game.Game
+import game.GameData
 import resources.city.City
 
 /**
@@ -8,7 +8,7 @@ import resources.city.City
  */
 class GameMap {
 
-    Game game
+    GameData game
 
     List<City> cities
     List<Tile> tiles

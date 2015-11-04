@@ -1,6 +1,6 @@
 package test
 
-import game.Game
+import game.GameData
 import org.junit.Before
 import org.junit.Test
 import resources.popUnit.ArmyUnit
@@ -16,7 +16,7 @@ class FeedsTileTest {
 
     private class TileFeeder extends PopUnit implements FeedsTile { }
     
-    protected Game game
+    protected GameData game
     protected GameMap gameMap
     protected Tile emptyTile
     protected Tile filledTile
@@ -26,7 +26,7 @@ class FeedsTileTest {
 
     @Before
     void setUp(){
-        game = new Game()                       // TODO RETHINK THIS SHIT
+        game = new GameData()                       // TODO RETHINK THIS SHIT
         gameMap = new GameMap()
         game.map = gameMap
         gameMap.game = game

@@ -1,5 +1,6 @@
 package resources.popUnit
 
+import game.Player
 import resources.common.Product
 import resources.common.Tile
 import traits.Preferred
@@ -16,7 +17,9 @@ class PopUnit implements Preferred {
     Boolean starving = true                 // TODO think thru the init process!!!
     Integer priority
     Integer age = 0                         // TODO think thru the init process!!!
-    
+
+    Player owner
+
     Integer consume(def food){
         starving = false
         food - 1

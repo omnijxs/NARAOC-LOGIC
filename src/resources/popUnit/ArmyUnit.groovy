@@ -9,8 +9,6 @@ import resources.city.City
 
 class ArmyUnit extends PopUnit {
 
-    Player owner
-
     public ArmyUnit(){
         this.age = 0
         this.priority = 0

@@ -1,6 +1,6 @@
 package test
 
-import game.Game
+import game.GameData
 import org.junit.Before
 import org.junit.Test
 import resources.city.City
@@ -14,7 +14,7 @@ import resources.popUnit.PopUnit
  */
 class FeedsCityTest {
 
-    protected Game game
+    protected GameData game
     protected GameMap gameMap
     protected City city
     protected Tile nonCityTile
@@ -25,7 +25,7 @@ class FeedsCityTest {
 
     @Before
     void setUp(){
-        game = new Game()                       // TODO RETHINK THIS SHIT! USE BASE CLASS!!!
+        game = new GameData()                       // TODO RETHINK THIS SHIT! USE BASE CLASS!!!
         gameMap = new GameMap()
         game.map = gameMap
         gameMap.game = game

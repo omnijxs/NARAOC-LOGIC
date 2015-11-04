@@ -1,14 +1,13 @@
 package test
 
-import game.Game
+import game.GameData
 import game.Player
 import org.junit.Before
 import org.junit.Test
-import resources.city.City
 import resources.common.GameMap
-import resources.common.Tile
 import resources.popUnit.ArmyUnit
 import resources.popUnit.PopUnit
+import resources.popUnit.Worker
 import traits.FeedsArmy
 
 /**
@@ -18,7 +17,7 @@ class FeedsArmyTest {
 
     private class ArmyFeeder extends Player implements FeedsArmy {}
 
-    protected Game game
+    protected GameData gameData
     protected ArmyFeeder player
     protected ArmyFeeder opponent
 
@@ -27,23 +26,70 @@ class FeedsArmyTest {
     protected PopUnit nonArmyOutsideCity
 
     @Before
-    void setUp(){}
+    void setUp(){
+        gameData = new GameData()
+        player = new ArmyFeeder()
+    }
 
     @Test
     void testFeedArmy() {
 
-        player = new ArmyFeeder()
-
         PopUnit a = new ArmyUnit(owner: player, starving: true)
 
+        gameData.popUnits = [a]
 
+        assert player.feedArmy(gameData, 1) == 0
         assert !a.starving
-        /* armyInsideCity.tile = cityTile
-        nonArmyInsideCity.tile = cityTile
+    }
 
-        assert city.feedCity(2) == 0
-        assert !armyInsideCity.starving
-        assert !nonArmyInsideCity.starving */
+    @Test
+    void testDoNotFeedArmy() {
+
+        opponent = new ArmyFeeder()
+
+        PopUnit a = new ArmyUnit(owner: opponent, starving: true)
+
+        gameData.popUnits = [a]
+
+        assert player.feedArmy(gameData, 1) == 1
+        assert a.starving
+    }
+
+    @Test
+    void testNotEnoughFood() {
+
+        PopUnit a = new ArmyUnit(owner: player, starving: true)
+        PopUnit b = new ArmyUnit(owner: player, starving: true)
+        PopUnit c = new ArmyUnit(owner: player, starving: true)
+
+        gameData.popUnits = [a, b, c]
+
+        assert player.feedArmy(gameData, 1) == 0
+        assert !a.starving
+        assert b.starving
+        assert c.starving
+    }
+
+    @Test
+    void testDoNotFeedNonStarving() {
+
+        PopUnit a = new ArmyUnit(owner: player, starving: false)
+
+        gameData.popUnits = [a]
+
+        assert player.feedArmy(gameData, 1) == 1
+        assert !a.starving
+    }
+
+    @Test
+    void testDoNotFeedNonArmy() {
+
+        PopUnit a = new Worker(starving: true)
+
+        gameData.popUnits = [a]
+
+        assert player.feedArmy(gameData, 1) == 1
+        assert a.starving
     }
 
 }

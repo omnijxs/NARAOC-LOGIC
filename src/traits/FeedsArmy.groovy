@@ -1,5 +1,6 @@
 package traits
 
+import game.GameData
 import resources.popUnit.ArmyUnit
 import resources.popUnit.PopUnit
 
@@ -8,13 +9,10 @@ import resources.popUnit.PopUnit
  */
 trait FeedsArmy implements PopUnitSorter, Feeds {
 
-    Integer feedArmy(List<PopUnit> popUnits, Integer foodAmount){
-
-        // FeedsArmy has no access to TILE!!!
-        // def armyUnitsToFeed = tile.map.game.popUnits.findAll { it.owner == player && it.starving }
+    Integer feedArmy(GameData gd, Integer foodAmount){
 
         // Assumes that Player object implements me!!!
-        def armyUnitsToFeed = popUnits.findAll { it.owner == this && it.starving && it.class == ArmyUnit}
+        def armyUnitsToFeed = gd.popUnits.findAll { it.owner == this && it.starving && it.class == ArmyUnit}
 
         /** Sort by Pop Unit age */
         def sortedPopUnits = defaultSort(armyUnitsToFeed)

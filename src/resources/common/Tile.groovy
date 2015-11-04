@@ -9,12 +9,7 @@ import resources.popUnit.Worker
  * Created by Juri on 21.10.2015.
  */
 class Tile {
-      
-    /** 
-      * Deal with access to map.game etc. with a trait Access. Also Game implements it. 
-      *
-      */
-    
+
     GameMap map
     Integer x
     Integer y
