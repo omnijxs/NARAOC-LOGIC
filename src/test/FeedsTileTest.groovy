@@ -16,7 +16,7 @@ class FeedsTileTest {
 
     private class TileFeeder extends PopUnit implements FeedsTile { }
     
-    protected GameData game
+    protected GameData gameData
     protected GameMap gameMap
     protected Tile emptyTile
     protected Tile filledTile
@@ -26,19 +26,19 @@ class FeedsTileTest {
 
     @Before
     void setUp(){
-        game = new GameData()                       // TODO RETHINK THIS SHIT
+        gameData = new GameData()                       // TODO RETHINK THIS SHIT
         gameMap = new GameMap()
-        game.map = gameMap
-        gameMap.game = game
+        gameData.gameMap = gameMap
+        gameMap.gameData = gameData
 
-        emptyTile = new Tile(map: gameMap)
-        filledTile = new Tile(map: gameMap) 
+        emptyTile = new Tile(gameMap: gameMap)
+        filledTile = new Tile(gameMap: gameMap)
         army = new ArmyUnit()
-        feeder = new TileFeeder(priority: 2)    // TODO A fancier way of doing te priority sort
+        feeder = new TileFeeder(priority: 2)            // TODO A fancier way of doing te priority sort
 
-        game.map.tiles = [emptyTile, filledTile]
-        
-        game.popUnits = [army, feeder]
+        gameData.gameMap.tiles = [emptyTile, filledTile]
+
+        gameData.popUnits = [army, feeder]
 
     }
 
@@ -68,7 +68,7 @@ class FeedsTileTest {
     void testDontFeedNonArmyUnits() {
 
         extra = new TileFeeder()
-        game.popUnits.add(extra)
+        gameData.popUnits.add(extra)
         
         feeder.tile = filledTile
         extra.tile = filledTile
@@ -83,7 +83,7 @@ class FeedsTileTest {
 
         extra = new ArmyUnit()
 
-        game.popUnits.add(extra)
+        gameData.popUnits.add(extra)
 
         army.tile = filledTile
         extra.tile = filledTile
