@@ -1,16 +1,20 @@
 package traits
 
 import resources.popUnit.ArmyUnit
+import resources.popUnit.PopUnit
 
 /**
  * Created by Juri on 03.11.2015.
  */
 trait FeedsArmy implements PopUnitSorter, Feeds {
 
-    Integer feedArmy(Integer foodAmount){
+    Integer feedArmy(List<PopUnit> popUnits, Integer foodAmount){
 
-        // TODO FeedsArym has no access to TILE!!! Add owner to PopUnit AND starving check is not fully robust!!!
-        def armyUnitsToFeed = tile.map.game.popUnits.findAll { it.owner == player && it.starving }
+        // FeedsArmy has no access to TILE!!!
+        // def armyUnitsToFeed = tile.map.game.popUnits.findAll { it.owner == player && it.starving }
+
+        // Assumes that Player object implements me!!!
+        def armyUnitsToFeed = popUnits.findAll { it.owner == this && it.starving && it.class == ArmyUnit}
 
         /** Sort by Pop Unit age */
         def sortedPopUnits = defaultSort(armyUnitsToFeed)
