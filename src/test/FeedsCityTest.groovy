@@ -14,7 +14,7 @@ import resources.popUnit.PopUnit
  */
 class FeedsCityTest {
 
-    protected GameData game
+    protected GameData gameData
     protected GameMap gameMap
     protected City city
     protected Tile nonCityTile
@@ -25,25 +25,25 @@ class FeedsCityTest {
 
     @Before
     void setUp(){
-        game = new GameData()                       // TODO RETHINK THIS SHIT! USE BASE CLASS!!!
+        gameData = new GameData()                       // TODO RETHINK THIS SHIT! USE BASE CLASS!!!
         gameMap = new GameMap()
-        game.map = gameMap
-        gameMap.game = game
+        gameData.gameMap = gameMap
+        gameMap.gameData = gameData
 
         city = new City()
-        game.map.cities = [city]
+        gameData.gameMap.cities = [city]
 
-        nonCityTile = new Tile(map: gameMap)
-        cityTile = new Tile(map: gameMap)
+        nonCityTile = new Tile(gameMap: gameMap)
+        cityTile = new Tile(gameMap: gameMap)
         city.tile = cityTile
 
         armyInsideCity = new ArmyUnit()
         nonArmyInsideCity = new PopUnit(priority: 2)    // TODO A fancier way of doing te priority sort
         nonArmyOutsideCity = new PopUnit(priority: 2)    // TODO A fancier way of doing te priority sort
 
-        game.map.tiles = [cityTile, nonCityTile]
+        gameData.gameMap.tiles = [cityTile, nonCityTile]
 
-        game.popUnits = [armyInsideCity, nonArmyInsideCity]
+        gameData.popUnits = [armyInsideCity, nonArmyInsideCity]
 
     }
 
@@ -53,7 +53,7 @@ class FeedsCityTest {
         armyInsideCity.tile = cityTile
         nonArmyInsideCity.tile = cityTile
 
-        assert city.feedCity(2) == 0
+        assert city.feedCity(gameData, 2) == 0
         assert !armyInsideCity.starving
         assert !nonArmyInsideCity.starving
     }
@@ -66,9 +66,9 @@ class FeedsCityTest {
 
         nonArmyOutsideCity.tile = nonCityTile
         nonArmyOutsideCity.preferredCity = city
-        game.popUnits.add(nonArmyOutsideCity)
+        gameData.popUnits.add(nonArmyOutsideCity)
 
-        assert city.feedCity(3) == 0
+        assert city.feedCity(gameData, 3) == 0
         assert !armyInsideCity.starving
         assert !nonArmyInsideCity.starving
         assert !nonArmyOutsideCity.starving
@@ -82,9 +82,9 @@ class FeedsCityTest {
 
         nonArmyOutsideCity.tile = nonCityTile
         nonArmyOutsideCity.preferredCity = null
-        game.popUnits.add(nonArmyOutsideCity)
+        gameData.popUnits.add(nonArmyOutsideCity)
 
-        assert city.feedCity(3) == 1
+        assert city.feedCity(gameData, 3) == 1
         assert !armyInsideCity.starving
         assert !nonArmyInsideCity.starving
         assert nonArmyOutsideCity.starving

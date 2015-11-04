@@ -21,10 +21,6 @@ class FeedsArmyTest {
     protected ArmyFeeder player
     protected ArmyFeeder opponent
 
-    protected PopUnit armyOutsideCity
-    protected PopUnit nonArmyInsideCity
-    protected PopUnit nonArmyOutsideCity
-
     @Before
     void setUp(){
         gameData = new GameData()
