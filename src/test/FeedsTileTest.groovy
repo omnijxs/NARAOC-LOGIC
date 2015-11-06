@@ -31,8 +31,8 @@ class FeedsTileTest {
         gameData.gameMap = gameMap
         gameMap.gameData = gameData
 
-        emptyTile = new Tile(gameMap: gameMap)
-        filledTile = new Tile(gameMap: gameMap)
+        emptyTile = new Tile()
+        filledTile = new Tile()
         army = new ArmyUnit()
         feeder = new TileFeeder(priority: 2)            // TODO A fancier way of doing te priority sort
 

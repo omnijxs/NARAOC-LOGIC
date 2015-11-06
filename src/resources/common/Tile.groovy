@@ -7,17 +7,15 @@ import resources.popUnit.PopUnit
  */
 class Tile {
 
-    GameMap gameMap
     Integer x
     Integer y
     
-    List<PopUnit> popUnitsOnTile(){
+    /*List<PopUnit> popUnitsOnTile(){
         return gameMap.popUnits.findAll { it.tile == this }
     }
 
-    // TODO TESTS
     def hasCity(){
         return gameMap.cities.find { it.tile == this }
-    }
+    } */
         
 }

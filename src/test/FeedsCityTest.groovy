@@ -33,8 +33,8 @@ class FeedsCityTest {
         city = new City()
         gameData.gameMap.cities = [city]
 
-        nonCityTile = new Tile(gameMap: gameMap)
-        cityTile = new Tile(gameMap: gameMap)
+        nonCityTile = new Tile()
+        cityTile = new Tile()
         city.tile = cityTile
 
         armyInsideCity = new ArmyUnit()
