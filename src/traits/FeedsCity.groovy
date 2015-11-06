@@ -10,7 +10,7 @@ trait FeedsCity implements PopUnitSorter, Feeds {
     Integer feedCity(GameData gd, Integer foodAmount){
 
         /** Get all popUnits on the city tile  */
-        def popUnitsOnCity = tile.popUnitsOnTile()
+        def popUnitsOnCity = gd.popUnits.findAll { it.tile == tile }
         
         /** Get all popUnits producing for the city */
         def popUnitsOffCity = gd.popUnits.findAll { it.preferredCity == this && it.tile != tile }
