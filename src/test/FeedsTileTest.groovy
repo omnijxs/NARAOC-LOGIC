@@ -48,7 +48,7 @@ class FeedsTileTest {
         army.tile = filledTile
         feeder.tile = filledTile
 
-        assert feeder.feedTile(2) == 0            // TODO use productAmount
+        assert feeder.feedTile(gameData, 2) == 0            // TODO use productAmount
         assert !feeder.starving
         assert !army.starving
     }
@@ -59,7 +59,7 @@ class FeedsTileTest {
         army.tile = emptyTile
         feeder.tile = filledTile
 
-        assert feeder.feedTile(2) == 1
+        assert feeder.feedTile(gameData, 2) == 1
         assert !feeder.starving
         assert army.starving
     }
@@ -73,7 +73,7 @@ class FeedsTileTest {
         feeder.tile = filledTile
         extra.tile = filledTile
 
-        assert feeder.feedTile(2) == 1
+        assert feeder.feedTile(gameData, 2) == 1
         assert !feeder.starving
         assert extra.starving
     }
@@ -89,7 +89,7 @@ class FeedsTileTest {
         extra.tile = filledTile
         feeder.tile = filledTile
 
-        assert feeder.feedTile(2) == 0
+        assert feeder.feedTile(gameData, 2) == 0
         assert feeder.starving
         assert !army.starving
         assert !extra.starving
