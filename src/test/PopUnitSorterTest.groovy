@@ -11,7 +11,7 @@ import traits.PopUnitSorter
 /**
  * Created by Juri on 23.10.2015.
  */
-class PrioritySortTest implements PopUnitSorter {
+class PopUnitSorterTest implements PopUnitSorter {
 
     @Test
     void testSortedByPriority() {

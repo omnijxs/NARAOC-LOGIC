@@ -13,7 +13,7 @@ trait FeedsTile implements PopUnitSorter, Feeds {
         /** Feed all armies on the tile and yourself */
         def popUnitsOnTile = gd.popUnits.findAll {(it.class == ArmyUnit || it == this) && it.tile == tile }
             
-        /** Sort by default priority */
+        /** Sort by default priority. 1) Pop Unit class 2) Pop Unit age*/
         def sortedPopUnits = defaultSort(popUnitsOnTile)
         
         return feed(sortedPopUnits, foodAmount)

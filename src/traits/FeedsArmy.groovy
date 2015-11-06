@@ -14,7 +14,7 @@ trait FeedsArmy implements PopUnitSorter, Feeds {
         /** Assumes that Player object implements me!!! */
         def armyUnitsToFeed = gd.popUnits.findAll { it.owner == this && it.starving && it.class == ArmyUnit}
 
-        /** Sort by Pop Unit age */
+        /** Sort by Pop Unit age TODO USE senioritySort! */
         def sortedPopUnits = defaultSort(armyUnitsToFeed)
         
         return feed(sortedPopUnits, foodAmount)
