@@ -10,7 +10,6 @@ import resources.city.City
 class MagicUnit extends PopUnit {
 
     public MagicUnit(){
-        this.age = 0
         this.priority = 1
     }
 

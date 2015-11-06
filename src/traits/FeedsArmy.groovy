@@ -14,9 +14,9 @@ trait FeedsArmy implements PopUnitSorter, Feeds {
         /** Assumes that Player object implements me!!! */
         def armyUnitsToFeed = gd.popUnits.findAll { it.owner == this && it.starving && it.class == ArmyUnit}
 
-        /** Sort by Pop Unit age TODO USE senioritySort! */
-        def sortedPopUnits = defaultSort(armyUnitsToFeed)
-        
+        /** Sort by Pop Unit age. Perhaps some day also by distance. But how to calculate diestance? From what city? */
+        def sortedPopUnits = senioritySort(armyUnitsToFeed)
+
         return feed(sortedPopUnits, foodAmount)
 
     }

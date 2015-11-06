@@ -1,6 +1,5 @@
 package resources.popUnit
 
-import game.Player
 import resources.city.City
 
 /**
@@ -10,7 +9,6 @@ import resources.city.City
 class ArmyUnit extends PopUnit {
 
     public ArmyUnit(){
-        this.age = 0
         this.priority = 0
     }
 
