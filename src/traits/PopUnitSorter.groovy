@@ -20,10 +20,12 @@ trait PopUnitSorter {
          *  Groovy thinks is null and then sort by age in descending order */
     }
 
+    // TODO COMMENTARY
     List<PopUnit> senioritySort(List<PopUnit> popUnits){
         return popUnits.sort {a, b -> -a.age <=> -b.age }
     }
 
+    // TODO COMMENTARY
     List<PopUnit> productionSort(List<PopUnit> popUnits){
         return popUnits.sort {a, b -> a.priority <=> b.priority ?: -a.productAmount <=> -b.productAmount ?: -b.age <=> -b.age }
     }
