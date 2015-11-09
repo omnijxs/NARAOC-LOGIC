@@ -14,8 +14,8 @@ trait Demand {
     // TODO the problem with not knowing how city alters the demand also. Return back to City Object?
     void setDemand(GameData gd){
 
-        // TODO take into account PopUnits in city!!!
-        def basicDemand = gd.popUnits.findAll { it.preferredCity == this }.size()
+        /** Search for all pop units in the city proper and pop units outside city proper producing for the city */
+        def basicDemand = gd.popUnits.findAll { (it.tile == tile) || (it.preferredCity == this && it.tile != tile) }.size()
 
         // TODO AWFUL SYNTAX!!!
         demand.put(Product.FOOD, basicDemand)
