@@ -14,27 +14,78 @@ class DemandTest {
 
     protected GameData gameData
     protected GameMap gameMap
+    protected City city
+    protected Tile cityTile
 
     @Before
     void setUp(){
-        gameData = new GameData()                       // TODO RETHINK THIS SHIT
+        gameData = new GameData()                      
         gameMap = new GameMap()
         gameData.gameMap = gameMap
         gameMap.gameData = gameData
+        
+        city = new City(Tile: cityTile)
+        
+        gameMap.cities = [city]
 
     }
 
     @Test
     void testNoPopUnitNoDemand() {
+       
+        city.setDemand(gameData)
 
-        City a = new City()
+        assert city.demand.get(Product.FOOD) == 0
+        assert city.demand.get(Product.WORK) == 0
+        assert city.demand.get(Product.TRADE) == 0
+    }
+    
+    @Test
+    void testSetDemandPopUnitsInCityProper() {
+ 
+        PopUnit a = new PopUnit(Tile: tile, preferredCity: null)
 
-        gameMap.cities = [a]
+        gameData.popUnits = [a]
+        
+        assert city.demand.get(Product.FOOD) == 1
+        assert city.demand.get(Product.WORK) == 1
+        assert city.demand.get(Product.TRADE) == 1
+    }
+    
+    @Test
+    void testSetDemandPopUnitsOutsideCityProper() {
+ 
+        PopUnit a = new PopUnit(Tile: null, preferredCity: city)
 
-        a.setDemand(gameData)
+        gameData.popUnits = [a]
+        
+        assert city.demand.get(Product.FOOD) == 1
+        assert city.demand.get(Product.WORK) == 1
+        assert city.demand.get(Product.TRADE) == 1
+    }
+    
+    @Test
+    void testSetDemandPopUnitsInAndOutCityProper() {
+ 
+        PopUnit a = new PopUnit(Tile: null, preferredCity: city)
+        PopUnit b = new PopUnit(Tile: tile, preferredCity: null)
 
-        assert a.demand.get(Product.FOOD) == 0
-        assert a.demand.get(Product.WORK) == 0
-        assert a.demand.get(Product.TRADE) == 0
+        gameData.popUnits = [a, b]
+        
+        assert city.demand.get(Product.FOOD) == 2
+        assert city.demand.get(Product.WORK) == 2
+        assert city.demand.get(Product.TRADE) == 2
+    }
+    
+    @Test
+    void testNoDemandPopUnitsOutsideCityProper() {
+ 
+        PopUnit a = new PopUnit(Tile: new Tile(), preferredCity: new City())
+
+        gameData.popUnits = [a]
+        
+        assert city.demand.get(Product.FOOD) == 0
+        assert city.demand.get(Product.WORK) == 0
+        assert city.demand.get(Product.TRADE) == 0
     }
 }
