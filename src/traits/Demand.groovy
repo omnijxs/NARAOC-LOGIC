@@ -11,9 +11,6 @@ trait Demand {
      // TODO not the optimal way to bind production of a pop unit and city demand to together!
     Map<Product, Integer> demand = ['Product.FOOD': 0, 'Product.WORK': 0, 'Product.TRADE':0]
     
-    /** Is this possible??? */
-    // Integer Product.FOOD = 0
-    
     // TODO the problem with not knowing how city alters the demand also. Return back to City Object?
     void setDemand(GameData gd){
 
