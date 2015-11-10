@@ -1,6 +1,5 @@
 package resources.city
 
-import resources.common.Product
 import resources.common.Tile
 import traits.FeedsCity
 import traits.Demand
