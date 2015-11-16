@@ -21,5 +21,9 @@ trait FeedsCity implements PopUnitSorter, Feeds {
         return feed(sortedPopUnits, foodAmount)
 
     }
+    
+    /** Don’t feed farmers or units which have been already fed. FeedCity method assumes it gets the popUnits of the city as a list 
+        So it does not search them. */
+	// def popUnitsToFeed = popUnits.findAll { it.product != Produce.FOOD && it.starving }
 
 }

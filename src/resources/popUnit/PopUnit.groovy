@@ -1,6 +1,5 @@
 package resources.popUnit
 
-import game.Player
 import resources.common.Product
 import resources.common.Tile
 import traits.Preferred
@@ -9,6 +8,8 @@ import traits.Preferred
  * Created by Juri on 21.10.2015.
  */
 class PopUnit implements Preferred {
+    
+    // TODO add methodMissing and propertyMissing fallbacks
     
     Integer priority
     Integer age = 0    
