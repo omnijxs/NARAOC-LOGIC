@@ -10,16 +10,17 @@ import traits.Preferred
  */
 class PopUnit implements Preferred {
     
-    Tile tile
-    Product product
-    Integer productAmount = 0
-    
-    Boolean starving = true                 // TODO think thru the init process!!!
     Integer priority
-    Integer age = 0                         // TODO think thru the init process!!!
-
+    Integer age = 0    
+    Tile tile
+    
+    Product product                             // TODO REMOVE
+    Integer productAmount = 0                   // TODO REMOVE
+    Boolean starving = true                     // TODO REMOVE
+    
     Player owner
 
+     // TODO REMOVE
     Integer consume(def food){
         starving = false
         food - 1
