@@ -17,8 +17,7 @@ class PopUnit implements Preferred {
     Product product                             // TODO REMOVE
     Integer productAmount = 0                   // TODO REMOVE
     Boolean starving = true                     // TODO REMOVE
-    
-    Player owner
+    Player owner                                // TODO REMOVE
 
      // TODO REMOVE
     Integer consume(def food){
@@ -28,10 +27,5 @@ class PopUnit implements Preferred {
     
     /** Technically this is an abstract method */ 
     def produce(){}
-    
-    def reallocate(){}
-    
-    def multiply(){}
-    
     
 }

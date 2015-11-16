@@ -1,7 +1,5 @@
 package traits
 
-import resources.common.Product
-
 /**
  * Created by Juri on 16.11.2015.
  */
