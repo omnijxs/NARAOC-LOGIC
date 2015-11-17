@@ -6,6 +6,7 @@ import org.junit.Test
 import resources.popHub.City
 import resources.common.GameMap
 import resources.common.Tile
+import resources.popHub.HubProduction
 import resources.popUnit.Farmer
 
 /**
@@ -26,11 +27,11 @@ class UseCaseTest {
         gameMap.gameData = gameData
 
         cityTile = new Tile(x: 1, y: 1)
-        
+
         city = new City(tile: cityTile)
 
         gameMap.cities = [city]
-        
+
         gameData.popUnits = [new Farmer(tile: cityTile)]
 
     }
@@ -41,33 +42,30 @@ class UseCaseTest {
         // TODO ADD DEMAND TO CITY
         gameData.popUnits.each { p ->
 
-            p.resolvePreferredCity(gameData)          
-            
+            p.resolvePreferredCity(gameData)
+
             /** TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
              Also set the production “flags” up to their popUnits */
             p.produce()
 
         }
-       /*
-       // Could be as threads!!!
-       gameMap.each { c ->
+        // Could be as threads!!!
+       gameMap.cities.each { c ->
 
-           /** Population of the city TODO make an own method */ 
-            
-            /*
-            def popUnits = popUnits.findAll { it.preferredCity == c || it.tile == c.tile }
+           /** Population of the city TODO make an own method */
+            def popUnits = gameData.popUnits.findAll { it.preferredCity == c || it.tile == c.tile }
 
-            Integer foodProd += popUnits.findAll { it.product == Produce.FOOD }.harvest()
-            Integer workProd += popUnits.findAll { it.product == Produce.WORK }.harvest()
-            Integer tradeProd += popUnits.findAll { it.product == Produce.TRADE }.harvest()
+            // Integer foodProd += popUnits.findAll { it.product == Produce.FOOD }.harvest()
+            // Integer workProd += popUnits.findAll { it.product == Produce.WORK }.harvest()
+            // Integer tradeProd += popUnits.findAll { it.product == Produce.TRADE }.harvest()
 
-            Integer surplusFood = c.feedCity(popUnits, foodProd)
+            // Integer surplusFood = c.feedCity(popUnits, foodProd)
 
-            /** Calculate bonuses, deal with buildings etc. *//*
-            CityProduction cityProduction = c.produce(foodProd, workProd, tradeProd, surplusFood)
+            /** Calculate bonuses, deal with buildings etc. */
+            // HubProduction hubProduction = c.produce(foodProd, workProd, tradeProd, surplusFood)
 
-            turnProduction.add(cityProduction)
-            */
+            // turnProduction.add(cityProduction)
+       }
 
-}
+    }
 }
