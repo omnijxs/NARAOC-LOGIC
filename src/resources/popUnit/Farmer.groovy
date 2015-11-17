@@ -3,14 +3,14 @@ package resources.popUnit
 import resources.common.Product
 import traits.Consumes
 import traits.FeedsTile
-import traits.Preferred
+import traits.Preferres
 import traits.Produces
 
 /**
  * Created by Juri on 21.10.2015.
  */
 
-class Farmer extends PopUnit implements Consumes, Produces, Preferred, FeedsTile  {
+class Farmer extends PopUnit implements Consumes, Produces, Preferres, FeedsTile  {
     
     public Farmer(){
         this.product = Product.FOOD

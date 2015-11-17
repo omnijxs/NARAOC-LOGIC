@@ -6,7 +6,7 @@ import resources.common.Product
 /**
  * Created by Juri on 23.10.2015.
  */
-trait Preferred {
+trait Preferres {
 
     City preferredCity = null
 

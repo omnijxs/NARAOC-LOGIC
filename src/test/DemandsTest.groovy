@@ -8,19 +8,19 @@ import resources.common.GameMap
 import resources.common.Product
 import resources.common.Tile
 import resources.popUnit.PopUnit
-import traits.Preferred
+import traits.Preferres
 
 /**
  * Created by Juri on 9.11.2015.
  */
-class DemandTest {
+class DemandsTest {
 
     protected GameData gameData
     protected GameMap gameMap
     protected City city
     protected Tile cityTile
 
-    private class TestUnit extends PopUnit implements Preferred {
+    private class TestUnit extends PopUnit implements Preferres {
         Tile tile
     }
 

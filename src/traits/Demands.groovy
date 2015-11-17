@@ -6,7 +6,7 @@ import resources.common.Product
 /**
  * Created by Juri on 7.11.2015.
  */
-trait Demand {
+trait Demands {
 
      // TODO not the optimal way to bind production of a pop unit and city demand to together!
     Map<Product, Integer> demand = ['Product.FOOD': 0, 'Product.WORK': 0, 'Product.TRADE':0]

@@ -13,7 +13,7 @@ import resources.popUnit.Worker
 /**
  * Created by Juri on 23.10.2015.
  */
-class PreferredTest {
+class PreferresTest {
 
     /**
      *  X
