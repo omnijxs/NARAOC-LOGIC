@@ -7,6 +7,7 @@ import resources.city.City
 import resources.common.GameMap
 import resources.common.Product
 import resources.common.Tile
+import resources.popUnit.Farmer
 import resources.popUnit.PopUnit
 
 /**
@@ -26,34 +27,35 @@ class UseCaseTest {
         gameData.gameMap = gameMap
         gameMap.gameData = gameData
 
-        cityTile = new Tile()
+        cityTile = new Tile(x: 1, y: 1)
         
         city = new City(tile: cityTile)
 
         gameMap.cities = [city]
         
-        gameMap.popUnits = []
+        gameMap.popUnits = [new Farmer(tile: cityTile)]
 
     }
 
-/*    @Test
+    @Test
     void testStub() {
-       
-        gameMap.
-                popUnits.each { p ->
-            p.setPreferredCity([city])          // TODO should be gameData!!!
+
+        // TODO ADD DEMAND TO CITY
+        gameMap.popUnits.each { p ->
+            p.resolvePreferredCity([city])          // TODO should be gameData!!!
             
-            *//**
-             TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
-
-             Also set the production “flags” up to their popUnits *//*
+            /**TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
+             Also set the production “flags” up to their popUnits */
             p.produce()
-        }
-        
-        // Could be as threads!!!
-        gameMap.each { c ->
 
-            *//** Population of the city TODO make an own method *//*
+            if(1 == 1){}
+        }
+
+       /*
+       // Could be as threads!!!
+       gameMap.each { c ->
+
+           *//** Population of the city TODO make an own method *//*
             def popUnits = popUnits.findAll { it.preferredCity == c || it.tile == c.tile }
 
             Integer foodProd += popUnits.findAll { it.product == Produce.FOOD }.harvest()
@@ -70,8 +72,6 @@ class UseCaseTest {
                             , workProd, tradeProd, surplusFood)
 
             turnProduction.add(cityProduction)
-
+*/
         }
-
-}*/
 }
