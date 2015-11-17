@@ -1,4 +1,4 @@
-package resources.city
+package resources.popHub
 
 import resources.common.Tile
 import traits.FeedsCity
@@ -8,7 +8,7 @@ import traits.IsOwned
 /**
  * Created by Juri on 21.10.2015.
  */
-class City implements Demands, IsOwned, FeedsCity {
+class City extends PopHub implements Demands, IsOwned, FeedsCity {
 
     Tile tile
 

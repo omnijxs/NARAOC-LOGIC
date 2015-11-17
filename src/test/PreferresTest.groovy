@@ -6,7 +6,7 @@ import org.junit.Test
 import resources.common.GameMap
 import resources.common.Product
 import resources.popUnit.ArmyUnit
-import resources.city.City
+import resources.popHub.City
 import resources.popUnit.Farmer
 import resources.popUnit.Merchant
 import resources.popUnit.PopUnit

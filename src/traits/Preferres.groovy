@@ -1,8 +1,7 @@
 package traits
 
 import game.GameData
-import resources.city.City
-import resources.common.Product
+import resources.popHub.City
 
 /**
  * Created by Juri on 23.10.2015.

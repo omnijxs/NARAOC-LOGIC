@@ -1,6 +1,6 @@
 package game
 
-import resources.city.City
+import resources.popHub.City
 import resources.common.GameMap
 import resources.popUnit.PopUnit
 

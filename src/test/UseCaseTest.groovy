@@ -3,12 +3,10 @@ package test
 import game.GameData
 import org.junit.Before
 import org.junit.Test
-import resources.city.City
+import resources.popHub.City
 import resources.common.GameMap
-import resources.common.Product
 import resources.common.Tile
 import resources.popUnit.Farmer
-import resources.popUnit.PopUnit
 
 /**
  * Created by Juri on 16.11.2015.

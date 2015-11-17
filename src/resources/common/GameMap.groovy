@@ -1,8 +1,7 @@
 package resources.common
 
 import game.GameData
-import resources.city.City
-import resources.popUnit.PopUnit
+import resources.popHub.City
 
 /**
  * Created by Juri on 22.10.2015.
