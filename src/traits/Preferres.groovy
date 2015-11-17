@@ -1,5 +1,6 @@
 package traits
 
+import game.game.GameData
 import resources.city.City
 import resources.common.Product
 
@@ -10,13 +11,13 @@ trait Preferres {
 
     City preferredCity = null
 
-    void resolvePreferredCity(List<City> cities){
+    void resolvePreferredCity(GameData gd){
 
         /** If there is no city with a preferredValue higher than zero, the Pop Unit does not produce for any city */
         preferredCity = null        
         Integer preferredValue = 0
 
-        cities.each { c ->
+        gd.getCities().each { c ->
 
             /** Resolve how far the city is from the Pop Unit*/
             Integer distance = resolveDistance(tile.x, tile.y, c.tile.x, c.tile.y)

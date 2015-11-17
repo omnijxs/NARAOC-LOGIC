@@ -42,20 +42,19 @@ class UseCaseTest {
 
         // TODO ADD DEMAND TO CITY
         gameMap.popUnits.each { p ->
-            p.resolvePreferredCity([city])          // TODO should be gameData!!!
+            p.resolvePreferredCity(gameData)          
             
-            /**TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
+            /** TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
              Also set the production “flags” up to their popUnits */
             p.produce()
-
-            if(1 == 1){}
-        }
 
        /*
        // Could be as threads!!!
        gameMap.each { c ->
 
-           *//** Population of the city TODO make an own method *//*
+           /** Population of the city TODO make an own method */ 
+            
+            /*
             def popUnits = popUnits.findAll { it.preferredCity == c || it.tile == c.tile }
 
             Integer foodProd += popUnits.findAll { it.product == Produce.FOOD }.harvest()
@@ -64,14 +63,10 @@ class UseCaseTest {
 
             Integer surplusFood = c.feedCity(popUnits, foodProd)
 
-            *//** Calculate bonuses, deal with buildings etc. *//*
-            CityProduction
-
-                    cityProduction = c.produce(foodProd
-
-                            , workProd, tradeProd, surplusFood)
+            /** Calculate bonuses, deal with buildings etc. *//*
+            CityProduction cityProduction = c.produce(foodProd, workProd, tradeProd, surplusFood)
 
             turnProduction.add(cityProduction)
-*/
+            */
         }
 }
