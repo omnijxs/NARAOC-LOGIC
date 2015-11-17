@@ -2,12 +2,13 @@ package resources.popUnit
 
 import resources.common.Product
 import traits.FeedsTile
+import traits.Preferred
 
 /**
  * Created by Juri on 21.10.2015.
  */
 
-class Farmer extends PopUnit implements FeedsTile {
+class Farmer extends PopUnit implements FeedsTile, Preferred {
     
     public Farmer(){
         this.product = Product.FOOD

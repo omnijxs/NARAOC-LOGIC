@@ -8,10 +8,16 @@ import traits.Preferred
 /**
  * Created by Juri on 21.10.2015.
  */
-class PopUnit implements Preferred {
-    
-    // TODO add methodMissing and propertyMissing fallbacks
-    
+class PopUnit {
+
+    def methodMissing(String name, args) {
+        null
+    }
+
+    def propertyMissing(String name){
+        null
+    }
+
     Integer priority
     Integer age = 0    
     Tile tile

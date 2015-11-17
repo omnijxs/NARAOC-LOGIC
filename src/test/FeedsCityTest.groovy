@@ -7,6 +7,8 @@ import resources.city.City
 import resources.common.GameMap
 import resources.common.Tile
 import resources.popUnit.ArmyUnit
+import resources.popUnit.Farmer
+import resources.popUnit.Merchant
 import resources.popUnit.PopUnit
 
 /**
@@ -38,8 +40,8 @@ class FeedsCityTest {
         city.tile = cityTile
 
         armyInsideCity = new ArmyUnit()
-        nonArmyInsideCity = new PopUnit(priority: 2)    // TODO A fancier way of doing te priority sort
-        nonArmyOutsideCity = new PopUnit(priority: 2)    // TODO A fancier way of doing te priority sort
+        nonArmyInsideCity = new Merchant(priority: 2)    // TODO A fancier way of doing te priority sort
+        nonArmyOutsideCity = new Farmer(priority: 2)    // TODO A fancier way of doing te priority sort
 
         gameData.gameMap.tiles = [cityTile, nonCityTile]
 

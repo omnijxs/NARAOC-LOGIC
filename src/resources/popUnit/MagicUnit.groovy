@@ -12,9 +12,4 @@ class MagicUnit extends PopUnit {
     public MagicUnit(){
         this.priority = 1
     }
-
-    @Override
-    void resolvePreferredCity(List<City> cities){
-        preferredCity = null
-    }
 }
