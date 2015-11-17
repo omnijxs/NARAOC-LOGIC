@@ -8,8 +8,6 @@ import resources.popHub.PopHub
  */
 class GameMap {
 
-    GameData gameData   // TODO do I need this dependency anymore?
-
     List<PopHub> cities // TODO rename hubs
     List<Tile> tiles
 

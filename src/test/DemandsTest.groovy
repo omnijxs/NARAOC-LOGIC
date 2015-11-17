@@ -29,7 +29,6 @@ class DemandsTest {
         gameData = new GameData()                      
         gameMap = new GameMap()
         gameData.gameMap = gameMap
-        gameMap.gameData = gameData
 
         cityTile = new Tile()
         

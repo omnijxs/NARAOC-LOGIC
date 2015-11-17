@@ -24,7 +24,6 @@ class UseCaseTest {
         gameData = new GameData()
         gameMap = new GameMap()
         gameData.gameMap = gameMap
-        gameMap.gameData = gameData
 
         cityTile = new Tile(x: 1, y: 1)
 

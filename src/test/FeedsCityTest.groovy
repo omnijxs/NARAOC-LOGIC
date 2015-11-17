@@ -30,7 +30,6 @@ class FeedsCityTest {
         gameData = new GameData()                       // TODO RETHINK THIS SHIT! USE BASE CLASS!!!
         gameMap = new GameMap()
         gameData.gameMap = gameMap
-        gameMap.gameData = gameData
 
         city = new City()
         gameData.gameMap.cities = [city]

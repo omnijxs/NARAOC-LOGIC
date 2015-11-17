@@ -27,7 +27,6 @@ class PreferresTest {
         gameData = new GameData()
         gameMap = new GameMap()
         gameData.gameMap = gameMap
-        gameMap.gameData = gameData
 
         /* gameData.popUnits = []
         gameMap.cities = [] */

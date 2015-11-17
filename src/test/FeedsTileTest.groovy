@@ -30,7 +30,6 @@ class FeedsTileTest {
         gameData = new GameData()                       // TODO RETHINK THIS SHIT
         gameMap = new GameMap()
         gameData.gameMap = gameMap
-        gameMap.gameData = gameData
 
         emptyTile = new Tile()
         filledTile = new Tile()
