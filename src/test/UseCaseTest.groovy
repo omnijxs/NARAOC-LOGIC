@@ -33,7 +33,7 @@ class UseCaseTest {
 
         gameMap.cities = [city]
         
-        gameMap.popUnits = [new Farmer(tile: cityTile)]
+        gameData.popUnits = [new Farmer(tile: cityTile)]
 
     }
 
@@ -41,13 +41,15 @@ class UseCaseTest {
     void testStub() {
 
         // TODO ADD DEMAND TO CITY
-        gameMap.popUnits.each { p ->
+        gameData.popUnits.each { p ->
+
             p.resolvePreferredCity(gameData)          
             
             /** TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
              Also set the production “flags” up to their popUnits */
             p.produce()
 
+        }
        /*
        // Could be as threads!!!
        gameMap.each { c ->
@@ -68,5 +70,6 @@ class UseCaseTest {
 
             turnProduction.add(cityProduction)
             */
-        }
+
+}
 }

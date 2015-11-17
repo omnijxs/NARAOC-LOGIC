@@ -1,5 +1,6 @@
 package game
 
+import resources.city.City
 import resources.common.GameMap
 import resources.popUnit.PopUnit
 
@@ -15,7 +16,7 @@ class GameData {
     List<Player> players
 
     // TODO For some reason cannot use @Delegate GameMap gameMap. Cyclical reference?
-    public List<PopUnit> getCities(){
+    public List<City> getCities(){
         return gameMap.cities
     }
 

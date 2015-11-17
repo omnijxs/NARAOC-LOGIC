@@ -1,6 +1,6 @@
 package traits
 
-import game.game.GameData
+import game.GameData
 import resources.city.City
 import resources.common.Product
 

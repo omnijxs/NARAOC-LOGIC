@@ -9,7 +9,7 @@ import resources.popUnit.PopUnit
  */
 class GameMap {
 
-    @Delegate GameData gameData
+    GameData gameData
 
     List<City> cities
     List<Tile> tiles
