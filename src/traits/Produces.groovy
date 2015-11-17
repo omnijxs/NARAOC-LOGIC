@@ -12,7 +12,7 @@ trait Produces {
     Integer harvestAmount = 0
     
     Integer produce(){
-        harvestAmount = productionAmount
+        // harvestAmount = productAmount
     }
     
     Integer harvest(){
