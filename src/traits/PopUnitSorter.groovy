@@ -27,7 +27,12 @@ trait PopUnitSorter {
 
     // TODO COMMENTARY
     List<PopUnit> productionSort(List<PopUnit> popUnits){
-        return popUnits.sort {a, b -> a.priority <=> b.priority ?: -a.productAmount <=> -b.productAmount ?: -b.age <=> -b.age }
+        // return popUnits.sort {a, b -> a.priority <=> b.priority ?: -a.productAmount <=> -b.productAmount ?: -b.age <=> -b.age }
+
+        /** Extra null check because not all popUnits produce and have a productAmount */
+        return popUnits.sort {a, b -> a.priority <=> b.priority ?:
+                                     (a.productAmount) ? -a.productAmount <=> -b.productAmount : null ?:
+                                     -b.age <=> -b.age }        // TODO WTF?!?! Why does this work?
     }
     
     

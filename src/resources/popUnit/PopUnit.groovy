@@ -21,11 +21,6 @@ class PopUnit {
         null
     }
 
-    Product product                             // TODO REMOVE
-    Integer productAmount = 0                   // TODO REMOVE
     Player owner                                // TODO REMOVE
-
-    /** Technically this is an abstract method */ 
-    def produce(){}
     
 }

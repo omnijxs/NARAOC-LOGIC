@@ -86,7 +86,7 @@ class PopUnitSorterTest implements PopUnitSorter {
     }
 
     /**
-     * Tests for default sort 1) Pop Unit class (priority) 2) Pop Unit age
+     * Tests for production sort 1) Pop Unit class (priority) 2) Pop Unit productivity 3) Pop Unit age
      */
     @Test
     void testProductionSort() {
