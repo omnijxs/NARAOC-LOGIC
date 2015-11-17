@@ -1,6 +1,7 @@
 package resources.popUnit
 
 import resources.common.Product
+import traits.Consumes
 import traits.FeedsTile
 import traits.Preferred
 
@@ -8,7 +9,7 @@ import traits.Preferred
  * Created by Juri on 21.10.2015.
  */
 
-class Farmer extends PopUnit implements FeedsTile, Preferred {
+class Farmer extends PopUnit implements FeedsTile, Preferred, Consumes {
     
     public Farmer(){
         this.product = Product.FOOD
