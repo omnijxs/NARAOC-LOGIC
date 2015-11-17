@@ -16,7 +16,7 @@ trait Preferres {
         preferredCity = null        
         Integer preferredValue = 0
 
-        gd.getHubs().each { c ->
+        gd.hubs.each { c ->
 
             /** Resolve how far the city is from the Pop Unit*/
             Integer distance = resolveDistance(tile.x, tile.y, c.tile.x, c.tile.y)
