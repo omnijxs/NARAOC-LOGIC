@@ -1,7 +1,5 @@
 package resources.popUnit
 
-import game.Player
-import resources.common.Product
 import resources.common.Tile
 
 /**
@@ -21,6 +19,4 @@ class PopUnit {
         null
     }
 
-    Player owner                                // TODO REMOVE
-    
 }
