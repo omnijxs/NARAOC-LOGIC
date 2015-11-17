@@ -16,8 +16,8 @@ class GameData {
     List<Player> players
 
     // TODO For some reason cannot use @Delegate GameMap gameMap. Cyclical reference?
-    public List<City> getCities(){
-        return gameMap.cities
+    public List<City> getHubs(){
+        return gameMap.hubs
     }
 
     public List<PopUnit> getTiles(){

@@ -8,7 +8,7 @@ import resources.popHub.PopHub
  */
 class GameMap {
 
-    List<PopHub> cities // TODO rename hubs
+    List<PopHub> hubs // TODO rename hubs
     List<Tile> tiles
 
 }

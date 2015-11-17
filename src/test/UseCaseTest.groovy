@@ -29,7 +29,7 @@ class UseCaseTest {
 
         city = new City(tile: cityTile)
 
-        gameMap.cities = [city]
+        gameMap.hubs = [city]
 
         gameData.popUnits = [new Farmer(tile: cityTile)]
 
@@ -49,7 +49,7 @@ class UseCaseTest {
 
         }
         // Could be as threads!!!
-       gameMap.cities.each { c ->
+       gameMap.hubs.each { c ->
 
            /** Population of the city TODO make an own method */
             def popUnits = gameData.popUnits.findAll { it.preferredCity == c || it.tile == c.tile }

@@ -34,7 +34,7 @@ class DemandsTest {
         
         city = new City(tile: cityTile)
         
-        gameMap.cities = [city]
+        gameMap.hubs = [city]
 
     }
 

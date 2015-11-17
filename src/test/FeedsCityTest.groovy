@@ -32,7 +32,7 @@ class FeedsCityTest {
         gameData.gameMap = gameMap
 
         city = new City()
-        gameData.gameMap.cities = [city]
+        gameData.gameMap.hubs = [city]
 
         nonCityTile = new Tile()
         cityTile = new Tile()
