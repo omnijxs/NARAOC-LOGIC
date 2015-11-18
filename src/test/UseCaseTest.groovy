@@ -7,6 +7,7 @@ import resources.popHub.City
 import resources.common.GameMap
 import resources.common.Tile
 import resources.popHub.HubProduction
+import resources.popHub.PopHub
 import resources.popUnit.Farmer
 
 /**
@@ -14,9 +15,10 @@ import resources.popUnit.Farmer
  */
 class UseCaseTest {
 
+    protected Map<PopHub, HubProduction> turnProduction     // TODO RENAME
     protected GameData gameData
     protected GameMap gameMap
-    protected City city
+    protected PopHub city
     protected Tile cityTile
 
     @Before
@@ -33,38 +35,47 @@ class UseCaseTest {
 
         gameData.popUnits = [new Farmer(tile: cityTile)]
 
+        turnProduction = [:]
+
     }
 
     @Test
     void testStub() {
 
-        // TODO ADD DEMAND TO CITY
-        gameData.popUnits.each { p ->
+        // TODO Recalculate demand to hubs
+        // TODO Population of the city an own method. Or city searches themself?
+        // TODO All could be threads
 
-            p.resolvePreferredCity(gameData)
+        /** Deal with popUnits */
+        gameData.popUnits.each { popUnit ->
+
+            popUnit.resolvePreferredCity(gameData)
 
             /** TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
-             Also set the production “flags” up to their popUnits */
-            p.produce()
+            Also set the production “flags” up to their popUnits */
+            popUnit.produce()
 
         }
-        // Could be as threads!!!
-       gameMap.hubs.each { c ->
 
-           /** Population of the city TODO make an own method */
-            def popUnits = gameData.popUnits.findAll { it.preferredCity == c || it.tile == c.tile }
+        /** Deal with hubs */
+        gameData.hubs.each { popHub ->
 
-            // Integer foodProd += popUnits.findAll { it.product == Produce.FOOD }.harvest()
-            // Integer workProd += popUnits.findAll { it.product == Produce.WORK }.harvest()
-            // Integer tradeProd += popUnits.findAll { it.product == Produce.TRADE }.harvest()
-
-            // Integer surplusFood = c.feedCity(popUnits, foodProd)
+            /** Population of the city */
+            def popUnits = gameData.popUnits.findAll { it.preferredCity == popHub || it.tile == popHub.tile }
 
             /** Calculate bonuses, deal with buildings etc. */
-            // HubProduction hubProduction = c.produce(foodProd, workProd, tradeProd, surplusFood)
+            HubProduction hubProduction = popHub.produce(popUnits)
 
-            // turnProduction.add(cityProduction)
+            turnProduction.put(popHub, hubProduction)
        }
+
+        /** Deal with players */
+        gameData.players.each {player ->
+
+        }
+
+
+
 
     }
 }
