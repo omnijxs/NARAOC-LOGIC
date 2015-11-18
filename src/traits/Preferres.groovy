@@ -1,14 +1,15 @@
 package traits
 
 import game.GameData
-import resources.popHub.City
+import resources.popHub.PopHub
 
 /**
  * Created by Juri on 23.10.2015.
  */
 trait Preferres {
 
-    City preferredCity = null
+    // TODO RENAME
+    PopHub preferredCity = null
 
     void resolvePreferredCity(GameData gd){
 
