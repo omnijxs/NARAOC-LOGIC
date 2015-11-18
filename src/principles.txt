@@ -1,0 +1,5 @@
+
+
+* Everything is a trait. All Trait No Interface = ATNI.
+* All collection sorting and querying is done on the first trait level. THIS IS NEVER DONE ON ALGORITM OR INTERFACE LEVEL.
+* Traits are passed the GameData object and addition parameters if needed.
