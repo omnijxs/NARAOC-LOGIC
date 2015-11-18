@@ -40,7 +40,7 @@ class UseCaseTest {
     }
 
     @Test
-    void testStub() {
+    void testTurnAlgorithm() {
 
         // TODO Recalculate demand to hubs
         // TODO Population of the city an own method. Or city searches themself?

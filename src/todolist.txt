@@ -1,0 +1,7 @@
+
+
+[ ] Use productAmount value everywhere instead of hardcoded value.
+[ ] PopUnitSorter.productionSort works correctly but should not.
+[ ] PopUnitFinder should have two different population search methods: for production and for feeding. Also no popHub parameter required.
+[ ] Create a TestData trait for all test setup scenarios.
+[ ] Player should have an interface. 
