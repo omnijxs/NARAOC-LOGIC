@@ -15,7 +15,7 @@ trait Demands {
     void setDemand(GameData gd){
 
         /** Search for all pop units in the city proper and pop units outside city proper producing for the city */
-        def basicDemand = gd.popUnits.findAll { (it.tile == tile) || (it.preferredCity == this && it.tile != tile) }.size()
+        def basicDemand = gd.popUnits.findAll { (it.tile == tile) || (it.preferredHub == this && it.tile != tile) }.size()
 
         // TODO AWFUL SYNTAX!!!
         demand.put((Product.FOOD), basicDemand)

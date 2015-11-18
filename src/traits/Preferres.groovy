@@ -8,13 +8,12 @@ import resources.popHub.PopHub
  */
 trait Preferres {
 
-    // TODO RENAME
-    PopHub preferredCity = null
+    PopHub preferredHub = null
 
-    void resolvePreferredCity(GameData gd){
+    void resolvepreferredHub(GameData gd){
 
         /** If there is no city with a preferredValue higher than zero, the Pop Unit does not produce for any city */
-        preferredCity = null        
+        preferredHub = null
         Integer preferredValue = 0
 
         gd.hubs.each { c ->
@@ -26,7 +25,7 @@ trait Preferres {
             Integer tempPreferredValue =  c.demand.get(product) - distance
 
             if(tempPreferredValue > preferredValue ) {
-                preferredCity = c
+                preferredHub = c
                 preferredValue = tempPreferredValue
             }
                 

@@ -49,7 +49,7 @@ class UseCaseTest {
         /** Deal with popUnits */
         gameData.popUnits.each { popUnit ->
 
-            popUnit.resolvePreferredCity(gameData)
+            popUnit.resolvepreferredHub(gameData)
 
             /** TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
             Also set the production “flags” up to their popUnits */
@@ -61,7 +61,7 @@ class UseCaseTest {
         gameData.hubs.each { popHub ->
 
             /** Population of the city */
-            def popUnits = gameData.popUnits.findAll { it.preferredCity == popHub || it.tile == popHub.tile }
+            def popUnits = gameData.popUnits.findAll { it.preferredHub == popHub || it.tile == popHub.tile }
 
             /** Calculate bonuses, deal with buildings etc. */
             HubProduction hubProduction = popHub.produce(popUnits)

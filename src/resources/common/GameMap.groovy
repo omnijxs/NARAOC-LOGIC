@@ -1,6 +1,5 @@
 package resources.common
 
-import game.GameData
 import resources.popHub.PopHub
 
 /**
@@ -8,7 +7,7 @@ import resources.popHub.PopHub
  */
 class GameMap {
 
-    List<PopHub> hubs // TODO rename hubs
+    List<PopHub> hubs
     List<Tile> tiles
 
 }

@@ -66,7 +66,7 @@ class FeedsCityTest {
         nonArmyInsideCity.tile = cityTile
 
         nonArmyOutsideCity.tile = nonCityTile
-        nonArmyOutsideCity.preferredCity = city
+        nonArmyOutsideCity.preferredHub = city
         gameData.popUnits.add(nonArmyOutsideCity)
 
         assert city.feedCity(gameData, 3) == 0
@@ -82,7 +82,7 @@ class FeedsCityTest {
         nonArmyInsideCity.tile = cityTile
 
         nonArmyOutsideCity.tile = nonCityTile
-        nonArmyOutsideCity.preferredCity = null
+        nonArmyOutsideCity.preferredHub = null
         gameData.popUnits.add(nonArmyOutsideCity)
 
         assert city.feedCity(gameData, 3) == 1

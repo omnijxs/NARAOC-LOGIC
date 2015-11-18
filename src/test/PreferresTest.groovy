@@ -53,9 +53,9 @@ class PreferresTest {
 
         c.demand.put(Product.FOOD, 1)
 
-        p.resolvePreferredCity(gameData)
+        p.resolvepreferredHub(gameData)
 
-        assert p.preferredCity == null
+        assert p.preferredHub == null
     }
 
     /** Distance equals demand = Pop unit has no preferred city */
@@ -70,9 +70,9 @@ class PreferresTest {
 
         c.demand.put(Product.FOOD, 2)
 
-        p.resolvePreferredCity(gameData)
+        p.resolvepreferredHub(gameData)
 
-        assert p.preferredCity == null
+        assert p.preferredHub == null
     }
 
     /** Demand is higher than distance = Pop unit has a preferred city */
@@ -87,10 +87,10 @@ class PreferresTest {
 
         c.demand.put(Product.FOOD, 3)
 
-        p.resolvePreferredCity(gameData)
+        p.resolvepreferredHub(gameData)
 
-        assert p.preferredCity != null
-        assert p.preferredCity == c
+        assert p.preferredHub != null
+        assert p.preferredHub == c
     }
 
     /** Demand is higher than distance = Worker has a preferred city */
@@ -105,10 +105,10 @@ class PreferresTest {
 
         c.demand.put(Product.WORK, 3)
 
-        p.resolvePreferredCity(gameData)
+        p.resolvepreferredHub(gameData)
 
-        assert p.preferredCity != null
-        assert p.preferredCity == c
+        assert p.preferredHub != null
+        assert p.preferredHub == c
     }
 
     /** Demand is higher than distance = Merchant has a preferred city */
@@ -123,15 +123,15 @@ class PreferresTest {
 
         c.demand.put(Product.TRADE, 3)
 
-        p.resolvePreferredCity(gameData)
+        p.resolvepreferredHub(gameData)
 
-        assert p.preferredCity != null
-        assert p.preferredCity == c
+        assert p.preferredHub != null
+        assert p.preferredHub == c
     }
 
     /** Army units do not have a preferred city */
     @Test
-    void testArmyUnitHasNoPreferredCity() {
+    void testArmyUnitHasNopreferredHub() {
 
         PopUnit p = new ArmyUnit(tile: new Tile(x: 2, y: 3))
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
@@ -143,9 +143,9 @@ class PreferresTest {
         c.demand.put(Product.WORK, 2)
         c.demand.put(Product.TRADE, 2)
 
-        p.resolvePreferredCity(gameData)
+        p.resolvepreferredHub(gameData)
 
-        assert p.preferredCity == null
+        assert p.preferredHub == null
     }
 
 
@@ -172,9 +172,9 @@ class PreferresTest {
         a.demand.put(Product.FOOD, 2)
         b.demand.put(Product.FOOD, 2)
 
-        p.resolvePreferredCity(gameData)
+        p.resolvepreferredHub(gameData)
 
-        assert p.preferredCity == a
+        assert p.preferredHub == a
     }
 
     /** Two cities with different demand, city b has more demand */
@@ -191,9 +191,9 @@ class PreferresTest {
         a.demand.put(Product.FOOD, 2)
         b.demand.put(Product.FOOD, 4)
 
-        p.resolvePreferredCity(gameData)
+        p.resolvepreferredHub(gameData)
 
-        assert p.preferredCity == b
+        assert p.preferredHub == b
     }
     
     // TODO how to handle the situation if multiple cities have the same preferred value? Currently solution is randomity.

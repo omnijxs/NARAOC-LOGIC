@@ -42,15 +42,15 @@ class PopUnitFinderTest implements PopUnitFinder {
     @Test
     void testpopHubPopulation() {
 
-        PopUnit a = new MockUnit(tile: cityTile, preferredCity: city)
-        PopUnit b = new MockUnit(tile: cityTile, preferredCity: new PopHub())
-        PopUnit c = new MockUnit(tile: new Tile(), preferredCity: null)
-        PopUnit d = new MockUnit(tile: new Tile(), preferredCity: new PopHub())
+        PopUnit a = new MockUnit(tile: cityTile, preferredHub: city)
+        PopUnit b = new MockUnit(tile: cityTile, preferredHub: new PopHub())
+        PopUnit c = new MockUnit(tile: new Tile(), preferredHub: null)
+        PopUnit d = new MockUnit(tile: new Tile(), preferredHub: new PopHub())
 
         gameData.popUnits = [a, b, c, d]
 
         /**
-         * There is a conflict for popUnits that are in the city proper but which have a different preferredCity.
+         * There is a conflict for popUnits that are in the city proper but which have a different preferredHub.
          * These are deal with differently depending on the fact are calculation production for the city or
          * feeding city pop Units. TODO later on split to two methods!!!
          */

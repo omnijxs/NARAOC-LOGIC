@@ -13,7 +13,7 @@ trait FeedsCity implements PopUnitSorter, Feeds {
         def popUnitsOnCity = gd.popUnits.findAll { it.tile == tile }
         
         /** Get all popUnits producing for the city */
-        def popUnitsOffCity = gd.popUnits.findAll { it.preferredCity == this && it.tile != tile }
+        def popUnitsOffCity = gd.popUnits.findAll { it.preferredHub == this && it.tile != tile }
 
         /** Sort by Pop Unit type, production value and age */
         def sortedPopUnits = productionSort(popUnitsOnCity + popUnitsOffCity)

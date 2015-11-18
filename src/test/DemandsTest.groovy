@@ -50,7 +50,7 @@ class DemandsTest {
     @Test
     void testSetDemandPopUnitsInCityProper() {
  
-        PopUnit a = new MockUnit(tile: cityTile, preferredCity: null)
+        PopUnit a = new MockUnit(tile: cityTile, preferredHub: null)
 
         gameData.popUnits = [a]
         city.setDemand(gameData)
@@ -63,7 +63,7 @@ class DemandsTest {
     @Test
     void testSetDemandPopUnitsOutsideCityProper() {
  
-        PopUnit a = new MockUnit(tile: null, preferredCity: city)
+        PopUnit a = new MockUnit(tile: null, preferredHub: city)
 
         gameData.popUnits = [a]
         city.setDemand(gameData)
@@ -76,8 +76,8 @@ class DemandsTest {
     @Test
     void testSetDemandPopUnitsInAndOutCityProper() {
  
-        PopUnit a = new MockUnit(tile: null, preferredCity: city)
-        PopUnit b = new MockUnit(tile: cityTile, preferredCity: null)
+        PopUnit a = new MockUnit(tile: null, preferredHub: city)
+        PopUnit b = new MockUnit(tile: cityTile, preferredHub: null)
 
         gameData.popUnits = [a, b]
         city.setDemand(gameData)
@@ -90,7 +90,7 @@ class DemandsTest {
     @Test
     void testNoDemandPopUnitsOutsideCityProper() {
  
-        PopUnit a = new MockUnit(tile: new Tile(), preferredCity: new City())
+        PopUnit a = new MockUnit(tile: new Tile(), preferredHub: new City())
 
         gameData.popUnits = [a]
         city.setDemand(gameData)

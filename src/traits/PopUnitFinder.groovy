@@ -10,7 +10,7 @@ import resources.popUnit.PopUnit
 trait PopUnitFinder {
 
     List<PopUnit> popHubPopulation(GameData gd, PopHub popHub){
-        return gd.popUnits.findAll { it.preferredCity == popHub || it.tile == popHub.tile }
+        return gd.popUnits.findAll { it.preferredHub == popHub || it.tile == popHub.tile }
     }
 
 }

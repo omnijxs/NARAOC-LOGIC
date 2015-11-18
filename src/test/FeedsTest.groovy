@@ -1,7 +1,6 @@
 package test
 
 import org.junit.Test
-import resources.common.Tile
 import resources.popUnit.PopUnit
 import traits.Consumes
 import traits.Feeds
@@ -11,13 +10,13 @@ import traits.Feeds
  */
 class FeedsTest implements Feeds {
 
-    private class TestUnit extends PopUnit implements Consumes {}
+    private class MockUnit extends PopUnit implements Consumes {}
 
     @Test
     void testFeedWithObject() {
 
         /** Feed method is ignorant of PopUnit type. They all behave the same way from it's perspective. */
-        PopUnit a = new TestUnit()
+        PopUnit a = new MockUnit()
 
         def surplusFood = feed(a, 1)
 
@@ -28,8 +27,8 @@ class FeedsTest implements Feeds {
     @Test
     void testFeedAllSurplus() {
 
-        PopUnit a = new TestUnit()
-        PopUnit b = new TestUnit()
+        PopUnit a = new MockUnit()
+        PopUnit b = new MockUnit()
 
         def surplusFood = feed([a, b], 3)
 
@@ -41,8 +40,8 @@ class FeedsTest implements Feeds {
     @Test
     void testFeedAllNoSurplus() {
 
-        PopUnit a = new TestUnit()
-        PopUnit b = new TestUnit()
+        PopUnit a = new MockUnit()
+        PopUnit b = new MockUnit()
 
         def surplusFood = feed([a, b], 2)
 
@@ -54,8 +53,8 @@ class FeedsTest implements Feeds {
     @Test
     void testCannotFeedAll() {
 
-        PopUnit a = new TestUnit()
-        PopUnit b = new TestUnit()
+        PopUnit a = new MockUnit()
+        PopUnit b = new MockUnit()
 
         def surplusFood = feed([a, b], 1)
 
