@@ -6,4 +6,14 @@ package resources.popHub
  */
 class PopHub {
 
+    def methodMissing(String name, args) {
+        null
+    }
+
+    def propertyMissing(String name){
+        null
+    }
+
+
+
 }
