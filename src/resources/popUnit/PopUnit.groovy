@@ -7,10 +7,9 @@ import resources.common.Tile
  */
 class PopUnit {
 
-    Integer priority
-    Integer age = 0
-    Tile tile
+    @Delegate State state 
 
+    // TODO does this work this State
     def methodMissing(String name, args) {
         null
     }
