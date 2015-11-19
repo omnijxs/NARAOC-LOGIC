@@ -61,10 +61,10 @@ class UseCaseTest {
         gameData.hubs.each { popHub ->
 
             /** Population of the city */
-            def popUnits = gameData.popUnits.findAll { it.preferredHub == popHub || it.tile == popHub.tile }
+            // def popUnits = gameData.popUnits.findAll { it.preferredHub == popHub || it.tile == popHub.tile }
 
             /** Calculate bonuses, deal with buildings etc. */
-            HubProduction hubProduction = popHub.produce(popUnits)
+            HubProduction hubProduction = popHub.output(gameData)
 
             turnProduction.put(popHub, hubProduction)
        }

@@ -5,3 +5,5 @@
 [ ] PopUnitFinder should have two different population search methods: for production and for feeding. Also no popHub parameter required.
 [ ] Create a TestData trait for all test setup scenarios.
 [ ] Player should have an interface. 
+[ ] A better way to deal with PopUnit priority. 
+[ ] PopUnit-class has a state which holds all relevant information such as Race, Obedience, Age etc.
