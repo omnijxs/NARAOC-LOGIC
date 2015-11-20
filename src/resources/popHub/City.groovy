@@ -1,5 +1,6 @@
 package resources.popHub
 
+import game.GameData
 import resources.common.Tile
 import traits.FeedsCity
 import traits.Demands

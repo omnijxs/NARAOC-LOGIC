@@ -7,8 +7,6 @@ import resources.common.Tile
  */
 class State {
 
-    Integer priority            // TODO this should not be here
-    
     Integer age = 0
     @Delegate Tile tile
 
