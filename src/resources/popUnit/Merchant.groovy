@@ -13,6 +13,7 @@ class Merchant extends PopUnit implements Consumes, Produces, Preferres {
     
     public Merchant(){
         this.product = Product.TRADE
-        this.priority = 2   
+        this.priority = 2
+        state = new State()
     }
 }

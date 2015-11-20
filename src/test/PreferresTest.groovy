@@ -11,7 +11,6 @@ import resources.popUnit.Farmer
 import resources.popUnit.Merchant
 import resources.popUnit.PopUnit
 import resources.common.Tile
-import resources.popUnit.State
 import resources.popUnit.Worker
 
 /**
@@ -46,7 +45,7 @@ class PreferresTest {
     @Test
     void testNotEnoughDemand() {
 
-        PopUnit p = new Farmer(state: new State(tile: new Tile(x: 2, y: 3)))
+        PopUnit p = new Farmer(tile: new Tile(x: 2, y: 3))
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
@@ -63,7 +62,7 @@ class PreferresTest {
     @Test
     void testDemandEqualsDistance() {
 
-        PopUnit p = new Farmer(state: new State(tile: new Tile(x: 2, y: 3)))
+        PopUnit p = new Farmer(tile: new Tile(x: 2, y: 3))
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
@@ -80,7 +79,7 @@ class PreferresTest {
     @Test
     void testEnoughDemand() {
 
-        PopUnit p = new Farmer(state: new State(tile: new Tile(x: 2, y: 3)))
+        PopUnit p = new Farmer(tile: new Tile(x: 2, y: 3))
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
@@ -98,7 +97,7 @@ class PreferresTest {
     @Test
     void testEnoughDemandForWork() {
 
-        PopUnit p = new Worker(state: new State(tile: new Tile(x: 2, y: 3)))
+        PopUnit p = new Worker(tile: new Tile(x: 2, y: 3))
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
@@ -116,7 +115,7 @@ class PreferresTest {
     @Test
     void testEnoughDemandForTrade() {
 
-        PopUnit p = new Merchant(state: new State(tile: new Tile(x: 2, y: 3)))
+        PopUnit p = new Merchant(tile: new Tile(x: 2, y: 3))
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
@@ -134,7 +133,7 @@ class PreferresTest {
     @Test
     void testArmyUnitHasNopreferredHub() {
 
-        PopUnit p = new ArmyUnit(state: new State(tile: new Tile(x: 2, y: 3)))
+        PopUnit p = new ArmyUnit(tile: new Tile(x: 2, y: 3))
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
@@ -163,7 +162,7 @@ class PreferresTest {
     @Test
     void testCaseEqualDemandDistanceDecides() {
 
-        PopUnit p = new Farmer(state: new State(tile: new Tile(x: 2, y: 3)))
+        PopUnit p = new Farmer(tile: new Tile(x: 2, y: 3))
         City a = new City(tile: new Tile(x: 2, y: 2))    /** Distance 1 */
         City b = new City(tile: new Tile(x: 3, y: 4))    /** Distance 2 */
 
@@ -182,7 +181,7 @@ class PreferresTest {
     @Test
     void testCaseHigherDemandDecides() {
 
-        PopUnit p = new Farmer(state: new State(tile: new Tile(x: 2, y: 3)))
+        PopUnit p = new Farmer(tile: new Tile(x: 2, y: 3))
         City a = new City(tile: new Tile(x: 2, y: 2))    /** Distance 1 */
         City b = new City(tile: new Tile(x: 3, y: 4))    /** Distance 2 */
 
@@ -196,6 +195,6 @@ class PreferresTest {
 
         assert p.preferredHub == b
     }
-    
+
     // TODO how to handle the situation if multiple cities have the same preferred value? Currently solution is randomity.
 }

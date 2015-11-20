@@ -9,6 +9,7 @@ import resources.common.Tile
 import resources.popHub.HubProduction
 import resources.popHub.PopHub
 import resources.popUnit.Farmer
+import resources.popUnit.State
 
 /**
  * Created by Juri on 16.11.2015.
@@ -33,7 +34,7 @@ class UseCaseTest {
 
         gameMap.hubs = [city]
 
-        gameData.popUnits = [new Farmer(tile: cityTile)]
+        gameData.popUnits = [new Farmer(state: new State(tile: cityTile))]
 
         turnProduction = [:]
 

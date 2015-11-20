@@ -12,6 +12,7 @@ class ArmyUnit extends PopUnit implements Consumes, IsOwned {
 
     public ArmyUnit(){
         this.priority = 0
+        state = new State()
     }
 
 }

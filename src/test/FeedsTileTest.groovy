@@ -7,6 +7,7 @@ import resources.popUnit.ArmyUnit
 import resources.common.GameMap
 import resources.popUnit.PopUnit
 import resources.common.Tile
+import resources.popUnit.State
 import traits.Consumes
 import traits.FeedsTile
 
@@ -15,7 +16,12 @@ import traits.FeedsTile
  */
 class FeedsTileTest {
 
-    private class TileFeeder extends PopUnit implements FeedsTile, Consumes { }
+    private class TileFeeder extends PopUnit implements FeedsTile, Consumes {
+
+        public TileFeeder(){
+            state = new State()
+        }
+    }
     
     protected GameData gameData
     protected GameMap gameMap
