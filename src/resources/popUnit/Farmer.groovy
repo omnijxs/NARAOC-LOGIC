@@ -15,7 +15,7 @@ class Farmer extends PopUnit implements Consumes, Produces, Preferres, FeedsTile
     public Farmer(){
         this.product = Product.FOOD
         this.priority = 2
-        state = new State()
+        this.state = new State()
     }
     
     @Override

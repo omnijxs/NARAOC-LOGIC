@@ -11,6 +11,6 @@ class MagicUnit extends PopUnit implements Consumes, IsOwned {
 
     public MagicUnit(){
         this.priority = 1
-        state = new State()
+        this.state = new State()
     }
 }

@@ -9,13 +9,8 @@ import traits.IsOwned
 /**
  * Created by Juri on 21.10.2015.
  */
-class City extends PopHub implements Demands, IsOwned, FeedsCity {
+class City extends PopHub implements Demands, Refines, IsOwned, FeedsCity {
 
     Tile tile
-    
-    // TODO RENAME AND SEPARATE INTO A TRAIT
-    def output(GameData gd){
-        
-    }
 
 }

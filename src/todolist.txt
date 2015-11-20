@@ -6,4 +6,7 @@
 [ ] Create a TestData trait for all test setup scenarios.
 [ ] Player should have an interface. 
 [ ] A better way to deal with PopUnit priority. 
+
+---
+
 [D] PopUnit-class has a state which holds all relevant information such as Race, Obedience, Age etc. 20.11.2015

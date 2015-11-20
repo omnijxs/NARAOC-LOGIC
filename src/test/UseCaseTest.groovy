@@ -65,7 +65,7 @@ class UseCaseTest {
             // def popUnits = gameData.popUnits.findAll { it.preferredHub == popHub || it.tile == popHub.tile }
 
             /** Calculate bonuses, deal with buildings etc. */
-            HubProduction hubProduction = popHub.output(gameData)
+            HubProduction hubProduction = popHub.refine(gameData)
 
             turnProduction.put(popHub, hubProduction)
        }
