@@ -13,6 +13,7 @@ class Merchant extends PopUnit implements Consumes, Produces, Preferres {
     
     public Merchant(){
         this.product = Product.TRADE
+        this.productAmount = 1 /** Should be from a config file */ 
         this.priority = 2
         this.state = new State()
     }

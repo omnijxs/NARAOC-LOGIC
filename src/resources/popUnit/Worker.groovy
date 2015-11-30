@@ -13,6 +13,7 @@ class Worker extends PopUnit implements Consumes, Produces, Preferres {
     
     public Worker(){
         this.product = Product.WORK
+        this.productAmount = 1 /** Should be from a config file */ 
         this.priority = 2
         this.state = new State()
     }
