@@ -4,7 +4,6 @@ import game.GameData
 import org.junit.Before
 import org.junit.Test
 import resources.popHub.City
-import resources.common.GameMap
 import resources.common.Tile
 import resources.popUnit.ArmyUnit
 import resources.popUnit.Farmer
@@ -17,7 +16,6 @@ import resources.popUnit.PopUnit
 class FeedsCityTest {
 
     protected GameData gameData
-    protected GameMap gameMap
     protected City city
     protected Tile nonCityTile
     protected Tile cityTile
@@ -28,11 +26,9 @@ class FeedsCityTest {
     @Before
     void setUp(){
         gameData = new GameData()                       // TODO RETHINK THIS SHIT! USE BASE CLASS!!!
-        gameMap = new GameMap()
-        gameData.gameMap = gameMap
 
         city = new City()
-        gameData.gameMap.hubs = [city]
+        gameData.hubs = [city]
 
         nonCityTile = new Tile()
         cityTile = new Tile()
@@ -42,7 +38,7 @@ class FeedsCityTest {
         nonArmyInsideCity = new Merchant(priority: 2)    // TODO A fancier way of doing te priority sort
         nonArmyOutsideCity = new Farmer(priority: 2)    // TODO A fancier way of doing te priority sort
 
-        gameData.gameMap.tiles = [cityTile, nonCityTile]
+        gameData.tiles = [cityTile, nonCityTile]
 
         gameData.popUnits = [armyInsideCity, nonArmyInsideCity]
 

@@ -4,7 +4,6 @@ import game.GameData
 import org.junit.Before
 import org.junit.Test
 import resources.popUnit.ArmyUnit
-import resources.common.GameMap
 import resources.popUnit.PopUnit
 import resources.common.Tile
 import resources.popUnit.State
@@ -24,7 +23,6 @@ class FeedsTileTest {
     }
     
     protected GameData gameData
-    protected GameMap gameMap
     protected Tile emptyTile
     protected Tile filledTile
     protected PopUnit army
@@ -34,15 +32,13 @@ class FeedsTileTest {
     @Before
     void setUp(){
         gameData = new GameData()                       // TODO RETHINK THIS SHIT
-        gameMap = new GameMap()
-        gameData.gameMap = gameMap
 
         emptyTile = new Tile()
         filledTile = new Tile()
         army = new ArmyUnit()
         feeder = new TileFeeder(priority: 2)            // TODO A fancier way of doing te priority sort
 
-        gameData.gameMap.tiles = [emptyTile, filledTile]
+        gameData.tiles = [emptyTile, filledTile]
 
         gameData.popUnits = [army, feeder]
 

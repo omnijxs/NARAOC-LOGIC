@@ -4,7 +4,6 @@ import game.GameData
 import org.junit.Before
 import org.junit.Test
 import resources.popHub.City
-import resources.common.GameMap
 import resources.common.Product
 import resources.common.Tile
 import resources.popUnit.PopUnit
@@ -16,7 +15,6 @@ import traits.Preferres
 class DemandsTest {
 
     protected GameData gameData
-    protected GameMap gameMap
     protected City city
     protected Tile cityTile
 
@@ -27,14 +25,12 @@ class DemandsTest {
     @Before
     void setUp(){
         gameData = new GameData()                      
-        gameMap = new GameMap()
-        gameData.gameMap = gameMap
 
         cityTile = new Tile()
         
         city = new City(tile: cityTile)
         
-        gameMap.hubs = [city]
+        gameData.hubs = [city]
     }
 
     @Test

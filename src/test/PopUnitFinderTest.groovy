@@ -3,7 +3,6 @@ package test
 import game.GameData
 import org.junit.Before
 import org.junit.Test
-import resources.common.GameMap
 import resources.common.Tile
 import resources.popHub.City
 import resources.popHub.PopHub
@@ -17,7 +16,6 @@ import traits.Preferres
 class PopUnitFinderTest implements PopUnitFinder {
 
     protected GameData gameData
-    protected GameMap gameMap
     protected PopHub city
     protected Tile cityTile
 
@@ -28,14 +26,12 @@ class PopUnitFinderTest implements PopUnitFinder {
     @Before
     void setUp(){
         gameData = new GameData()
-        gameMap = new GameMap()
-        gameData.gameMap = gameMap
 
         cityTile = new Tile()
 
         city = new City(tile: cityTile)
 
-        gameMap.hubs = [city]
+        gameData.hubs = [city]
 
     }
 

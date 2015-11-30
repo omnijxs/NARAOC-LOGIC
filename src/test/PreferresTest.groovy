@@ -3,7 +3,6 @@ package test
 import game.GameData
 import org.junit.Before
 import org.junit.Test
-import resources.common.GameMap
 import resources.common.Product
 import resources.popUnit.ArmyUnit
 import resources.popHub.City
@@ -19,17 +18,11 @@ import resources.popUnit.Worker
 class PreferresTest {
 
     protected GameData gameData
-    protected GameMap gameMap
-    protected City city
+    protected PopHub city
 
     @Before
     void setUp() {
         gameData = new GameData()
-        gameMap = new GameMap()
-        gameData.gameMap = gameMap
-
-        /* gameData.popUnits = []
-        gameMap.hubs = [] */
 
     }
     /**
@@ -49,7 +42,7 @@ class PreferresTest {
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
-        gameMap.hubs = [c]
+        gameData.hubs = [c]
 
         c.demand.put(Product.FOOD, 1)
 
@@ -66,7 +59,7 @@ class PreferresTest {
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
-        gameMap.hubs = [c]
+        gameData.hubs = [c]
 
         c.demand.put(Product.FOOD, 2)
 
@@ -83,7 +76,7 @@ class PreferresTest {
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
-        gameMap.hubs = [c]
+        gameData.hubs = [c]
 
         c.demand.put(Product.FOOD, 3)
 
@@ -101,7 +94,7 @@ class PreferresTest {
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
-        gameMap.hubs = [c]
+        gameData.hubs = [c]
 
         c.demand.put(Product.WORK, 3)
 
@@ -119,7 +112,7 @@ class PreferresTest {
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
-        gameMap.hubs = [c]
+        gameData.hubs = [c]
 
         c.demand.put(Product.TRADE, 3)
 
@@ -137,7 +130,7 @@ class PreferresTest {
         City c = new City(tile: new Tile(x: 1, y: 2))    /** Distance 2 */
 
         gameData.popUnits = [p]
-        gameMap.hubs = [c]
+        gameData.hubs = [c]
 
         c.demand.put(Product.FOOD, 2)
         c.demand.put(Product.WORK, 2)
@@ -167,7 +160,7 @@ class PreferresTest {
         City b = new City(tile: new Tile(x: 3, y: 4))    /** Distance 2 */
 
         gameData.popUnits = [p]
-        gameMap.hubs = [a, b]
+        gameData.hubs = [a, b]
 
         a.demand.put(Product.FOOD, 2)
         b.demand.put(Product.FOOD, 2)
@@ -186,7 +179,7 @@ class PreferresTest {
         City b = new City(tile: new Tile(x: 3, y: 4))    /** Distance 2 */
 
         gameData.popUnits = [p]
-        gameMap.hubs = [a, b]
+        gameData.hubs = [a, b]
 
         a.demand.put(Product.FOOD, 2)
         b.demand.put(Product.FOOD, 4)

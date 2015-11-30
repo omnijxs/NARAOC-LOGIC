@@ -4,7 +4,6 @@ import game.GameData
 import org.junit.Before
 import org.junit.Test
 import resources.popHub.City
-import resources.common.GameMap
 import resources.common.Tile
 import resources.popHub.HubProduction
 import resources.popHub.PopHub
@@ -18,21 +17,18 @@ class UseCaseTest {
 
     protected Map<PopHub, HubProduction> turnProduction     // TODO RENAME
     protected GameData gameData
-    protected GameMap gameMap
     protected PopHub city
     protected Tile cityTile
 
     @Before
     void setUp() {
         gameData = new GameData()
-        gameMap = new GameMap()
-        gameData.gameMap = gameMap
 
         cityTile = new Tile(x: 1, y: 1)
 
         city = new City(tile: cityTile)
 
-        gameMap.hubs = [city]
+        gameData.hubs = [city]
 
         gameData.popUnits = [new Farmer(state: new State(tile: cityTile))]
 

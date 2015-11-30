@@ -11,8 +11,11 @@ class GameData {
 
     Metadata metadata
 
-    @Delegate GameMap gameMap
+    // @Delegate GameMap gameMap
+    
     List<PopUnit> popUnits
     List<Player> players
+    List<PopHub> hubs
+    List<Tile> tiles
 
 }

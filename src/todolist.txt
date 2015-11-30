@@ -1,5 +1,4 @@
 
-[ ] Remove GameMap-object as an unnecessary abstraction.
 [ ] Create a TestData trait for all test setup scenarios.
 
 [ ] PopUnitSorter.productionSort works correctly but should not.
@@ -9,6 +8,7 @@
 
 ---
 
+[T] Remove GameMap-object as an unnecessary abstraction.
 [T] Produces.produce should get gameData as parameter. 30.11.2015 // ProducesTest is not fixed yet!
 
 ---
