@@ -54,7 +54,7 @@ class UseCaseTest {
 
             /** TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
             Also set the production “flags” up to their popUnits */
-            popUnit.produce()
+            popUnit.produce(gameData)
 
         }
 

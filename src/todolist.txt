@@ -1,6 +1,6 @@
 
 
-[ ] Use productAmount value everywhere instead of hardcoded value.
+[ ] Produces.produce should get gameData as parameter. 
 [ ] PopUnitSorter.productionSort works correctly but should not.
 [ ] PopUnitFinder should have two different population search methods: for production and for feeding. Also no popHub parameter required.
 [ ] Create a TestData trait for all test setup scenarios.
@@ -9,4 +9,5 @@
 
 ---
 
+[D] Use productAmount value everywhere instead of hardcoded value. 30.11.2015
 [D] PopUnit-class has a state which holds all relevant information such as Race, Obedience, Age etc. 20.11.2015

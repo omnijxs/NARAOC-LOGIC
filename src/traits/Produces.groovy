@@ -1,6 +1,7 @@
 package traits
 
 import resources.common.Product
+import game.GameData
 
 /**
  * Created by Juri on 16.11.2015.
@@ -11,7 +12,7 @@ trait Produces {
     Integer productAmount = 0
     Integer harvestAmount = 0
     
-    Integer produce(){
+    Integer produce(GameData gd){
         harvestAmount = productAmount.intValue()
     }
     
