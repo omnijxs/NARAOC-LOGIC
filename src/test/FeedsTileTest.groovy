@@ -38,7 +38,7 @@ class FeedsTileTest {
         army = new ArmyUnit()
         feeder = new TileFeeder(priority: 2)            // TODO A fancier way of doing te priority sort
 
-        gameData.tiles = [emptyTile, filledTile]
+        gameData.mapTiles = [emptyTile, filledTile]
 
         gameData.popUnits = [army, feeder]
 

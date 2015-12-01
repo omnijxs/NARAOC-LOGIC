@@ -1,6 +1,6 @@
 package traits
 
-import game.Player
+import resources.gameActor.Player
 
 /**
  * Created by Juri on 16.11.2015.

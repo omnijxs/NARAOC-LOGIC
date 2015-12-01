@@ -28,7 +28,7 @@ class FeedsCityTest {
         gameData = new GameData()                       // TODO RETHINK THIS SHIT! USE BASE CLASS!!!
 
         city = new City()
-        gameData.hubs = [city]
+        gameData.popHubs = [city]
 
         nonCityTile = new Tile()
         cityTile = new Tile()
@@ -38,7 +38,7 @@ class FeedsCityTest {
         nonArmyInsideCity = new Merchant(priority: 2)    // TODO A fancier way of doing te priority sort
         nonArmyOutsideCity = new Farmer(priority: 2)    // TODO A fancier way of doing te priority sort
 
-        gameData.tiles = [cityTile, nonCityTile]
+        gameData.mapTiles = [cityTile, nonCityTile]
 
         gameData.popUnits = [armyInsideCity, nonArmyInsideCity]
 

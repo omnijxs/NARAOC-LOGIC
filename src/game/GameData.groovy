@@ -1,6 +1,7 @@
 package game
 
 import resources.common.Tile
+import resources.gameActor.GameActor
 import resources.popHub.PopHub
 import resources.popUnit.PopUnit
 
@@ -12,8 +13,8 @@ class GameData {
     Metadata metadata
 
     List<PopUnit> popUnits
-    List<Player> players
-    List<PopHub> hubs
-    List<Tile> tiles
+    List<PopHub> popHubs
+    List<GameActor> gameActors
+    List<Tile> mapTiles
 
 }

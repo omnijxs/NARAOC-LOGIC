@@ -1,10 +1,9 @@
 package test
 
 import game.GameData
-import game.Player
+import resources.gameActor.Player
 import org.junit.Before
 import org.junit.Test
-import resources.common.GameMap
 import resources.popUnit.ArmyUnit
 import resources.popUnit.PopUnit
 import resources.popUnit.Worker

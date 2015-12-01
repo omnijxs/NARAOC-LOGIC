@@ -28,7 +28,7 @@ class UseCaseTest {
 
         city = new City(tile: cityTile)
 
-        gameData.hubs = [city]
+        gameData.popHubs = [city]
 
         gameData.popUnits = [new Farmer(state: new State(tile: cityTile))]
 
@@ -54,8 +54,8 @@ class UseCaseTest {
 
         }
 
-        /** Deal with hubs */
-        gameData.hubs.each { popHub ->
+        /** Deal with popHubs */
+        gameData.popHubs.each { popHub ->
 
             /** Population of the city */
             // def popUnits = gameData.popUnits.findAll { it.preferredHub == popHub || it.tile == popHub.tile }
@@ -66,8 +66,8 @@ class UseCaseTest {
             turnProduction.put(popHub, hubProduction)
        }
 
-        /** Deal with players */
-        gameData.players.each {player ->
+        /** Deal with gameActors */
+        gameData.gameActors.each {player ->
 
         }
 

@@ -30,7 +30,7 @@ class DemandsTest {
         
         city = new City(tile: cityTile)
         
-        gameData.hubs = [city]
+        gameData.popHubs = [city]
     }
 
     @Test

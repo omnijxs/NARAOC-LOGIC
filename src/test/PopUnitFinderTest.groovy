@@ -31,7 +31,7 @@ class PopUnitFinderTest implements PopUnitFinder {
 
         city = new City(tile: cityTile)
 
-        gameData.hubs = [city]
+        gameData.popHubs = [city]
 
     }
 

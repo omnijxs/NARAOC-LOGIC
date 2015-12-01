@@ -1,14 +1,13 @@
 
+[ ] ProducesTest does not have tests for fallback (ArmyUnit-case) or override (Farmer-case)
 [ ] Create a TestData trait for all test setup scenarios.
-
 [ ] PopUnitSorter.productionSort works correctly but should not.
 [ ] PopUnitFinder should have two different population search methods: for production and for feeding. Also no popHub parameter required.
-[ ] Player should have an interface. 
-[ ] A better way to deal with PopUnit priority. 
+[ ] A better way to deal with PopUnit priority. -> Priority ENUM
 
 ---
 
----
+[D] Player should have an interface. 01.12.2015
 [D] Produces.produce should get gameData as parameter. 30.11.2015
 [D] Remove GameMap-object as an unnecessary abstraction. 30.11.2015
 [D] Use productAmount value everywhere instead of hardcoded value. 30.11.2015
