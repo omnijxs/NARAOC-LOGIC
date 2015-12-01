@@ -1,9 +1,17 @@
 
-[ ] ProducesTest does not have tests for fallback (ArmyUnit-case) or override (Farmer-case)
-[ ] Create a TestData trait for all test setup scenarios.
+
+[W] PopUnitFinder should have two different population search methods: for production and for feeding. Also no popHub parameter required. 01.12.2015
+
 [ ] PopUnitSorter.productionSort works correctly but should not.
-[ ] PopUnitFinder should have two different population search methods: for production and for feeding. Also no popHub parameter required.
 [ ] A better way to deal with PopUnit priority. -> Priority ENUM
+
+[ ] More in-depth design of testing
+    { } Logic tests -> Trait testing
+    { } Implementation tests -> Class testing
+    { } End-to-end tests -< Use case testing
+
+    [ ] ProducesTest does not have tests for fallback (ArmyUnit-case) or override (Farmer-case)
+    [ ] Create a TestData trait for all test setup scenarios.
 
 ---
 
