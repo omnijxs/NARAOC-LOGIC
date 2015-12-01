@@ -1,5 +1,7 @@
 package test
 
+import game.GameData
+import org.junit.Before
 import org.junit.Test
 import traits.Produces
 
@@ -8,14 +10,19 @@ import traits.Produces
  */
 class ProducesTest implements Produces {
 
-    // TODO ADD GameData 
-    
+    protected GameData gameData
+
+    @Before
+    void setUp() {
+        gameData = new GameData()
+    }
+
     @Test
     void testProduce() {
 
         productAmount = 2
 
-        assert produce() == 2
+        assert produce(gameData) == 2
         assert harvestAmount == 2
     }
 
@@ -33,7 +40,7 @@ class ProducesTest implements Produces {
 
         productAmount = 2
 
-        assert produce() == 2
+        assert produce(gameData) == 2
         assert harvest() == 2
 
         assert harvestAmount == 0

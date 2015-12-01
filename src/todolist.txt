@@ -8,9 +8,8 @@
 
 ---
 
-[T] Produces.produce should get gameData as parameter. 30.11.2015 // ProducesTest is not fixed yet!
-
 ---
+[D] Produces.produce should get gameData as parameter. 30.11.2015
 [D] Remove GameMap-object as an unnecessary abstraction. 30.11.2015
 [D] Use productAmount value everywhere instead of hardcoded value. 30.11.2015
 [D] PopUnit-class has a state which holds all relevant information such as Race, Obedience, Age etc. 20.11.2015
