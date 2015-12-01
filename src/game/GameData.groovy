@@ -1,7 +1,7 @@
 package game
 
-import resources.popHub.City
-import resources.common.GameMap
+import resources.common.Tile
+import resources.popHub.PopHub
 import resources.popUnit.PopUnit
 
 /**
@@ -11,8 +11,6 @@ class GameData {
 
     Metadata metadata
 
-    // @Delegate GameMap gameMap
-    
     List<PopUnit> popUnits
     List<Player> players
     List<PopHub> hubs

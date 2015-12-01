@@ -4,6 +4,7 @@ import game.GameData
 import org.junit.Before
 import org.junit.Test
 import resources.common.Product
+import resources.popHub.PopHub
 import resources.popUnit.ArmyUnit
 import resources.popHub.City
 import resources.popUnit.Farmer
