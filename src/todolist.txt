@@ -1,7 +1,5 @@
 
-
 NEW FEATURES:
-[ ] PopUnit multiplication.
 [ ] PopUnit reallocation.
 
 IMPROVEMENTS:
@@ -21,6 +19,7 @@ DESIGN:
 
 ---
 
+[D] PopUnit multiplication. Very basic implementation. 02.12.2015
 [D] A better way to deal with PopUnit priority. -> Priority ENUM!
 [D] Rename FeedsCity to FeedsHub
 [D] PopUnitFinder should have two different population search methods: for production and for feeding. Also no popHub parameter required. 02.12.2015

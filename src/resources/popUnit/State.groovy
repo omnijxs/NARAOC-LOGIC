@@ -8,12 +8,11 @@ import resources.common.Tile
 class State {
 
     @Delegate Tile tile
+    // @Delegate Race race
+    // @Delegate Obedience obedience
 
     Integer age = 0
     Integer multiplicationRate = 0  // TODO comes from race
-
-    // @Delegate Race race
-    // @Delegate Obedience obedience
 
     Boolean resolveMultiply(){
         true

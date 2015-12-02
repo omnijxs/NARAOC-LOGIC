@@ -8,12 +8,15 @@ trait Probability {
     final int max = 100
 
     Boolean getProbability(Integer probability){
-        return getComparison(probability, (Math.random() * max))
+        return getComparison(probability, getRandom())
     }
 
-    /** Structured like this because of testability */
     def getComparison(Integer a, Integer b){
         return a >= b
+    }
+
+    Integer getRandom(){
+        return Math.random() * max
     }
 
 }
