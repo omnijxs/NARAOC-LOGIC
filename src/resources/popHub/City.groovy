@@ -1,7 +1,7 @@
 package resources.popHub
 
 import resources.common.Tile
-import traits.FeedsCity
+import traits.FeedsHub
 import traits.Demands
 import traits.IsOwned
 import traits.Refines
@@ -9,7 +9,7 @@ import traits.Refines
 /**
  * Created by Juri on 21.10.2015.
  */
-class City extends PopHub implements Demands, Refines, IsOwned, FeedsCity {
+class City extends PopHub implements Demands, Refines, IsOwned, FeedsHub {
 
     Tile tile
 

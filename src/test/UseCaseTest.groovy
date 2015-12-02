@@ -40,8 +40,6 @@ class UseCaseTest {
     void testTurnAlgorithm() {
 
         // TODO Recalculate demand to hubs
-        // TODO Population of the city an own method. Or city searches themself?
-        // TODO All could be threads
 
         /** Deal with popUnits */
         gameData.popUnits.each { popUnit ->
@@ -57,9 +55,6 @@ class UseCaseTest {
         /** Deal with popHubs */
         gameData.popHubs.each { popHub ->
 
-            /** Population of the city */
-            // def popUnits = gameData.popUnits.findAll { it.preferredHub == popHub || it.tile == popHub.tile }
-
             /** Calculate bonuses, deal with buildings etc. */
             HubProduction hubProduction = popHub.refine(gameData)
 
@@ -67,7 +62,7 @@ class UseCaseTest {
        }
 
         /** Deal with gameActors */
-        gameData.gameActors.each {player ->
+        gameData.gameActors.each { player ->
 
         }
 

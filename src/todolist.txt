@@ -1,6 +1,5 @@
 
 
-[ ] Rename FeedsCity to FeedsHub
 [ ] PopUnitSorter.productionSort works correctly but should not.
 [ ] A better way to deal with PopUnit priority. -> Priority ENUM
 
@@ -14,6 +13,7 @@
 
 ---
 
+[D] Rename FeedsCity to FeedsHub
 [D] PopUnitFinder should have two different population search methods: for production and for feeding. Also no popHub parameter required. 02.12.2015
 [D] Player should have an interface. 01.12.2015
 [D] Produces.produce should get gameData as parameter. 30.11.2015

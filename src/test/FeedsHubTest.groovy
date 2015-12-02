@@ -13,7 +13,7 @@ import resources.popUnit.PopUnit
 /**
  * Created by Juri on 2.11.2015.
  */
-class FeedsCityTest {
+class FeedsHubTest {
 
     protected GameData gameData
     protected City city
@@ -50,7 +50,7 @@ class FeedsCityTest {
         armyInsideCity.tile = cityTile
         nonArmyInsideCity.tile = cityTile
 
-        assert city.feedCity(gameData, 2) == 0
+        assert city.feedHub(gameData, 2) == 0
         assert !armyInsideCity.starving
         assert !nonArmyInsideCity.starving
     }
@@ -65,7 +65,7 @@ class FeedsCityTest {
         nonArmyOutsideCity.preferredHub = city
         gameData.popUnits.add(nonArmyOutsideCity)
 
-        assert city.feedCity(gameData, 3) == 0
+        assert city.feedHub(gameData, 3) == 0
         assert !armyInsideCity.starving
         assert !nonArmyInsideCity.starving
         assert !nonArmyOutsideCity.starving
@@ -81,7 +81,7 @@ class FeedsCityTest {
         nonArmyOutsideCity.preferredHub = null
         gameData.popUnits.add(nonArmyOutsideCity)
 
-        assert city.feedCity(gameData, 3) == 1
+        assert city.feedHub(gameData, 3) == 1
         assert !armyInsideCity.starving
         assert !nonArmyInsideCity.starving
         assert nonArmyOutsideCity.starving
