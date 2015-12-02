@@ -6,7 +6,7 @@ import resources.common.Product
 /**
  * Created by Juri on 7.11.2015.
  */
-trait Demands {
+trait Demands implements PopUnitFinder {
 
      // TODO not the optimal way to bind production of a pop unit and city demand to together!
     Map<Product, Integer> demand = [(Product.FOOD): 0, (Product.WORK): 0, (Product.TRADE) :0]
@@ -15,7 +15,7 @@ trait Demands {
     void setDemand(GameData gd){
 
         /** Search for all pop units in the city proper and pop units outside city proper producing for the city */
-        def basicDemand = gd.popUnits.findAll { (it.tile == tile) || (it.preferredHub == this && it.tile != tile) }.size()
+        def basicDemand = popHubPopulation(gd, this).size()
 
         // TODO AWFUL SYNTAX!!!
         demand.put((Product.FOOD), basicDemand)
