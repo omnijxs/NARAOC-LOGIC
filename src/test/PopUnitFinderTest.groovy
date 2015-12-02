@@ -7,6 +7,7 @@ import resources.common.Tile
 import resources.popHub.City
 import resources.popHub.PopHub
 import resources.popUnit.PopUnit
+import traits.Consumes
 import traits.PopUnitFinder
 import traits.Preferres
 
@@ -19,7 +20,7 @@ class PopUnitFinderTest implements PopUnitFinder {
     protected PopHub city
     protected Tile cityTile
 
-    private class MockUnit extends PopUnit implements Preferres {
+    private class MockUnit extends PopUnit implements Preferres, Consumes {
         Tile tile
     }
 
@@ -39,17 +40,26 @@ class PopUnitFinderTest implements PopUnitFinder {
     void testpopHubPopulation() {
 
         PopUnit a = new MockUnit(tile: cityTile, preferredHub: city)
-        PopUnit b = new MockUnit(tile: cityTile, preferredHub: new PopHub())
+        PopUnit b = new MockUnit(tile: cityTile, preferredHub: new PopHub())        /** This is a borderline-case and might be problematic later on */
         PopUnit c = new MockUnit(tile: new Tile(), preferredHub: null)
         PopUnit d = new MockUnit(tile: new Tile(), preferredHub: new PopHub())
+        PopUnit e = new MockUnit(tile: new Tile(), preferredHub: city)
+
+        gameData.popUnits = [a, b, c, d, e]
+
+        assert popHubPopulation(gameData, city) == [a, b, e]
+    }
+
+    @Test
+    void testpopHubPopulationStarving() {
+
+        PopUnit a = new MockUnit(tile: cityTile, starving: true)
+        PopUnit b = new MockUnit(tile: cityTile, starving: false)
+        PopUnit c = new MockUnit(preferredHub: city, starving: true)
+        PopUnit d = new MockUnit(preferredHub: city, starving: false)
 
         gameData.popUnits = [a, b, c, d]
 
-        /**
-         * There is a conflict for popUnits that are in the city proper but which have a different preferredHub.
-         * These are deal with differently depending on the fact are calculation production for the city or
-         * feeding city pop Units. TODO later on split to two methods!!!
-         */
-        assert popHubPopulation(gameData, city) == [a, b]
+        assert popHubPopulationStarving(gameData, city) == [a, c]
     }
 }

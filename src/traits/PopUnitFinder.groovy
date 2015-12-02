@@ -16,8 +16,8 @@ trait PopUnitFinder {
      * @param popHub
      * @return
      */
-    List<PopUnit> popHubPopulation(GameData gd){
-        return gd.popUnits.findAll { it.preferredHub == this || it.tile == this.tile }
+    List<PopUnit> popHubPopulation(GameData gd, PopHub popHub){
+        return gd.popUnits.findAll { it.preferredHub == popHub || it.tile == popHub.tile }
     }
 
     /**
@@ -28,10 +28,8 @@ trait PopUnitFinder {
      * @param popHub
      * @return
      */
-    List<PopUnit> popHubPopulationForFeeding(GameData gd, PopHub popHub){
-        return gd.popUnits.findAll { (it.preferredHub == this || it.tile == this.tile) && it.starving }
+    List<PopUnit> popHubPopulationStarving(GameData gd, PopHub popHub){
+        return gd.popUnits.findAll { (it.preferredHub == popHub || it.tile == popHub.tile) && it.starving }
     }
-
-    // [ ] PopUnitFinder should have two different population search methods: for production and for feeding. Also no popHub parameter required.
 
 }
