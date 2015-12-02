@@ -1,5 +1,7 @@
 package resources.popUnit
 
+import resources.common.Obedience
+import resources.common.Race
 import resources.common.Tile
 
 /**
@@ -8,11 +10,10 @@ import resources.common.Tile
 class State {
 
     @Delegate Tile tile
-    // @Delegate Race race
-    // @Delegate Obedience obedience
+    @Delegate Race race
+    @Delegate Obedience obedience
 
     Integer age = 0
-    Integer multiplicationRate = 0  // TODO comes from race
 
     Boolean resolveMultiply(){
         true

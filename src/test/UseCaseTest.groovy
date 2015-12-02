@@ -3,6 +3,7 @@ package test
 import game.GameData
 import org.junit.Before
 import org.junit.Test
+import resources.common.Race
 import resources.popHub.City
 import resources.common.Tile
 import resources.popHub.HubProduction
@@ -31,7 +32,7 @@ class UseCaseTest {
 
         gameData.popHubs = [city]
 
-        gameData.popUnits = [new Farmer(state: new State(tile: cityTile))]
+        gameData.popUnits = [new Farmer(state: new State(tile: cityTile, race: new Race()))]
 
         turnProduction = [:]
 

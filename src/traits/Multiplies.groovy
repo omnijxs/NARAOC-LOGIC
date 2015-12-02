@@ -10,13 +10,12 @@ trait Multiplies implements Probability {
     def multiply(){
         if(resolveMultiply()){
             if(getProbability(multiplicationRate)){
-                return copy()
+                return breed()
             }
         }
     }
 
-    // TODO Rename
-    def copy(){
+    def breed(){
         return this.class.newInstance()
     }
 

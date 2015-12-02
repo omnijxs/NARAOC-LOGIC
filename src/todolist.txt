@@ -3,6 +3,7 @@ NEW FEATURES:
 [ ] PopUnit reallocation.
 
 IMPROVEMENTS:
+[ ] Multiplication: copy correct properties and resolve tile of the new PopUnit.
 [ ] A better way to map demand to cities.
 
 BUGS:

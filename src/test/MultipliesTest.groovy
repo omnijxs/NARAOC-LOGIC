@@ -2,6 +2,7 @@ package test
 
 import org.junit.Before
 import org.junit.Test
+import resources.common.Race
 import resources.popUnit.PopUnit
 import resources.popUnit.State
 import traits.Multiplies
@@ -14,7 +15,7 @@ class MultipliesTest {
     private class MockUnit extends PopUnit implements Multiplies {
 
         public MockUnit(){
-            this.state = new State()
+            this.state = new State(race: new Race())
         }
     }
 
@@ -24,12 +25,12 @@ class MultipliesTest {
     }
 
     @Test
-    void testCopy() {
+    void testBreed() {
 
         MockUnit a = new MockUnit()
 
-        assert a.copy().class == MockUnit
-        assert a.copy() != a
+        assert a.breed().class == MockUnit
+        assert a.breed() != a
     }
 
     @Test
