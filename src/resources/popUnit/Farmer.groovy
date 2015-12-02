@@ -5,13 +5,14 @@ import resources.common.Product
 import game.GameData
 import traits.Consumes
 import traits.FeedsTile
+import traits.Multiplies
 import traits.Preferres
 import traits.Produces
 
 /**
  * Created by Juri on 21.10.2015.
  */
-class Farmer extends PopUnit implements Consumes, Produces, Preferres, FeedsTile  {
+class Farmer extends PopUnit implements Consumes, Produces, Preferres, Multiplies, FeedsTile  {
     
     public Farmer(){
         this.product = Product.FOOD

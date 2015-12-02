@@ -24,7 +24,7 @@ class MultipliesTest {
     }
 
     @Test
-    void testCopyy() {
+    void testCopy() {
 
         MockUnit a = new MockUnit()
 

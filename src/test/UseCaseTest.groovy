@@ -8,6 +8,7 @@ import resources.common.Tile
 import resources.popHub.HubProduction
 import resources.popHub.PopHub
 import resources.popUnit.Farmer
+import resources.popUnit.PopUnit
 import resources.popUnit.State
 
 /**
@@ -40,6 +41,18 @@ class UseCaseTest {
     void testTurnAlgorithm() {
 
         // TODO Recalculate demand to hubs
+
+        /** Deal with popUnit-multiplication */
+        List<PopUnit> newPopUnits = []
+
+        gameData.popUnits.each { popUnit ->
+            def a = popUnit.multiply()
+            if(a)
+                newPopUnits.add(popUnit.multiply())
+        }
+
+        gameData.popUnits.addAll(newPopUnits)
+
 
         /** Deal with popUnits */
         gameData.popUnits.each { popUnit ->
