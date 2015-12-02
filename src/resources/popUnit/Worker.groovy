@@ -1,5 +1,6 @@
 package resources.popUnit
 
+import resources.common.Priority
 import resources.common.Product
 import traits.Consumes
 import traits.Preferres
@@ -13,8 +14,8 @@ class Worker extends PopUnit implements Consumes, Produces, Preferres {
     
     public Worker(){
         this.product = Product.WORK
-        this.productAmount = 1 /** Should be from a config file */ 
-        this.priority = 2
+        this.productAmount = 1 /** Should be from a config file */
+        this.priority = Priority.LOW
         this.state = new State()
     }
 }

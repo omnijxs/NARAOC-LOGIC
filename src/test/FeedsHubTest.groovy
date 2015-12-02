@@ -3,6 +3,7 @@ package test
 import game.GameData
 import org.junit.Before
 import org.junit.Test
+import resources.common.Priority
 import resources.popHub.City
 import resources.common.Tile
 import resources.popUnit.ArmyUnit
@@ -35,8 +36,8 @@ class FeedsHubTest {
         city.tile = cityTile
 
         armyInsideCity = new ArmyUnit()
-        nonArmyInsideCity = new Merchant(priority: 2)    // TODO A fancier way of doing te priority sort
-        nonArmyOutsideCity = new Farmer(priority: 2)    // TODO A fancier way of doing te priority sort
+        nonArmyInsideCity = new Merchant()
+        nonArmyOutsideCity = new Farmer()
 
         gameData.mapTiles = [cityTile, nonCityTile]
 

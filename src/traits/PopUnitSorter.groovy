@@ -15,7 +15,7 @@ trait PopUnitSorter {
      * @return Sorted list of popUnits
      */
     List<PopUnit> defaultSort(List<PopUnit> popUnits){
-        return popUnits.sort {a, b -> a.priority <=> b.priority ?: -a.age <=> -b.age }
+        return popUnits.sort {a, b -> a.priority.value <=> b.priority.value ?: -a.age <=> -b.age }
         /** First sort by priority in ascending order. If they are equal the spaceship evaluates to zero which
          *  Groovy thinks is null and then sort by age in descending order */
     }

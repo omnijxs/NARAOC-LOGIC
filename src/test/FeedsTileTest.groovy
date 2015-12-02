@@ -3,6 +3,7 @@ package test
 import game.GameData
 import org.junit.Before
 import org.junit.Test
+import resources.common.Priority
 import resources.popUnit.ArmyUnit
 import resources.popUnit.PopUnit
 import resources.common.Tile
@@ -36,7 +37,7 @@ class FeedsTileTest {
         emptyTile = new Tile()
         filledTile = new Tile()
         army = new ArmyUnit()
-        feeder = new TileFeeder(priority: 2)            // TODO A fancier way of doing te priority sort
+        feeder = new TileFeeder(priority: Priority.LOW)            // TODO A fancier way of doing te priority sort
 
         gameData.mapTiles = [emptyTile, filledTile]
 

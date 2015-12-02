@@ -1,5 +1,6 @@
 package resources.popUnit
 
+import resources.common.Priority
 import traits.Consumes
 import traits.IsOwned
 
@@ -11,7 +12,7 @@ import traits.IsOwned
 class ArmyUnit extends PopUnit implements Consumes, IsOwned {
 
     public ArmyUnit(){
-        this.priority = 0
+        this.priority = Priority.HIGH
         this.state = new State()
     }
 

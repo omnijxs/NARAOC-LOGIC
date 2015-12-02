@@ -1,5 +1,6 @@
 package resources.popUnit
 
+import resources.common.Priority
 import traits.Consumes
 import traits.IsOwned
 
@@ -10,7 +11,7 @@ import traits.IsOwned
 class MagicUnit extends PopUnit implements Consumes, IsOwned {
 
     public MagicUnit(){
-        this.priority = 1
+        this.priority = Priority.MEDIUM
         this.state = new State()
     }
 }

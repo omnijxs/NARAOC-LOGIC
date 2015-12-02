@@ -1,5 +1,6 @@
 package resources.popUnit
 
+import resources.common.Priority
 import resources.common.Product
 import game.GameData
 import traits.Consumes
@@ -15,7 +16,7 @@ class Farmer extends PopUnit implements Consumes, Produces, Preferres, FeedsTile
     public Farmer(){
         this.product = Product.FOOD
         this.productAmount = 2 /** Should be from a config file */ 
-        this.priority = 2
+        this.priority = Priority.LOW
         this.state = new State()
     }
     
