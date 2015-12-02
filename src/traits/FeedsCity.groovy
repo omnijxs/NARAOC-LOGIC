@@ -5,18 +5,15 @@ import game.GameData
 /**
  * Created by Juri on 22.10.2015.
  */
-trait FeedsCity implements PopUnitSorter, Feeds {
+trait FeedsCity implements PopUnitSorter, PopUnitFinder, Feeds {
 
     Integer feedCity(GameData gd, Integer foodAmount){
 
-        /** Get all popUnits on the city tile  */
-        def popUnitsOnCity = gd.popUnits.findAll { it.tile == tile }
-        
-        /** Get all popUnits producing for the city */
-        def popUnitsOffCity = gd.popUnits.findAll { it.preferredHub == this && it.tile != tile }
+        /** Assumes this is an implementation of a popHub */
+        def popUnits = popHubPopulationStarving(gd, this)
 
         /** Sort by Pop Unit type, production value and age */
-        def sortedPopUnits = productionSort(popUnitsOnCity + popUnitsOffCity)
+        def sortedPopUnits = productionSort(popUnits)
         
         return feed(sortedPopUnits, foodAmount)
 
