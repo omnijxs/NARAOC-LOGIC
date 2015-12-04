@@ -30,3 +30,6 @@ DESIGN:
 [D] Use productAmount value everywhere instead of hardcoded value. 30.11.2015
 [D] PopUnit-class has a state which holds all relevant information such as Race, Obedience, Age etc. 20.11.2015
 [D] A better way to deal with PopUnit priority. -> Priority ENUM!
+
+
+git log --pretty=format:"%cr - %an: %s"
