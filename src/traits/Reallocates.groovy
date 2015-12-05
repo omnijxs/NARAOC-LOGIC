@@ -5,7 +5,13 @@ package traits
  */
 trait Reallocates {    
   
-    def reallocate(){
+    /** Is Reallocate a trait for hub or unit???!!! */
+    def reallocate(GameData gd, UserInput input, PopUnit popUnit, PopHub popHub){
+        
+        popUnit
+        
+        input.popUnitClass
+        input.popUnitType /** For armyUnit and magicUnit type identification */
         
         /** Deal with obedience */
         
