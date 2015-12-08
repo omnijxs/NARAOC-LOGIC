@@ -38,7 +38,7 @@ class MultipliesTest {
 
         MockUnit a = new MockUnit()
 
-        a.multiplicationRate = 100
+        a.state.race.multiplicationRate = 100
 
         assert a.multiply().class == MockUnit
 
@@ -49,7 +49,7 @@ class MultipliesTest {
 
         MockUnit a = new MockUnit()
 
-        a.multiplicationRate = 0
+        a.state.race.multiplicationRate = 0
 
         assert !a.multiply()
 

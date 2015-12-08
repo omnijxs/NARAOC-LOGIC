@@ -19,7 +19,6 @@ import resources.popUnit.Worker
 class PreferresTest {
 
     protected GameData gameData
-    protected PopHub city
 
     @Before
     void setUp() {
