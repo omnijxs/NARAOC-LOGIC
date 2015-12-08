@@ -31,13 +31,32 @@ class ReallocatesTest {
     @Test
     void testReallocate() {
 
-        MockUnit a = new MockUnit()
+        MockUnit original = new MockUnit()
 
         gameInput.popUnitClass = "resources.popUnit.Farmer"         /** Not optimal to test de facto classes but unable to load mockClass inside testClass */
 
-        def reallocated = a.reallocate(gameInput)
+        def reallocated = original.reallocate(gameInput)
 
         assert reallocated.class == Farmer
+
+    }
+
+    @Test
+    void testManipulateGameData() {
+
+        MockUnit original = new MockUnit()
+
+        gameInput.popUnitClass = "resources.popUnit.Merchant"
+
+        def reallocated = original.reallocate(gameInput)
+
+        gameData.popUnits = [original, reallocated]
+
+        GameData mutatedGameData = original.manipulateGameData(gameData)
+
+        assert mutatedGameData.popUnits.size() == 1
+        assert mutatedGameData.popUnits.contains(reallocated)
+        assert !mutatedGameData.popUnits.contains(original)
 
     }
 }

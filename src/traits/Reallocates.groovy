@@ -53,6 +53,9 @@ trait Reallocates {
     /** Put into correct place after architectural and data flow decisions */
     GameData manipulateGameData(GameData gd){
 
+        gd.popUnits.remove(this)
+
+        return gd
     }
 
 }
