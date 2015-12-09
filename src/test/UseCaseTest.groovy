@@ -6,7 +6,7 @@ import org.junit.Test
 import resources.common.Race
 import resources.popHub.City
 import resources.common.Tile
-import resources.popHub.HubProduction
+import resources.popHub.PopHubOutput
 import resources.popHub.PopHub
 import resources.popUnit.Farmer
 import resources.popUnit.PopUnit
@@ -17,7 +17,7 @@ import resources.popUnit.State
  */
 class UseCaseTest {
 
-    protected Map<PopHub, HubProduction> turnProduction     // TODO RENAME
+    protected Map<PopHub, PopHubOut> turnData     // TODO RENAME
     protected GameData gameData
     protected PopHub city
     protected Tile cityTile
@@ -34,7 +34,7 @@ class UseCaseTest {
 
         gameData.popUnits = [new Farmer(state: new State(tile: cityTile, race: new Race()))]
 
-        turnProduction = [:]
+        turnData = [:]
 
     }
 
@@ -70,9 +70,9 @@ class UseCaseTest {
         gameData.popHubs.each { popHub ->
 
             /** Calculate bonuses, deal with buildings etc. */
-            HubProduction hubProduction = popHub.refine(gameData)
+            PopHubOutput popHubOutput = popHub.refine(gameData)
 
-            turnProduction.put(popHub, hubProduction)
+            turnData.put(popHub, popHubOutput)
        }
 
         /** Deal with gameActors */

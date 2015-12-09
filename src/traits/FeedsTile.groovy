@@ -8,6 +8,9 @@ import resources.popUnit.ArmyUnit
  */
 trait FeedsTile implements PopUnitSorter, Feeds {
 
+    /** Assumptions: I am implemented by an object which has the property Tile.
+      * I need it to find the PopUnits to feed. */
+    
     Integer feedTile(GameData gd, Integer foodAmount){
 
         /** Feed all armies on the tile and yourself */

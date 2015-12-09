@@ -7,6 +7,9 @@ import game.GameData
  */
 trait FeedsHub implements PopUnitSorter, PopUnitFinder, Feeds {
 
+    /** Assumptions: I am implemented by an object which implements PopHub-interface.
+      * I need it to find the PopUnits to feed. */
+    
     Integer feedHub(GameData gd, Integer foodAmount){
 
         /** Assumes this is an implementation of a popHub */

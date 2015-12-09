@@ -5,6 +5,9 @@ package traits
  */
 trait Multiplies implements Probability {
 
+    /** Assumptions: I am implemented by an object which implements PopUnit-interface.
+      * I need it to for the state property which tells my probabilities to multiply. */
+    
     def multiply(){
 
         // TODO work with syntax!

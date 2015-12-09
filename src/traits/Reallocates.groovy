@@ -8,6 +8,9 @@ import resources.popUnit.PopUnit
  */
 trait Reallocates {
 
+    /** Assumptions: I am implemented by an object which implements PopHub-interface.
+      * I need it to remove myself from popUnits-list. */
+    
     /** gameInput.reallocator   /** Who reallocated me? Usually a popHub. Needed for tile info and possible bonuses. */
     /** gameInput.popUnitClass  /** The class of the new PopUnit */
     /** gameInput.popUnitType   /** For armyUnit and magicUnit type identification */
@@ -31,7 +34,6 @@ trait Reallocates {
      * @param gameInput
      * @return
      */
-
     PopUnit reallocate(def gameInput){
 
         GroovyClassLoader c = new GroovyClassLoader()

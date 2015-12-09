@@ -8,6 +8,9 @@ import resources.popHub.PopHub
  */
 trait Preferres {
 
+    /** Assumptions: I am implemented by an object which has the property Tile.
+      * I need it calculate distances. */
+    
     PopHub preferredHub = null
 
     void resolvepreferredHub(GameData gd){
