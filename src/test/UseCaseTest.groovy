@@ -38,12 +38,8 @@ class UseCaseTest {
 
     }
 
-    @Test
-    void testTurnAlgorithm() {
+    static protected GameData popUnitsMultiply(GameData gameData){
 
-        // TODO Recalculate demand to hubs
-
-        /** Deal with popUnit-multiplication */
         List<PopUnit> newPopUnits = []
 
         gameData.popUnits.each { popUnit ->
@@ -54,28 +50,48 @@ class UseCaseTest {
 
         gameData.popUnits.addAll(newPopUnits)
 
+        return gameData
+    }
 
-        /** Deal with popUnits */
+    static protected GameData popUnitsProduce(GameData gameData){
         gameData.popUnits.each { popUnit ->
-
             popUnit.resolvepreferredHub(gameData)
 
             /** TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
-            Also set the production “flags” up to their popUnits */
+             Also set the production “flags” up to their popUnits */
             popUnit.produce(gameData)
-
         }
 
-        /** Deal with popHubs */
+        return gameData
+    }
+
+    protected GameData popHubsRefine(GameData gameData){
         gameData.popHubs.each { popHub ->
 
             /** Calculate bonuses, deal with buildings etc. */
             PopHubOutput popHubOutput = popHub.refine(gameData)
 
             turnData.put(popHub, popHubOutput)
-       }
+        }
 
-        /** Deal with gameActors */
+        return gameData
+    }
+
+    @Test
+    void testTurnAlgorithm() {
+
+        // Missing: Recalculate Demand to PopHubs. Deal with PopUnit obedience.
+
+        /** 1. DEAL WITH POP UNIT MULTIPLICATION. */
+        gameData = popUnitsMultiply(gameData)
+
+        /** 2. DEAL WITH POP UNIT PRODUCTION */
+        gameData = popUnitsProduce(gameData)
+
+        /** 3. DEAL WITH POP HUB PRODUCTION */
+        gameData = popHubsRefine(gameData)
+
+        /** 4. DEAL WITH GAME ACTORS */
         gameData.gameActors.each { player ->
 
         }
