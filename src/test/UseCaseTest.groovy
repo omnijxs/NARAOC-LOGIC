@@ -12,6 +12,7 @@ import resources.popHub.PopHub
 import resources.popUnit.Farmer
 import resources.popUnit.PopUnit
 import resources.popUnit.State
+import resources.popUnit.Worker
 
 /**
  * Created by Juri on 16.11.2015.
@@ -21,6 +22,8 @@ class UseCaseTest {
     protected Map<PopHub, PopHubOutput> turnData     // TODO RENAME
     protected GameData gameData
     protected PopHub city
+    protected PopUnit farmer
+    protected PopUnit worker
     protected Tile cityTile
 
     @Before
@@ -33,7 +36,9 @@ class UseCaseTest {
 
         gameData.popHubs = [city]
 
-        gameData.popUnits = [new Farmer(state: new State(tile: cityTile, race: new Race()))]
+        farmer = new Farmer(state: new State(tile: cityTile, race: new Race()))
+        worker = new Worker(state: new State(tile: cityTile, race: new Race()))
+        gameData.popUnits = [farmer, worker]
 
         turnData = [:]
 

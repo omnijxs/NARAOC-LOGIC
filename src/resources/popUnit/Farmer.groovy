@@ -23,7 +23,7 @@ class Farmer extends PopUnit implements Consumes, Produces, Preferres, Multiplie
     
     @Override
     Integer produce(GameData gd){
-        return feedTile(gd, productAmount)
+        harvestAmount = feedTile(gd, productAmount)
     }
 
 }
