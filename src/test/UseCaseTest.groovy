@@ -10,6 +10,7 @@ import resources.common.Tile
 import resources.popHub.PopHubOutput
 import resources.popHub.PopHub
 import resources.popUnit.Farmer
+import resources.popUnit.Merchant
 import resources.popUnit.PopUnit
 import resources.popUnit.State
 import resources.popUnit.Worker
@@ -24,6 +25,7 @@ class UseCaseTest {
     protected PopHub city
     protected PopUnit farmer
     protected PopUnit worker
+    protected PopUnit merchant
     protected Tile cityTile
 
     @Before
@@ -38,7 +40,9 @@ class UseCaseTest {
 
         farmer = new Farmer(state: new State(tile: cityTile, race: new Race()))
         worker = new Worker(state: new State(tile: cityTile, race: new Race()))
-        gameData.popUnits = [farmer, worker]
+        merchant = new Merchant(state: new State(tile: cityTile, race: new Race()))
+
+        gameData.popUnits = [farmer, worker, merchant]
 
         turnData = [:]
 
@@ -78,7 +82,7 @@ class UseCaseTest {
             PopHubOutput output = popHub.refine(gameData)
 
             /** Feed the hub population and calculate the surplus food. */
-            output.surplusFood = popHub.feedCity(gameData, output.foodProduction)
+            output.surplusFood = popHub.feedHub(gameData, output.foodProduction)
 
             turnData.put(popHub, output)
         }
