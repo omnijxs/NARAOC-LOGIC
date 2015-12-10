@@ -17,7 +17,7 @@ import resources.popUnit.State
  */
 class UseCaseTest {
 
-    protected Map<PopHub, PopHubOut> turnData     // TODO RENAME
+    protected Map<PopHub, PopHubOutput> turnData     // TODO RENAME
     protected GameData gameData
     protected PopHub city
     protected Tile cityTile
