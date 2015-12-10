@@ -2,6 +2,7 @@ package traits
 
 import game.GameData
 import resources.common.Building
+import resources.common.Product
 import resources.popHub.PopHubOutput
 
 /**
@@ -21,17 +22,19 @@ trait Refines implements PopUnitFinder {
         /** Get all my popUnits. */
         def population = popHubPopulation(gd, this)
 
+        /** Split them according to their product */
+        def foodProducers = population.findAll { it.product == Product.FOOD }
+        def workProducers = population.findAll { it.product == Product.WORK }
+        def tradeProducers = population.findAll { it.product == Product.TRADE }
+
         /** Harvest their production. */
-        population.each { popUnit ->
-
-            // TODO the best way to identify different production types?
-
-        }
+        foodProducers.each { output.foodProduction += it.harvest() }
+        workProducers.each { output.workProduction += it.harvest() }
+        tradeProducers.each { output.tradeProduction += it.harvest() }
 
         /** Run through buildings. */
 
         output
-
 
     }
 
