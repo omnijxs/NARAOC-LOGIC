@@ -1,5 +1,7 @@
 
 NEW FEATURES:
+[W] Basic implementation for PopHub refining production. 10.12.2015
+
 [ ] CONFIGURATION: Use external configuration info for: BasicInfo, Race, ArmyUnitType, MagicUnitType, Perk, Building
 [ ] OBEDIENCE
 [ ] BUILDINGS
