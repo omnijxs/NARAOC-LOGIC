@@ -3,6 +3,7 @@ package test
 import game.GameData
 import org.junit.Before
 import org.junit.Test
+import resources.common.Buildings
 import resources.common.Race
 import resources.popHub.City
 import resources.common.Tile
@@ -28,7 +29,7 @@ class UseCaseTest {
 
         cityTile = new Tile(x: 1, y: 1)
 
-        city = new City(tile: cityTile)
+        city = new City(tile: cityTile, buildings: new Buildings())
 
         gameData.popHubs = [city]
 
@@ -38,7 +39,7 @@ class UseCaseTest {
 
     }
 
-    static protected GameData popUnitsMultiply(GameData gameData){
+    protected GameData popUnitsMultiply(GameData gameData){
 
         List<PopUnit> newPopUnits = []
 
@@ -53,7 +54,7 @@ class UseCaseTest {
         return gameData
     }
 
-    static protected GameData popUnitsProduce(GameData gameData){
+    protected GameData popUnitsProduce(GameData gameData){
         gameData.popUnits.each { popUnit ->
             popUnit.resolvepreferredHub(gameData)
 
@@ -69,9 +70,12 @@ class UseCaseTest {
         gameData.popHubs.each { popHub ->
 
             /** Calculate bonuses, deal with buildings etc. */
-            PopHubOutput popHubOutput = popHub.refine(gameData)
+            PopHubOutput output = popHub.refine(gameData)
 
-            turnData.put(popHub, popHubOutput)
+            /** Feed the hub population and calculate the surplus food. */
+            output.surplusFood = popHub.feedCity(gameData, output.foodProduction)
+
+            turnData.put(popHub, output)
         }
 
         return gameData

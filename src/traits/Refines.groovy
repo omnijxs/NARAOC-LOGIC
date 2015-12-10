@@ -1,7 +1,6 @@
 package traits
 
 import game.GameData
-import resources.common.Building
 import resources.common.Product
 import resources.popHub.PopHubOutput
 
@@ -12,8 +11,6 @@ trait Refines implements PopUnitFinder {
 
     /** Assumptions: I am implemented by an object which implements PopHub-interface.
      * I need it for access to buildings. And for my population. */
-
-    List<Building> buildings
 
     PopHubOutput refine(GameData gd){
 
@@ -27,15 +24,20 @@ trait Refines implements PopUnitFinder {
         def workProducers = population.findAll { it.product == Product.WORK }
         def tradeProducers = population.findAll { it.product == Product.TRADE }
 
-        /** Harvest their production. */
-        foodProducers.each { output.foodProduction += it.harvest() }
-        workProducers.each { output.workProduction += it.harvest() }
-        tradeProducers.each { output.tradeProduction += it.harvest() }
+        /** Harvest their production and get possible bonuses from buildings. */
+        foodProducers.each {
+            output.foodProduction += buildings.resolveFoodBonus(it.harvest())
+        }
 
-        /** Run through buildings. */
+        workProducers.each {
+            output.workProduction += buildings.resolveWorkBonus(it.harvest())
+        }
+
+        tradeProducers.each {
+            output.tradeProduction += buildings.resolveTradeBonus(it.harvest())
+        }
 
         output
-
     }
 
 }

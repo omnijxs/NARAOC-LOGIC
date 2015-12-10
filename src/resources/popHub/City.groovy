@@ -1,5 +1,6 @@
 package resources.popHub
 
+import resources.common.Buildings
 import resources.common.Tile
 import traits.FeedsHub
 import traits.Demands
@@ -11,6 +12,7 @@ import traits.Refines
  */
 class City extends PopHub implements Demands, Refines, IsOwned, FeedsHub {
 
+    Buildings buildings
     Tile tile
 
 }
