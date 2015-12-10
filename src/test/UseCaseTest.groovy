@@ -36,6 +36,7 @@ class UseCaseTest {
 
         city = new City(tile: cityTile, buildings: new Buildings())
 
+        gameData.turnData = new Stack<>()
         gameData.popHubs = [city]
 
         farmer = new Farmer(state: new State(tile: cityTile, race: new Race()))
@@ -87,13 +88,15 @@ class UseCaseTest {
             turnData.put(popHub, output)
         }
 
+        gameData.turnData.push(turnData)
+
         return gameData
     }
 
     @Test
     void testTurnAlgorithm() {
 
-        // Missing: Recalculate Demand to PopHubs. Deal with PopUnit obedience.
+        // Missing: Recalculate Demand to PopHubs. Deal with PopUnit obedience. Taxation.
 
         /** 1. DEAL WITH POP UNIT MULTIPLICATION. */
         gameData = popUnitsMultiply(gameData)
@@ -106,6 +109,16 @@ class UseCaseTest {
 
         /** 4. DEAL WITH GAME ACTORS */
         gameData.gameActors.each { player ->
+
+            /** Calculate total surplus food */
+            // Integer foodForArmies
+
+            /** Feed your roaming armies...*/
+            // Integer surplusFood = player.feedArmy(gameData, foodForArmies)
+
+            /** Deal with taxation */
+
+
 
         }
 

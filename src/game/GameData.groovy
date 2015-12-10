@@ -17,4 +17,6 @@ class GameData {
     List<GameActor> gameActors
     List<Tile> mapTiles
 
+    Stack turnData
+
 }

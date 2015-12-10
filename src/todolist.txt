@@ -1,16 +1,16 @@
 
 NEW FEATURES:
-[W] Basic implementation for PopHub refining production. 10.12.2015
-
 [ ] CONFIGURATION: Use external configuration info for: BasicInfo, Race, ArmyUnitType, MagicUnitType, Perk, Building
 [ ] OBEDIENCE
 [ ] BUILDINGS
 [ ] ARMYUNIT
 [ ] MAGICUNIT
+[ ] TAXATION
 
 NOTE: Race by itself does not do anything - only properties. So thats why it is not on the New Feature list.
 
 IMPROVEMENTS:
+[ ] Create Interface-methods to PopUnits and PopHubs to increase visibility? Problem with traits vs interface...
 [ ] TURNALGORITHM: Make the test case relevant. 
 [ ] DATAFLOW: Access to GameData via Trait? Make a proto!
 [ ] MULTIPLICATION: copy correct properties and resolve tile of the new PopUnit.
@@ -31,6 +31,7 @@ DESIGN:
 
 ---
 
+[D] Interface implementation for PopHub refining production. 10.12.2015
 [D] PopUnit reallocation. Create new and remove old. 8.12.2015
 [D] PopUnit multiplication. Very basic implementation. 02.12.2015
 [D] A better way to deal with PopUnit priority. -> Priority ENUM!
