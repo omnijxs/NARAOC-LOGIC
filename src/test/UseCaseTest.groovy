@@ -46,57 +46,76 @@ class UseCaseTest {
 
     }
 
-    protected GameData popUnitsMultiply(GameData gameData){
+    // TODO TESTS
+    protected GameData popUnitsMultiply(GameData gd){
 
         List<PopUnit> newPopUnits = []
 
-        gameData.popUnits.each { popUnit ->
+        gd.popUnits.each { popUnit ->
             def a = popUnit.multiply()
             if(a)
                 newPopUnits.add(popUnit.multiply())
         }
 
-        gameData.popUnits.addAll(newPopUnits)
+        gd.popUnits.addAll(newPopUnits)
 
-        return gameData
+        return gd
     }
 
-    protected GameData popUnitsProduce(GameData gameData){
-        gameData.popUnits.each { popUnit ->
-            popUnit.resolvepreferredHub(gameData)
+    // TODO TESTS
+    protected GameData popUnitsProduce(GameData gd){
+        gd.popUnits.each { popUnit ->
+            popUnit.resolvepreferredHub(gd)
 
             /** TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
              Also set the production “flags” up to their popUnits */
-            popUnit.produce(gameData)
+            popUnit.produce(gd)
         }
 
-        return gameData
+        return gd
     }
 
-    protected GameData popHubsRefine(GameData gameData){
+    // TODO TESTS
+    protected GameData popHubsRefine(GameData gd){
 
         Map<PopHub, PopHubOutput> data = [:]
 
-        gameData.popHubs.each { popHub ->
+        gd.popHubs.each { popHub ->
 
             /** Calculate bonuses, deal with buildings etc. */
-            PopHubOutput output = popHub.refine(gameData)
+            PopHubOutput output = popHub.refine(gd)
 
             /** Feed the hub population and calculate the surplus food. */
-            output.surplusFood = popHub.feedHub(gameData, output.foodProduction)
+            output.surplusFood = popHub.feedHub(gd, output.foodProduction)
 
             data.put(popHub, output)
         }
 
-        gameData.turnData.push(data)
+        gd.turnData.push(data)
 
-        return gameData
+        return gd
+    }
+
+    // TODO TESTS
+    protected GameData gameActorsSetup(GameData gd){
+        gd.gameActors.each { player ->
+
+            /** Calculate total surplus food */
+            // Integer foodForArmies
+
+            /** Feed your roaming armies...*/
+            // Integer surplusFood = player.feedArmy(gameData, foodForArmies)
+
+            /** Deal with taxation */
+        }
+
+        return gd
     }
 
     @Test
     void testTurnAlgorithm() {
 
-        // Missing: Recalculate Demand to PopHubs. Deal with PopUnit obedience. Taxation.
+        // Missing: Recalculate Demand to PopHubs. Deal with PopUnit obedience. Taxation. Set all PopUnits to starving.
 
         /** 1. DEAL WITH POP UNIT MULTIPLICATION. */
         gameData = popUnitsMultiply(gameData)
@@ -108,22 +127,9 @@ class UseCaseTest {
         gameData = popHubsRefine(gameData)
 
         /** 4. DEAL WITH GAME ACTORS */
-        gameData.gameActors.each { player ->
+        gameData = gameActorsSetup(gameData)
 
-            /** Calculate total surplus food */
-            // Integer foodForArmies
-
-            /** Feed your roaming armies...*/
-            // Integer surplusFood = player.feedArmy(gameData, foodForArmies)
-
-            /** Deal with taxation */
-
-
-
-        }
-
-
-
+        /** 5. TURN-BASED ACTIONS... */
 
     }
 }

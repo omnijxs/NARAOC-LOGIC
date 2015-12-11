@@ -1,4 +1,6 @@
 
+[W] TURNALGORITHM: Make the test case relevant. 11.12.2015
+
 NEW FEATURES:
 [ ] CONFIGURATION: Use external configuration info for: BasicInfo, Race, ArmyUnitType, MagicUnitType, Perk, Building
 [ ] OBEDIENCE
@@ -11,7 +13,6 @@ NOTE: Race by itself does not do anything - only properties. So thats why it is 
 
 IMPROVEMENTS:
 [ ] Create Interface-methods to PopUnits and PopHubs to increase visibility? Problem with traits vs interface...
-[ ] TURNALGORITHM: Make the test case relevant. 
 [ ] DATAFLOW: Access to GameData via Trait? Make a proto!
 [ ] MULTIPLICATION: copy correct properties and resolve tile of the new PopUnit.
 [ ] REALLOCATION: Deal with popUnit state: obedience penalties and tile calculation.
