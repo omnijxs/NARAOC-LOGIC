@@ -3,6 +3,7 @@ package game
 import resources.common.Tile
 import resources.gameActor.GameActor
 import resources.popHub.PopHub
+import resources.popHub.PopHubOutput
 import resources.popUnit.PopUnit
 
 /**
@@ -17,6 +18,6 @@ class GameData {
     List<GameActor> gameActors
     List<Tile> mapTiles
 
-    Stack turnData
+    List<Map<PopHub, PopHubOutput>> turnData
 
 }

@@ -20,7 +20,6 @@ import resources.popUnit.Worker
  */
 class UseCaseTest {
 
-    protected Map<PopHub, PopHubOutput> turnData     // TODO RENAME
     protected GameData gameData
     protected PopHub city
     protected PopUnit farmer
@@ -36,7 +35,7 @@ class UseCaseTest {
 
         city = new City(tile: cityTile, buildings: new Buildings())
 
-        gameData.turnData = new Stack<>()
+        gameData.turnData = []
         gameData.popHubs = [city]
 
         farmer = new Farmer(state: new State(tile: cityTile, race: new Race()))
@@ -44,8 +43,6 @@ class UseCaseTest {
         merchant = new Merchant(state: new State(tile: cityTile, race: new Race()))
 
         gameData.popUnits = [farmer, worker, merchant]
-
-        turnData = [:]
 
     }
 
@@ -77,6 +74,9 @@ class UseCaseTest {
     }
 
     protected GameData popHubsRefine(GameData gameData){
+
+        Map<PopHub, PopHubOutput> data = [:]
+
         gameData.popHubs.each { popHub ->
 
             /** Calculate bonuses, deal with buildings etc. */
@@ -85,10 +85,10 @@ class UseCaseTest {
             /** Feed the hub population and calculate the surplus food. */
             output.surplusFood = popHub.feedHub(gameData, output.foodProduction)
 
-            turnData.put(popHub, output)
+            data.put(popHub, output)
         }
 
-        gameData.turnData.push(turnData)
+        gameData.turnData.push(data)
 
         return gameData
     }
