@@ -1,4 +1,5 @@
 
+[ ] Finish gameActorsSetup method for armyFeeding.
 [W] TURNALGORITHM: Make the test case relevant. 11.12.2015
 
 NEW FEATURES:

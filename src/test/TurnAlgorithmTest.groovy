@@ -5,6 +5,7 @@ import org.junit.Before
 import org.junit.Test
 import resources.common.Buildings
 import resources.common.Race
+import resources.gameActor.GameActor
 import resources.popHub.City
 import resources.common.Tile
 import resources.popHub.PopHubOutput
@@ -18,7 +19,7 @@ import resources.popUnit.Worker
 /**
  * Created by Juri on 16.11.2015.
  */
-class UseCaseTest {
+class TurnAlgorithmTest {
 
     protected GameData gameData
     protected PopHub city
@@ -46,6 +47,30 @@ class UseCaseTest {
 
     }
 
+
+    @Test
+    void testTurnAlgorithm() {
+
+        /** 1. DEAL WITH POP UNIT MULTIPLICATION. */
+        gameData = popUnitsMultiply(gameData)           /** gameData.popUnits = ...*/
+
+        /** 2. DEAL WITH POP UNIT PRODUCTION */
+        gameData = popUnitsProduce(gameData)            /** gameData.popUnits = ...*/
+
+        /** 3. DEAL WITH POP HUB PRODUCTION */
+        gameData = popHubsRefine(gameData)
+
+        /** 4. DEAL WITH GAME ACTORS */
+        gameData = gameActorsSetup(gameData)
+
+        /** 5. TURN-BASED ACTIONS... */
+        gameData = gameActorInput(gameData)
+
+        /** 6. PREPARE GAME DATA FOR THE NEXT TURN */
+        gameData = postProcess(gameData)
+
+    }
+
     // TODO TESTS
     protected GameData popUnitsMultiply(GameData gd){
 
@@ -65,10 +90,12 @@ class UseCaseTest {
     // TODO TESTS
     protected GameData popUnitsProduce(GameData gd){
         gd.popUnits.each { popUnit ->
+
+            /** All pop units calculate to which city they will produce to. */
             popUnit.resolvepreferredHub(gd)
 
-            /** TileFeeding popUnits feed their tiles and set the surplus as their this turns production.
-             Also set the production “flags” up to their popUnits */
+            /** Set production flags up in all popUnits.
+             * TileFeeding popUnits feed their tiles and set the surplus as their this turns production. */
             popUnit.produce(gd)
         }
 
@@ -112,24 +139,37 @@ class UseCaseTest {
         return gd
     }
 
-    @Test
-    void testTurnAlgorithm() {
+    protected GameData gameActorInput(GameData gd){
+        gd.gameActors.each { player ->
+            gd = yieldControl(gd, player)
+        }
 
-        // Missing: Recalculate Demand to PopHubs. Deal with PopUnit obedience. Taxation. Set all PopUnits to starving.
+        return gd
+    }
 
-        /** 1. DEAL WITH POP UNIT MULTIPLICATION. */
-        gameData = popUnitsMultiply(gameData)
+    protected GameData yieldControl(GameData gd, GameActor a){
+            /** The actual player/AI input */
+    }
 
-        /** 2. DEAL WITH POP UNIT PRODUCTION */
-        gameData = popUnitsProduce(gameData)
+    protected GameData postProcess(GameData gd){
 
-        /** 3. DEAL WITH POP HUB PRODUCTION */
-        gameData = popHubsRefine(gameData)
+        /** Calculate demand for pop hubs */
+        gd.popHubs.each { popHub ->
+            popHub.setDemand(gd)
+        }
 
-        /** 4. DEAL WITH GAME ACTORS */
-        gameData = gameActorsSetup(gameData)
+        /** Deal with pop unit obedience. Note that this MUST be before we set them to starving. */
+        gd.popUnits.each { popUnit ->
+            popUnit.dealWithObedience()
+        }
 
-        /** 5. TURN-BASED ACTIONS... */
+        /** Set all PopUnits to starving for next turn. Could be done in pre-process. */
+        gd.popUnits.each { popUnit ->
+            popUnit.starving = true
+        }
+
+        return gd
 
     }
+
 }
