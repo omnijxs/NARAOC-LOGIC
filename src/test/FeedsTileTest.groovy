@@ -32,12 +32,12 @@ class FeedsTileTest {
 
     @Before
     void setUp(){
-        gameData = new GameData()                       // TODO RETHINK THIS SHIT
+        gameData = new GameData()
 
         emptyTile = new Tile()
         filledTile = new Tile()
         army = new ArmyUnit()
-        feeder = new TileFeeder(priority: Priority.LOW)            // TODO A fancier way of doing te priority sort
+        feeder = new TileFeeder(priority: Priority.LOW)
 
         gameData.mapTiles = [emptyTile, filledTile]
 
@@ -46,18 +46,18 @@ class FeedsTileTest {
     }
 
     @Test
-    void testFeedArmyUnit() {
+    void testFeedSelfAndFriend() {
 
         army.tile = filledTile
         feeder.tile = filledTile
 
-        assert feeder.feedTile(gameData, 2) == 0            // TODO use productAmount
+        assert feeder.feedTile(gameData, 2) == 0
         assert !feeder.starving
         assert !army.starving
     }
 
     @Test
-    void testFeedSelf() {
+    void testFeedSelfNoOneElseToFeed() {
 
         army.tile = emptyTile
         feeder.tile = filledTile
@@ -67,19 +67,6 @@ class FeedsTileTest {
         assert army.starving
     }
 
-    @Test
-    void testDontFeedNonArmyUnits() {
-
-        extra = new TileFeeder()
-        gameData.popUnits.add(extra)
-        
-        feeder.tile = filledTile
-        extra.tile = filledTile
-
-        assert feeder.feedTile(gameData, 2) == 1
-        assert !feeder.starving
-        assert extra.starving
-    }
 
     @Test
     void testFeedArmyUnitsBeforeSelf() {
@@ -96,6 +83,19 @@ class FeedsTileTest {
         assert feeder.starving
         assert !army.starving
         assert !extra.starving
+    }
+
+    @Test
+    void testDoNotFeedNonStarving() {
+
+        army.tile = filledTile
+        feeder.tile = filledTile
+
+        army.starving = false
+
+        assert feeder.feedTile(gameData, 2) == 1
+        assert !feeder.starving
+        assert !army.starving
     }
 
 }
