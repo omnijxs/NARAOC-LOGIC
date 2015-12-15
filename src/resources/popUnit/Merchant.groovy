@@ -11,7 +11,10 @@ import traits.Produces
  * Created by Juri on 26.10.2015.
  */
 
-class Merchant extends PopUnit implements Consumes, Produces, Multiplies, Preferres {
+class Merchant extends PopUnit implements Consumes, 
+                                          Produces, 
+                                          Multiplies, 
+                                          Preferres {
     
     public Merchant(){
         this.product = Product.TRADE

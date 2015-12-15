@@ -8,7 +8,8 @@ import traits.IsOwned
  * Created by Juri on 06.11.2015.
  */
 
-class MagicUnit extends PopUnit implements Consumes, IsOwned {
+class MagicUnit extends PopUnit implements Consumes, 
+                                           IsOwned {
 
     public MagicUnit(){
         this.priority = Priority.MEDIUM

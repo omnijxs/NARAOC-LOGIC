@@ -12,7 +12,11 @@ import traits.Produces
 /**
  * Created by Juri on 21.10.2015.
  */
-class Farmer extends PopUnit implements Consumes, Produces, Preferres, Multiplies, FeedsTile  {
+class Farmer extends PopUnit implements Consumes, 
+                                        Produces, 
+                                        Preferres, 
+                                        Multiplies, 
+                                        FeedsTile  {
     
     public Farmer(){
         this.product = Product.FOOD
