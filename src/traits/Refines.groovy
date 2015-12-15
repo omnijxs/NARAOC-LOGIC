@@ -9,6 +9,9 @@ import resources.popHub.PopHubOutput
  */
 trait Refines implements PopUnitFinder {
 
+    /** Not a very robust way to do this. */
+    List<PopHubOutput> turnData = []
+
     /** Assumptions: I am implemented by an object which implements PopHub-interface.
      * I need it for access to buildings. And for my population. */
 

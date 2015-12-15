@@ -6,6 +6,7 @@ import org.junit.Test
 import resources.common.Buildings
 import resources.common.Race
 import resources.gameActor.GameActor
+import resources.gameActor.Player
 import resources.popHub.City
 import resources.common.Tile
 import resources.popHub.PopHubOutput
@@ -23,6 +24,7 @@ class TurnAlgorithmTest {
 
     protected GameData gameData
     protected PopHub city
+    protected GameActor player
     protected PopUnit farmer
     protected PopUnit worker
     protected PopUnit merchant
@@ -32,12 +34,15 @@ class TurnAlgorithmTest {
     void setUp() {
         gameData = new GameData()
 
+        player = new Player()
+
         cityTile = new Tile(x: 1, y: 1)
 
-        city = new City(tile: cityTile, buildings: new Buildings())
+        city = new City(tile: cityTile, buildings: new Buildings(), owner: player)
 
         gameData.turnData = []
         gameData.popHubs = [city]
+        gameData.gameActors = [player]
 
         farmer = new Farmer(state: new State(tile: cityTile, race: new Race()))
         worker = new Worker(state: new State(tile: cityTile, race: new Race()))
@@ -67,7 +72,7 @@ class TurnAlgorithmTest {
         gameData = gameActorInput(gameData)
 
         /** 6. PREPARE GAME DATA FOR THE NEXT TURN */
-        gameData = postProcess(gameData)
+        // gameData = postProcess(gameData)
 
     }
 
@@ -105,8 +110,6 @@ class TurnAlgorithmTest {
     // TODO TESTS
     protected GameData popHubsRefine(GameData gd){
 
-        Map<PopHub, PopHubOutput> data = [:]
-
         gd.popHubs.each { popHub ->
 
             /** Calculate bonuses, deal with buildings etc. */
@@ -115,10 +118,9 @@ class TurnAlgorithmTest {
             /** Feed the hub population and calculate the surplus food. */
             output.surplusFood = popHub.feedHub(gd, output.foodProduction)
 
-            data.put(popHub, output)
+            /** */
+            popHub.turnData.add(output)
         }
-
-        gd.turnData.push(data)
 
         return gd
     }
@@ -127,13 +129,24 @@ class TurnAlgorithmTest {
     protected GameData gameActorsSetup(GameData gd){
         gd.gameActors.each { player ->
 
-            /** Calculate total surplus food */
-            // Integer foodForArmies
+            // TODO SEPARATE METHOD
+            /** Lets feed your roaming armies...*/
+            Integer foodForArmies = 0
 
-            /** Feed your roaming armies...*/
-            // Integer surplusFood = player.feedArmy(gameData, foodForArmies)
+            /** Find cities which produce for me... */
+            def obedientHubs = gd.popHubs.findAll { it.owner == player }
 
-            /** Deal with taxation */
+            /** Calculate total surplus food. */
+            obedientHubs.each { popHub ->
+               /** We now assume that list.add always adds to the end of list */
+               def turnData = popHub.turnData.last()
+
+               foodForArmies += turnData.surplusFood
+            }
+
+            Integer surplusFood = player.feedArmy(gameData, foodForArmies)
+
+            /** Deal with taxation in a separate method. Store the info the player. */
         }
 
         return gd

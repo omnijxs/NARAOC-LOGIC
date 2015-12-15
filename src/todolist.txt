@@ -1,6 +1,6 @@
 
-[ ] Finish gameActorsSetup method for armyFeeding.
-[W] TURNALGORITHM: Make the test case relevant. 11.12.2015
+[ ]: Store turn specific output in PopHub - not in gameData!
+[ ]: Add refinesTestCases!!!
 
 NEW FEATURES:
 [ ] CONFIGURATION: Use external configuration info for: BasicInfo, Race, ArmyUnitType, MagicUnitType, Perk, Building
