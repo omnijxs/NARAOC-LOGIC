@@ -8,7 +8,7 @@ import resources.popUnit.PopUnit
  */
 trait Reallocates {
 
-    /** Assumptions: I am implemented by an object which implements PopHub-interface.
+    /** Assumptions: I am implemented by an object which implements PopUnit-interface.
       * I need it to remove myself from popUnits-list. */
     
     /** gameInput.reallocator   /** Who reallocated me? Usually a popHub. Needed for tile info and possible bonuses. */

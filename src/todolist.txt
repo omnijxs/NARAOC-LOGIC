@@ -1,4 +1,5 @@
 
+[ ] FeedsTile & FeedsArmy - traits have slightly incorrect functionality. WHAT IS THE LEVEL TO CHECK WE DO NOT FEED NON STARVING UNITS!!!
 [W] TURNALGORITHM: Make the test case relevant. 11.12.2015
 
 NEW FEATURES:

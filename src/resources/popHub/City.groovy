@@ -10,7 +10,10 @@ import traits.Refines
 /**
  * Created by Juri on 21.10.2015.
  */
-class City extends PopHub implements Demands, Refines, IsOwned, FeedsHub {
+class City extends PopHub implements Demands, 
+                                     Refines, 
+                                     FeedsHub, 
+                                     IsOwned {
 
     Buildings buildings
     Tile tile

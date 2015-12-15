@@ -14,6 +14,7 @@ trait FeedsArmy implements PopUnitSorter, Feeds {
 
     Integer feedArmy(GameData gd, Integer foodAmount){
 
+        // TODO take out non-fed armyUnits which are in cities? 
         def armyUnitsToFeed = gd.popUnits.findAll { it.owner == this && it.starving && it.class == ArmyUnit }
 
         /** Sort by Pop Unit age. Perhaps some day also by distance. But how to calculate diestance? From what city? */

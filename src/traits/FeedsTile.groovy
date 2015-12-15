@@ -14,6 +14,7 @@ trait FeedsTile implements PopUnitSorter, Feeds {
     Integer feedTile(GameData gd, Integer foodAmount){
 
         /** Feed all armies on the tile and yourself */
+        // TODO find all popUnits on tile which are not starving!!! 
         def popUnitsOnTile = gd.popUnits.findAll {(it.class == ArmyUnit || it == this) && it.tile == tile }
             
         /** Sort by default priority. 1) Pop Unit class 2) Pop Unit age*/
