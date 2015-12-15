@@ -1,5 +1,4 @@
 
-[ ] FeedsTile & FeedsArmy - traits have slightly incorrect functionality. WHAT IS THE LEVEL TO CHECK WE DO NOT FEED NON STARVING UNITS!!!
 [W] TURNALGORITHM: Make the test case relevant. 11.12.2015
 
 NEW FEATURES:
@@ -33,6 +32,7 @@ DESIGN:
 
 ---
 
+[D] FeedsTile & FeedsArmy - traits have slightly incorrect functionality. WHAT IS THE LEVEL TO CHECK WE DO NOT FEED NON STARVING UNITS!!! 15.12.2015
 [D] Interface implementation for PopHub refining production. 10.12.2015
 [D] PopUnit reallocation. Create new and remove old. 8.12.2015
 [D] PopUnit multiplication. Very basic implementation. 02.12.2015

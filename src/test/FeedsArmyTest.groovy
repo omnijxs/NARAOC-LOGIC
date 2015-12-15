@@ -1,6 +1,7 @@
 package test
 
 import game.GameData
+import resources.gameActor.GameActor
 import resources.gameActor.Player
 import org.junit.Before
 import org.junit.Test
@@ -14,7 +15,7 @@ import traits.FeedsArmy
  */
 class FeedsArmyTest {
 
-    private class ArmyFeeder extends Player implements FeedsArmy {}
+    private class ArmyFeeder extends GameActor implements FeedsArmy {}
 
     protected GameData gameData
     protected ArmyFeeder player
