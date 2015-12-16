@@ -17,7 +17,4 @@ class GameData {
     List<PopHub> popHubs
     List<GameActor> gameActors
     List<Tile> mapTiles
-
-    List<Map<PopHub, PopHubOutput>> turnData
-
 }

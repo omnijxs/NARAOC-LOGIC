@@ -40,7 +40,6 @@ class TurnAlgorithmTest {
 
         city = new City(tile: cityTile, buildings: new Buildings(), owner: player)
 
-        gameData.turnData = []
         gameData.popHubs = [city]
         gameData.gameActors = [player]
 
@@ -51,7 +50,6 @@ class TurnAlgorithmTest {
         gameData.popUnits = [farmer, worker, merchant]
 
     }
-
 
     @Test
     void testTurnAlgorithm() {
@@ -72,7 +70,7 @@ class TurnAlgorithmTest {
         gameData = gameActorInput(gameData)
 
         /** 6. PREPARE GAME DATA FOR THE NEXT TURN */
-        // gameData = postProcess(gameData)
+        gameData = postProcess(gameData)
 
     }
 
@@ -128,28 +126,32 @@ class TurnAlgorithmTest {
     // TODO TESTS
     protected GameData gameActorsSetup(GameData gd){
         gd.gameActors.each { player ->
-
-            // TODO SEPARATE METHOD
             /** Lets feed your roaming armies...*/
-            Integer foodForArmies = 0
-
-            /** Find cities which produce for me... */
-            def obedientHubs = gd.popHubs.findAll { it.owner == player }
-
-            /** Calculate total surplus food. */
-            obedientHubs.each { popHub ->
-               /** We now assume that list.add always adds to the end of list */
-               def turnData = popHub.turnData.last()
-
-               foodForArmies += turnData.surplusFood
-            }
-
-            Integer surplusFood = player.feedArmy(gameData, foodForArmies)
+            Integer surplusFood = feedArmies(gd, player)
 
             /** Deal with taxation in a separate method. Store the info the player. */
         }
 
         return gd
+    }
+
+    // TODO TESTS
+    protected Integer feedArmies(GameData gd, GameActor ga){
+
+        Integer foodForArmies = 0
+
+        /** Find cities which produce for me... */
+        def obedientHubs = gd.popHubs.findAll { it.owner == ga }
+
+        /** Calculate total surplus food. */
+        obedientHubs.each { popHub ->
+            /** We now assume that list.add always adds to the end of list */
+            def turnData = popHub.turnData.last()
+
+            foodForArmies += turnData.surplusFood
+        }
+
+        return ga.feedArmy(gd, foodForArmies)
     }
 
     protected GameData gameActorInput(GameData gd){
@@ -161,6 +163,7 @@ class TurnAlgorithmTest {
     }
 
     protected GameData yieldControl(GameData gd, GameActor a){
+        return gd
             /** The actual player/AI input */
     }
 
@@ -173,7 +176,7 @@ class TurnAlgorithmTest {
 
         /** Deal with pop unit obedience. Note that this MUST be before we set them to starving. */
         gd.popUnits.each { popUnit ->
-            popUnit.dealWithObedience()
+            // popUnit.dealWithObedience()
         }
 
         /** Set all PopUnits to starving for next turn. Could be done in pre-process. */
