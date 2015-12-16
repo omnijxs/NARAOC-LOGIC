@@ -49,7 +49,7 @@ class Algorithm {
             /** Feed the hub population and calculate the surplus food. */
             output.surplusFood = popHub.feedHub(gd, output.foodProduction)
 
-            /** */
+            /** Set the turnData. */
             popHub.setTurnData(output)
         }
 
@@ -65,6 +65,18 @@ class Algorithm {
              *  And then feed them */
             Integer totalFood = player.getSurplusFood(gd)
             Integer surplusFood = player.feedArmy(gd, totalFood)
+
+            /** Lets tax those pesky pop units...*/
+
+            /** Get total production of your loyal popHubs */
+            GameActorOutput output = player.getTotalOutput(gd)
+            output.surplusFood = surplusFood
+
+            /** Tax their asses! */
+            output = player.tax(gd, output)
+
+            /** Set the turnData. */
+            player.setTurnData(output)
 
         }
 

@@ -2,7 +2,6 @@ package traits
 
 import game.GameData
 import resources.gameActor.GameActorOutput
-import resources.popHub.City
 
 /**
  * Created by jxs on 16.12.2015.
@@ -15,7 +14,7 @@ trait Taxes {
     Integer workTaxRate = 0
     Integer tradeTaxRate = 0
 
-    def tax(){
+    def tax(GameData gd, GameActorOutput output){
 
     }
 
@@ -33,6 +32,15 @@ trait Taxes {
         }
 
         return output
+    }
+
+    def setTurnData(GameActorOutput data){
+        turnData.add(data)
+    }
+
+    def getTurnData(){
+        /** We now assume that list.add() always adds to the end of list */
+        return turnData.last()
     }
 
 }
