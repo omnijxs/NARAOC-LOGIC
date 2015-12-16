@@ -1,7 +1,5 @@
 
-[W]: Add refinesTestCases.
-[ ]: Add testCases for popUnitsMultiply, popUnitsProduce, popHubsRefine, gameActorsSetup, feedArmies in TurnAlgorithm.
-
+[ ]: There should be a third popUnitFinder-method: All popUnits should produce only for the preferredCity.
 
 NEW FEATURES:
 [ ] CONFIGURATION: Use external configuration info for: BasicInfo, Race, ArmyUnitType, MagicUnitType, Perk, Building
@@ -34,6 +32,8 @@ DESIGN:
 
 ---
 
+[D]: Add testCases for popUnitsMultiply, popUnitsProduce, popHubsRefine, gameActorsSetup, feedArmies in TurnAlgorithm. 16.12.2015
+[D]: Add refinesTestCases. 16.12.2015
 [D]: Internalize the turnData-information to Refine-trait. 16.12.2015
 [D]: Store turn specific output in PopHub - not in gameData! 15.12.2015
 [D] FeedsTile & FeedsArmy - traits have slightly incorrect functionality. WHAT IS THE LEVEL TO CHECK WE DO NOT FEED NON STARVING UNITS!!! 15.12.2015
