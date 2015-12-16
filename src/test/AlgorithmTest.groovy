@@ -23,7 +23,12 @@ import resources.popUnit.Worker
 /**
  * Created by Juri on 16.11.2015.
  */
-class TurnAlgorithmTest extends Algorithm {
+class AlgorithmTest extends Algorithm {
+
+    /**
+     * These tests are technically redundant. All functionality is/should be tested in traitTests.
+     * The purpose of these tests is to prototype the main algorithm.
+     * */
 
     protected GameData gameData
     protected PopHub city

@@ -55,7 +55,7 @@ class Algorithm {
         return gd
     }
 
-    /** No tests */
+    /** No tests. Multiple functions. */
     protected GameData gameActorsSetup(GameData gd){
         gd.gameActors.each { player ->
             /** Lets feed your roaming armies...*/
@@ -85,7 +85,7 @@ class Algorithm {
         return ga.feedArmy(gd, foodForArmies)
     }
 
-    /** No tests */
+    /** No tests. Multiple functions. */
     protected GameData gameActorInput(GameData gd){
         gd.gameActors.each { player ->
             gd = yieldControl(gd, player)
@@ -94,7 +94,7 @@ class Algorithm {
         return gd
     }
 
-    /** No tests */
+    /** No tests. No implementation. */
     protected GameData yieldControl(GameData gd, GameActor a){
         return gd
         /** The actual player/AI input */

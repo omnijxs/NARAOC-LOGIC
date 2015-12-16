@@ -2,14 +2,15 @@
 [ ]: There should be a third popUnitFinder-method: All popUnits should produce only for the preferredCity.
 
 NEW FEATURES:
-[ ] CONFIGURATION: Use external configuration info for: BasicInfo, Race, ArmyUnitType, MagicUnitType, Perk, Building
-[ ] OBEDIENCE
-[ ] BUILDINGS
+[ ]: TAXATION:
+[ ]: OBEDIENCE:
+[ ]: BUILDINGS:
+
+[ ] CONFIGURATION: Use external configuration info for: BasicInfo, Race, ArmyUnitType, MagicUnitType, Perk, Building. Own proto-project.
 [ ] ARMYUNIT
 [ ] MAGICUNIT
-[ ] TAXATION
 
-NOTE: Race by itself does not do anything - only properties. So thats why it is not on the New Feature list.
+NOTE: Race by itself does not do anything - only properties. So that's why it is not on the New Feature list.
 
 IMPROVEMENTS:
 [ ] Create Interface-methods to PopUnits and PopHubs to increase visibility? Problem with traits vs interface...
