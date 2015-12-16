@@ -77,14 +77,14 @@ class RefinesTest {
     void testTurnDataSequence() {
 
         PopHubOutput output_1 = city.refine(gameData)
+        city.setTurnData(output_1)
 
-        city.turnData.add(output_1)
+        assert city.getTurnData() == output_1
 
         PopHubOutput output_2 = city.refine(gameData)
+        city.setTurnData(output_2)
 
-        city.turnData.add(output_2)
-
-        assert city.turnData.last() == output_2
+        assert city.getTurnData() == output_2
 
     }
 }

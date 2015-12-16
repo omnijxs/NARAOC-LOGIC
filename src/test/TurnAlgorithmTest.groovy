@@ -117,7 +117,7 @@ class TurnAlgorithmTest {
             output.surplusFood = popHub.feedHub(gd, output.foodProduction)
 
             /** */
-            popHub.turnData.add(output)
+            popHub.setTurnData(output)
         }
 
         return gd
@@ -145,8 +145,8 @@ class TurnAlgorithmTest {
 
         /** Calculate total surplus food. */
         obedientHubs.each { popHub ->
-            /** We now assume that list.add always adds to the end of list */
-            def turnData = popHub.turnData.last()
+
+            def turnData = popHub.getTurnData()
 
             foodForArmies += turnData.surplusFood
         }
