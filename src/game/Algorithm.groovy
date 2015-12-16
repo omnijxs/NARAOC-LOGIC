@@ -76,7 +76,7 @@ class Algorithm {
             player.setTurnData(output)
 
             /** Tax their asses! */
-            Integer taxAmount = player.tax()
+            player.tax()
 
         }
 
@@ -98,7 +98,6 @@ class Algorithm {
         /** The actual player/AI input */
     }
 
-    // TODO separate into own methods and create tests for those methods
     protected GameData postProcess(GameData gd){
 
         /** Calculate demand for pop hubs */
@@ -106,7 +105,7 @@ class Algorithm {
             popHub.setDemand(gd)
         }
 
-        /** Deal with pop unit obedience. Note that this MUST be before we set them to starving. */
+        /** Deal with pop unit obedience. Note that this MUST be done before we set them to starving. */
         gd.popUnits.each { popUnit ->
             // popUnit.dealWithObedience()
         }

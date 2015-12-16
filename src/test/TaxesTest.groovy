@@ -94,4 +94,19 @@ class TaxesTest {
         assert total == 15
     }
 
+    @Test
+    void testTaxRounding() {
+
+        player.foodTaxRate = player.workTaxRate = player.tradeTaxRate = 50
+
+        GameActorOutput output = new GameActorOutput(foodTotal: 10, workTotal: 10, tradeTotal: 5)
+
+        player.setTurnData(output)
+
+        Integer total = player.tax()
+
+        /** Currently we round down. */
+        assert total == 12
+    }
+
 }

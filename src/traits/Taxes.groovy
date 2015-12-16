@@ -22,7 +22,7 @@ trait Taxes {
         data.workTaxOutput = data.workTotal / 100 * workTaxRate
         data.tradeTaxOutput = data.tradeTotal / 100 * tradeTaxRate
 
-        data.totalTaxAmount =  data.foodTaxOutput + data.workTaxOutput + data.tradeTaxOutput
+        data.totalTaxAmount = data.foodTaxOutput + data.workTaxOutput + data.tradeTaxOutput
 
         return data.totalTaxAmount
 
