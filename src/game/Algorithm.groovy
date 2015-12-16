@@ -66,14 +66,6 @@ class Algorithm {
             Integer totalFood = player.getSurplusFood(gd)
             Integer surplusFood = player.feedArmy(gd, totalFood)
 
-            /** Deal with taxation in a separate method. Store the info the player. */
-            GameActorOutput output = new GameActorOutput()
-
-            /** Find cities which produce for me... */
-            def loyalHubs = gd.popHubs.findAll { it.owner == ga }
-
-            output = player.tax(gd, output)
-
         }
 
         return gd

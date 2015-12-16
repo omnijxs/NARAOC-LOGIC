@@ -5,9 +5,9 @@ package resources.gameActor
  */
 class GameActorOutput {
 
-    Integer foodTaxTotal = 0
-    Integer workTaxTotal = 0
-    Integer tradeTaxTotal = 0
+    Integer foodTotal = 0
+    Integer workTotal = 0
+    Integer tradeTotal = 0
     Integer foodTaxOutput = 0
     Integer workTaxOutput = 0
     Integer tradeTaxOutput = 0
