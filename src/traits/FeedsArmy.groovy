@@ -21,7 +21,23 @@ trait FeedsArmy implements PopUnitSorter, Feeds {
         def sortedPopUnits = senioritySort(armyUnitsToFeed)
 
         return feed(sortedPopUnits, foodAmount)
-
     }
+
+    Integer getSurplusFood(GameData gd){
+
+        Integer foodForArmies = 0
+
+        /** Find cities which produce for me... */
+        def loyalHubs = gd.popHubs.findAll { it.owner == this }
+
+        /** Calculate total surplus food. */
+        loyalHubs.each { popHub ->
+            def turnData = popHub.getTurnData()
+            foodForArmies += turnData.surplusFood
+        }
+
+        return foodForArmies
+    }
+
 
 }

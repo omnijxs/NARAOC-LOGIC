@@ -121,44 +121,5 @@ class AlgorithmTest extends Algorithm {
         assert output.tradeProduction == 1
     }
 
-    @Test
-    void testFeedArmiesBasicCase() {
-
-        PopUnit a = new ArmyUnit(state: new State(race: new Race()), tile: new Tile(), owner: player)
-        PopUnit p = new Farmer(state: new State(race: new Race()), tile: new Tile(x:1, y:2), preferredHub: city)
-
-        gameData.popUnits = [a, p]
-
-        gameData = popUnitsProduce(gameData)
-        gameData = popHubsRefine(gameData)
-
-        def surplusFood = feedArmies(gameData, player)
-
-        assert surplusFood == 0
-        assert !a.starving
-        assert !p.starving
-
-    }
-
-    @Test
-    void testFeedArmiesExtraFoodCase() {
-
-        PopUnit a = new ArmyUnit(state: new State(race: new Race()), tile: new Tile(), owner: player)
-        PopUnit p = new Farmer(state: new State(race: new Race()), tile: new Tile(x:1, y:2), preferredHub: city, productAmount: 3)
-
-        gameData.popUnits = [a, p]
-
-        gameData = popUnitsProduce(gameData)
-        gameData = popHubsRefine(gameData)
-
-        def surplusFood = feedArmies(gameData, player)
-
-        assert surplusFood == 1
-        assert !a.starving
-        assert !p.starving
-
-    }
-
-
 
 }

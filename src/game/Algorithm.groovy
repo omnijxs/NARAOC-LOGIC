@@ -1,6 +1,7 @@
 package game
 
 import resources.gameActor.GameActor
+import resources.gameActor.GameActorOutput
 import resources.popHub.PopHubOutput
 import resources.popUnit.PopUnit
 
@@ -59,30 +60,23 @@ class Algorithm {
     protected GameData gameActorsSetup(GameData gd){
         gd.gameActors.each { player ->
             /** Lets feed your roaming armies...*/
-            Integer surplusFood = feedArmies(gd, player)
+
+            /** Calculate how much extra food pob hubs loyal to you produce.
+             *  And then feed them */
+            Integer totalFood = player.getSurplusFood(gd)
+            Integer surplusFood = player.feedArmy(gd, totalFood)
 
             /** Deal with taxation in a separate method. Store the info the player. */
+            GameActorOutput output = new GameActorOutput()
+
+            /** Find cities which produce for me... */
+            def loyalHubs = gd.popHubs.findAll { it.owner == ga }
+
+            output = player.tax(gd, output)
+
         }
 
         return gd
-    }
-
-    protected Integer feedArmies(GameData gd, GameActor ga){
-
-        Integer foodForArmies = 0
-
-        /** Find cities which produce for me... */
-        def obedientHubs = gd.popHubs.findAll { it.owner == ga }
-
-        /** Calculate total surplus food. */
-        obedientHubs.each { popHub ->
-
-            def turnData = popHub.getTurnData()
-
-            foodForArmies += turnData.surplusFood
-        }
-
-        return ga.feedArmy(gd, foodForArmies)
     }
 
     /** No tests. Multiple functions. */
