@@ -1,6 +1,4 @@
 
-[ ]: There should be a third popUnitFinder-method: All popUnits should produce only for the preferredCity.
-
 NEW FEATURES:
 [ ]: TAXATION:
 [ ]: OBEDIENCE:
@@ -33,6 +31,7 @@ DESIGN:
 
 ---
 
+[D]: There should be a third popUnitFinder-method: All popUnits should produce only for the preferredCity. 16.12.2015
 [D]: Add testCases for popUnitsMultiply, popUnitsProduce, popHubsRefine, gameActorsSetup, feedArmies in TurnAlgorithm. 16.12.2015
 [D]: Add refinesTestCases. 16.12.2015
 [D]: Internalize the turnData-information to Refine-trait. 16.12.2015

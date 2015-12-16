@@ -37,10 +37,10 @@ class PopUnitFinderTest implements PopUnitFinder {
     }
 
     @Test
-    void testpopHubPopulation() {
+    void testPopHubPopulation() {
 
         PopUnit a = new MockUnit(tile: cityTile, preferredHub: city)
-        PopUnit b = new MockUnit(tile: cityTile, preferredHub: new PopHub())        /** This is a borderline-case and might be problematic later on */
+        PopUnit b = new MockUnit(tile: cityTile, preferredHub: new PopHub())
         PopUnit c = new MockUnit(tile: new Tile(), preferredHub: null)
         PopUnit d = new MockUnit(tile: new Tile(), preferredHub: new PopHub())
         PopUnit e = new MockUnit(tile: new Tile(), preferredHub: city)
@@ -51,7 +51,21 @@ class PopUnitFinderTest implements PopUnitFinder {
     }
 
     @Test
-    void testpopHubPopulationStarving() {
+    void testPopHubPopulationProducing() {
+
+        PopUnit a = new MockUnit(tile: cityTile, preferredHub: city)
+        PopUnit b = new MockUnit(tile: cityTile, preferredHub: new PopHub())        
+        PopUnit c = new MockUnit(tile: new Tile(), preferredHub: null)
+        PopUnit d = new MockUnit(tile: new Tile(), preferredHub: new PopHub())
+        PopUnit e = new MockUnit(tile: new Tile(), preferredHub: city)
+
+        gameData.popUnits = [a, b, c, d, e]
+
+        assert popHubPopulationProducing(gameData, city) == [a, e]
+    }
+
+    @Test
+    void testPopHubPopulationStarving() {
 
         PopUnit a = new MockUnit(tile: cityTile, starving: true)
         PopUnit b = new MockUnit(tile: cityTile, starving: false)
