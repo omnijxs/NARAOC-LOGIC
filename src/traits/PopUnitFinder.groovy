@@ -19,6 +19,17 @@ trait PopUnitFinder {
     List<PopUnit> popHubPopulation(GameData gd, PopHub popHub){
         return gd.popUnits.findAll { it.preferredHub == popHub || it.tile == popHub.tile }
     }
+    
+    /**
+     * The pop units which produce for this pop hub.
+     *
+     * @param gd
+     * @param popHub
+     * @return
+     */
+    List<PopUnit> popHubProductionPopulation(GameData gd, PopHub popHub){
+        return gd.popUnits.findAll { it.preferredHub == popHub }
+    }
 
     /**
      * Finds those populationUnits which are to be fed by the popHub:

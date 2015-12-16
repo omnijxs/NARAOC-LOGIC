@@ -19,7 +19,7 @@ trait Refines implements PopUnitFinder {
         PopHubOutput output = new PopHubOutput()
 
         /** Get all my popUnits. */
-        def population = popHubPopulation(gd, this)
+        def population = popHubProductionPopulation(gd, this)
 
         /** Split them according to their product */
         def foodProducers = population.findAll { it.product == Product.FOOD }
