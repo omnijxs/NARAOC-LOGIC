@@ -14,7 +14,17 @@ trait Taxes {
     Integer workTaxRate = 0
     Integer tradeTaxRate = 0
 
-    def tax(GameData gd, GameActorOutput output){
+    Integer tax(){
+
+        def data = getTurnData()
+
+        data.foodTaxOutput = data.foodTotal / 100 * foodTaxRate
+        data.workTaxOutput = data.workTotal / 100 * workTaxRate
+        data.tradeTaxOutput = data.tradeTotal / 100 * tradeTaxRate
+
+        data.totalTaxAmount =  data.foodTaxOutput + data.workTaxOutput + data.tradeTaxOutput
+
+        return data.totalTaxAmount
 
     }
 

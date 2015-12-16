@@ -72,11 +72,11 @@ class Algorithm {
             GameActorOutput output = player.getTotalOutput(gd)
             output.surplusFood = surplusFood
 
-            /** Tax their asses! */
-            output = player.tax(gd, output)
-
             /** Set the turnData. */
             player.setTurnData(output)
+
+            /** Tax their asses! */
+            Integer taxAmount = player.tax()
 
         }
 

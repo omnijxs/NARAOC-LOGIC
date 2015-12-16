@@ -12,4 +12,6 @@ class GameActorOutput {
     Integer workTaxOutput = 0
     Integer tradeTaxOutput = 0
     Integer surplusFood = 0
+    Integer totalTaxAmount = 0
+
 }

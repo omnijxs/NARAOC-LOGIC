@@ -80,4 +80,18 @@ class TaxesTest {
         assert total.tradeTotal == 1
     }
 
+    @Test
+    void testTaxBasicCase() {
+
+        player.foodTaxRate = player.workTaxRate = player.tradeTaxRate = 50
+
+        GameActorOutput output = new GameActorOutput(foodTotal: 10, workTotal: 10, tradeTotal: 10)
+
+        player.setTurnData(output)
+
+        Integer total = player.tax()
+
+        assert total == 15
+    }
+
 }
