@@ -10,6 +10,12 @@ import resources.popUnit.PopUnit
  */
 class Algorithm {
 
+    /**
+     * All pop units check whether they multiply this turn.
+     *
+     * @param gd
+     * @return
+     */
     protected GameData popUnitsMultiply(GameData gd){
 
         List<PopUnit> newPopUnits = []
@@ -25,6 +31,13 @@ class Algorithm {
         return gd
     }
 
+    /**
+     * All pop units calculate their preferred hubs AND make them produce.
+     * Farmers feed their tiles.
+     *
+     * @param gd
+     * @return
+     */
     protected GameData popUnitsProduce(GameData gd){
         gd.popUnits.each { popUnit ->
 
@@ -39,6 +52,13 @@ class Algorithm {
         return gd
     }
 
+    /**
+     * All pop hubs calculate their production from pop unit production.
+     * Pop Hubs feed their pop Units.
+     *
+     * @param gd
+     * @return
+     */
     protected GameData popHubsRefine(GameData gd){
 
         gd.popHubs.each { popHub ->
@@ -57,6 +77,12 @@ class Algorithm {
     }
 
     /** No tests. Multiple functions. */
+    /**
+     * All game actors feed their their armies not on pop hubs AND tax revenue is calculated.
+     *
+     * @param gd
+     * @return
+     */
     protected GameData gameActorsSetup(GameData gd){
         gd.gameActors.each { player ->
             /** Lets feed your roaming armies...*/
@@ -83,21 +109,15 @@ class Algorithm {
         return gd
     }
 
-    /** No tests. Multiple functions. */
-    protected GameData gameActorInput(GameData gd){
-        gd.gameActors.each { player ->
-            gd = yieldControl(gd, player)
-        }
-
-        return gd
-    }
-
-    /** No tests. No implementation. */
-    protected GameData yieldControl(GameData gd, GameActor a){
-        return gd
-        /** The actual player/AI input */
-    }
-
+    /** No tests. No full implementation. */
+    /**
+     * 1) Calculate pop hub demand.
+     * 2) Deal with pop unit obedience .
+     * 3) Set all pop units to starving for the next turn.
+     *
+     * @param gd
+     * @return
+     */
     protected GameData postProcess(GameData gd){
 
         /** Calculate demand for pop hubs */
@@ -117,5 +137,22 @@ class Algorithm {
 
         return gd
 
+    }
+
+    /** The actual player input */
+
+    /** No tests. Multiple functions. */
+    protected GameData gameActorInput(GameData gd){
+        gd.gameActors.each { player ->
+            gd = yieldControl(gd, player)
+        }
+
+        return gd
+    }
+
+    /** No tests. No implementation. */
+    protected GameData yieldControl(GameData gd, GameActor a){
+        return gd
+        /** The actual player/AI input */
     }
 }
