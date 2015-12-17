@@ -1,25 +1,24 @@
 
-[ ]: Streamline Taxes- and Refines- traits internalized data behaviour.
+[ ]: Taxes.tax or game algorithm should take into account player upkeep.
+[ ]: Tests for Taxes.turnData and Refines.turnData behavior.
 
 NEW FEATURES:
 [ ]: OBEDIENCE: NEXT VERSION!
 [ ]: BUILDINGS: NEXT VERSION!
-
-[ ] CONFIGURATION: Use external configuration info for: BasicInfo, Race, ArmyUnitType, MagicUnitType, Perk, Building. Own proto-project.
-[ ] ARMYUNIT
-[ ] MAGICUNIT
+[ ]: ARMY UNIT: PROTO-PROJECT!
+[ ]: MAGIC UNIT: PROTO-PROJECT!
 
 NOTE: Race by itself does not do anything - only properties. So that's why it is not on the New Feature list.
 
 IMPROVEMENTS:
-[ ] Create Interface-methods to PopUnits and PopHubs to increase visibility? Problem with traits vs interface...
-[ ] DATAFLOW: Access to GameData via Trait? Make a proto!
-[ ] MULTIPLICATION: copy correct properties and resolve tile of the new PopUnit.
-[ ] REALLOCATION: Deal with popUnit state: obedience penalties and tile calculation.
-    { } Will require information about PopUnit 'owner' even though basic pop units don't have an owner.
-        Anyway the workings of obedience should be planned and architectured.
+[ ]: MULTIPLICATION: Copy correct properties and resolve tile of the new PopUnit.
+[ ]: REALLOCATION: Deal with popUnit state: obedience penalties and tile calculation. Will require information about PopUnit 'owner' even though basic pop units don't have an owner.
+[ ]: REALLOCATION: Deal with armyUnit & magicUnit type.
+
 [ ] A better way to map demand to cities.
 [ ] Create a TestData trait for all test setup scenarios.
+[ ] Create Interface-methods to PopUnits and PopHubs to increase visibility? Problem with traits vs interface...
+[ ] DATAFLOW: Access to GameData via Trait? Make a proto!
 
 BUGS:
 [ ] PopUnitSorter.productionSort works correctly but should not.
@@ -53,14 +52,3 @@ DESIGN:
 [D] A better way to deal with PopUnit priority. -> Priority ENUM!
 
 
-CONFIGURATION:
-http://mrhaki.blogspot.fi/2009/08/groovy-goodness-working-with-files.html
-https://gist.github.com/keyle/723181f3a9a59a3f7652    
-
-    static save(Object content, String filePath) {
-        new File(filePath).write(new JsonBuilder(content).toPrettyString())
-    }
-
-    static Object load(String filePath) {
-        return new JsonSlurper().parseText(new File(filePath).text)
-    }
