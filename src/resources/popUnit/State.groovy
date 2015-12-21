@@ -1,6 +1,6 @@
 package resources.popUnit
 
-import resources.common.Obedience
+import resources.popUnit.obedience.Obedience
 import resources.common.Race
 import resources.common.Tile
 
