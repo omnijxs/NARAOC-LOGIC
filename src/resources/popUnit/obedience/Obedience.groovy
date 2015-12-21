@@ -8,8 +8,13 @@ import resources.gameActor.GameActor
  */
 class Obedience {
 
-    Integer value = 100 /** From config */
+    Integer value
     List<ViolationRule> violations
+
+    public Obedience(){
+        value = 100 /** From config */
+        violations
+    }
 
     Integer resolveObedience(GameData gd, GameActor ga){
         Integer temp = 0
@@ -22,5 +27,14 @@ class Obedience {
 
     }
 
+    def violate(ViolationRule violation){
+        violations.push(violation)
+    }
+
+    /*
+    def removeObsolete(){
+
+    }
+    */
 
 }

@@ -1,5 +1,7 @@
 package resources.popUnit
 
+import game.GameData
+import resources.gameActor.GameActor
 import resources.popUnit.obedience.Obedience
 import resources.common.Race
 import resources.common.Tile
@@ -17,5 +19,9 @@ class State {
 
     Boolean resolveMultiply(){
         true
+    }
+
+    Boolean isObedient(GameData gd, GameActor ga){
+        return obedience.resolveObedience(gd, ga) > 0
     }
 }
