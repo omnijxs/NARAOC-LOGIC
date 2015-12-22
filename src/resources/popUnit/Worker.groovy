@@ -6,6 +6,7 @@ import traits.Consumes
 import traits.Multiplies
 import traits.Preferres
 import traits.Produces
+import traits.Reallocates
 
 /**
  * Created by Juri on 26.10.2015.
@@ -14,7 +15,8 @@ import traits.Produces
 class Worker extends PopUnit implements Consumes, 
                                         Produces, 
                                         Multiplies, 
-                                        Preferres {
+                                        Preferres,
+                                        Reallocates {
     
     public Worker(){
         this.product = Product.WORK

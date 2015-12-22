@@ -8,14 +8,16 @@ import traits.FeedsTile
 import traits.Multiplies
 import traits.Preferres
 import traits.Produces
+import traits.Reallocates
 
 /**
  * Created by Juri on 21.10.2015.
  */
-class Farmer extends PopUnit implements Consumes, 
-                                        Produces, 
+class Farmer extends PopUnit implements Consumes,
+                                        Produces,
                                         Preferres, 
-                                        Multiplies, 
+                                        Multiplies,
+                                        Reallocates,
                                         FeedsTile  {
     
     public Farmer(){

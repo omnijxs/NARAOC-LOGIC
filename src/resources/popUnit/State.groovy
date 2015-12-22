@@ -17,10 +17,6 @@ class State {
 
     Integer age = 0
 
-    Boolean resolveMultiply(){
-        true
-    }
-
     Boolean isObedient(GameData gd, GameActor ga){
         return obedience.resolveObedience(gd, ga) > 0
     }

@@ -17,4 +17,6 @@ class GameData {
     List<PopHub> popHubs
     List<GameActor> gameActors
     List<Tile> mapTiles
+
+    Integer currentTurn
 }

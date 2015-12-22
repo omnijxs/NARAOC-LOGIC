@@ -5,6 +5,7 @@ import org.junit.Test
 import resources.common.Race
 import resources.popUnit.PopUnit
 import resources.popUnit.State
+import traits.Consumes
 import traits.Multiplies
 
 /**
@@ -12,10 +13,11 @@ import traits.Multiplies
  */
 class MultipliesTest {
 
-    private class MockUnit extends PopUnit implements Multiplies {
+    private class MockUnit extends PopUnit implements Multiplies, Consumes {
 
         public MockUnit(){
             this.state = new State(race: new Race())
+            this.starving = true
         }
     }
 
@@ -37,6 +39,7 @@ class MultipliesTest {
     void testMultiplyAlways() {
 
         MockUnit a = new MockUnit()
+        a.starving = true
 
         a.state.race.multiplicationRate = 100
 
@@ -45,11 +48,23 @@ class MultipliesTest {
     }
 
     @Test
+    void testNeverMultiplyStarving() {
+
+        MockUnit a = new MockUnit()
+        a.starving = false
+
+        a.multiplicationRate = 100
+
+        assert !a.multiply()
+
+    }
+
+    @Test
     void testMultiplyNever() {
 
         MockUnit a = new MockUnit()
 
-        a.state.race.multiplicationRate = 0
+        a.multiplicationRate = 0
 
         assert !a.multiply()
 
