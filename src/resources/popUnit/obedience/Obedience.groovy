@@ -13,7 +13,7 @@ class Obedience {
 
     public Obedience(){
         value = 100 /** From config */
-        violations
+        violations = []
     }
 
     Integer resolveObedience(GameData gd, GameActor ga){

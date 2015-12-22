@@ -11,9 +11,9 @@ import resources.common.Tile
  */
 class State {
 
-    @Delegate Tile tile
-    @Delegate Race race
     @Delegate Obedience obedience
+    @Delegate Race race
+    @Delegate Tile tile
 
     Integer age = 0
 

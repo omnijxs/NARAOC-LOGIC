@@ -13,6 +13,6 @@ abstract class ViolationRule {
     Integer duration = 0
     GameActor violator = null
 
-    abstract Integer resolve(GameData gd, GameData ga)
+    abstract Integer resolve(GameData gd, GameActor ga)
 
 }
