@@ -10,9 +10,8 @@ trait Multiplies implements Probability {
     
     def multiply(){
 
-        // TODO work with syntax!
-        if(this.state.resolveMultiply()){
-            if(getProbability(this.state.multiplicationRate)){
+        if(resolveMultiply()){
+            if(getProbability(multiplicationRate)){
                 return breed()
             }
         }
