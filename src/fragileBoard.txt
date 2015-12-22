@@ -1,36 +1,35 @@
+## VERSION 0.11
+
+NEW FEATURES:
+[ ]: BUILDINGS: FEATURE!
+[ ]: ARMY UNIT: PROTO-PROJECT!
+[ ]: MAGIC UNIT: PROTO-PROJECT!
+
+IMPROVEMENTS:
+
+[ ]: Create Interface-methods to PopUnits and PopHubs to increase visibility? Problem with traits vs interface...
+     Consider dropping @Delegate and creating interface methods to PopUnit-class.
+
+[ ]: MULTIPLICATION: Copy correct properties and resolve tile of the new PopUnit.
+[ ]: REALLOCATION: Deal with popUnit state: obedience penalties and tile calculation. Will require information about PopUnit 'owner' even though basic pop units don't have an owner.
+[ ]: REALLOCATION: Deal with armyUnit & magicUnit type.
+[ ]: OBEDIENCE: Use isObedient()-method in production and prevention of reallocation.
+[ ]: OBEDIENCE: Use currentTurn to calculate timed violations.
+[ ]: OBEDIENCE: removeObsolete() - method to sanitize violations list: remove unnecessary timed violations.
+[ ]: A better way to map demand to cities.
+[ ]: Create a TestData trait for all test setup scenarios.
 
 [ ]: Taxes.tax or game algorithm should take into account player upkeep.
 [ ]: Tests for Taxes.turnData and Refines.turnData behavior.
 
-NEW FEATURES:
-[ ]: OBEDIENCE: NEXT VERSION!
-[ ]: BUILDINGS: NEXT VERSION!
-[ ]: ARMY UNIT: PROTO-PROJECT!
-[ ]: MAGIC UNIT: PROTO-PROJECT!
-
-NOTE: Race by itself does not do anything - only properties. So that's why it is not on the New Feature list.
-
-IMPROVEMENTS:
-[ ]: MULTIPLICATION: Copy correct properties and resolve tile of the new PopUnit.
-[ ]: REALLOCATION: Deal with popUnit state: obedience penalties and tile calculation. Will require information about PopUnit 'owner' even though basic pop units don't have an owner.
-[ ]: REALLOCATION: Deal with armyUnit & magicUnit type.
-
-[ ] A better way to map demand to cities.
-[ ] Create a TestData trait for all test setup scenarios.
-[ ] Create Interface-methods to PopUnits and PopHubs to increase visibility? Problem with traits vs interface...
-[ ] DATAFLOW: Access to GameData via Trait? Make a proto!
+[ ]: DATA FLOW: Access to GameData via Trait? Make a proto!
 
 BUGS:
 [ ] PopUnitSorter.productionSort works correctly but should not.
 
-DESIGN:
-[ ] More in-depth design of testing
-    { } Logic tests -> Trait testing
-    { } Implementation tests -> Class testing
-    { } End-to-end tests -> Use case testing
-
 ---
 
+[D]: OBEDIENCE: A pop unit now has obedience. No rules implemented and no place to add them in code yet. 22.12.2015
 [D]: TAXATION: Taxes-trait does the trick! 16.12.2015
 [D]: There should be a third popUnitFinder-method: All popUnits should produce only for the preferredCity. 16.12.2015
 [D]: Add testCases for popUnitsMultiply, popUnitsProduce, popHubsRefine, gameActorsSetup, feedArmies in TurnAlgorithm. 16.12.2015

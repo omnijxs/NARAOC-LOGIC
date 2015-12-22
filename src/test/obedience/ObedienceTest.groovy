@@ -54,4 +54,16 @@ class ObedienceTest {
 
         assert popUnit.resolveObedience(gameData, gameActor) == 90 /** 100 - 10 */
     }
+
+    @Test
+    void testCalculateMultipleViolations() {
+
+        ViolationRule violation_a = new MockViolationRule(power: 10, duration: 0, turn: 0, violator: null)
+        popUnit.violate(violation_a)
+
+        ViolationRule violation_b = new MockViolationRule(power: 25, duration: 0, turn: 0, violator: null)
+        popUnit.violate(violation_b)
+
+        assert popUnit.resolveObedience(gameData, gameActor) == 65 /** 100 - 35 */
+    }
 }
