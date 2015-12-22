@@ -15,7 +15,4 @@ class State {
 
     Integer age = 0
 
-    Boolean resolveMultiply(){
-        true
-    }
 }

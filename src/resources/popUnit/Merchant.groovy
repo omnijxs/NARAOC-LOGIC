@@ -6,15 +6,17 @@ import traits.Consumes
 import traits.Multiplies
 import traits.Preferres
 import traits.Produces
+import traits.Reallocates
 
 /**
  * Created by Juri on 26.10.2015.
  */
 
-class Merchant extends PopUnit implements Consumes, 
-                                          Produces, 
+class Merchant extends PopUnit implements Consumes,
+                                          Produces,
                                           Multiplies, 
-                                          Preferres {
+                                          Preferres,
+                                          Reallocates  {
     
     public Merchant(){
         this.product = Product.TRADE

@@ -10,6 +10,14 @@ class PopUnit {
     @Delegate State state
     Priority priority
 
+    Boolean isStarving(){
+        return starving
+    }
+
+    Boolean resolveMultiply(){
+        return isStarving()
+    }
+
     def methodMissing(String name, args) {
         null
     }
