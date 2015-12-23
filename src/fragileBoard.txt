@@ -1,14 +1,20 @@
 ## VERSION 0.11
 
+IMPROVEMENTS:
+[ ]: Improvements to PopUnit - interface
+    {D}: Create public methods canBeTaxed(), canMultiply() and canReallocate(). 
+         These are the only methods that can be called "outside" pop unit. 23.12.2015
+    { }: Remove State as an unnecessary abstraction. Will break lots of tests. Fix them.
+    { }: Use canMultiply() and canReallocate() in correct places.
+    { }: Use canBeTaxed() when taxing a pop unit. Will require major changes to Refines- and Taxes- traits.
+    { }: Create tests for the afore mentioned three methods.
+
 NEW FEATURES:
 [ ]: BUILDINGS: FEATURE!
 [ ]: ARMY UNIT: PROTO-PROJECT!
 [ ]: MAGIC UNIT: PROTO-PROJECT!
 
 IMPROVEMENTS:
-
-[ ]: Create Interface-methods to PopUnits and PopHubs to increase visibility? Problem with traits vs interface...
-     Consider dropping @Delegate and creating interface methods to PopUnit-class.
 
 [ ]: MULTIPLICATION: Copy correct properties and resolve tile of the new PopUnit.
 [ ]: REALLOCATION: Deal with popUnit state: obedience penalties and tile calculation. Will require information about PopUnit 'owner' even though basic pop units don't have an owner.
