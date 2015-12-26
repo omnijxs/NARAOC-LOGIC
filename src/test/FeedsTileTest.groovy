@@ -7,7 +7,7 @@ import resources.common.Priority
 import resources.popUnit.ArmyUnit
 import resources.popUnit.PopUnit
 import resources.common.Tile
-import resources.popUnit.State
+
 import traits.Consumes
 import traits.FeedsTile
 

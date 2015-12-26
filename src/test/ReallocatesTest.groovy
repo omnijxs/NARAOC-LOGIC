@@ -5,7 +5,7 @@ import org.junit.Before
 import org.junit.Test
 import resources.popUnit.Farmer
 import resources.popUnit.PopUnit
-import resources.popUnit.State
+
 import traits.Reallocates
 
 /**

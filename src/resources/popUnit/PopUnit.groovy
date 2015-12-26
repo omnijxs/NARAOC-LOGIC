@@ -2,14 +2,21 @@ package resources.popUnit
 
 import game.GameData
 import resources.common.Priority
+import resources.common.Race
+import resources.common.Tile
 import resources.gameActor.GameActor
+import resources.popUnit.obedience.Obedience
 
 /**
  * Created by Juri on 21.10.2015.
  */
 class PopUnit {
 
-    @Delegate State state
+    @Delegate Obedience obedience
+    @Delegate Race race
+    @Delegate Tile tile
+
+    Integer age = 0
     Priority priority
 
     public Boolean canMultiply(){
@@ -25,7 +32,7 @@ class PopUnit {
     }
     
     private Boolean isObedient(GameData gd, GameActor ga){
-        return obedience.resolveObedience(gd, ga) > 0
+        return resolveObedience(gd, ga) > 0
     }
 
     def methodMissing(String name, args) {

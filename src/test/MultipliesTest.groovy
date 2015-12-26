@@ -4,7 +4,7 @@ import org.junit.Before
 import org.junit.Test
 import resources.common.Race
 import resources.popUnit.PopUnit
-import resources.popUnit.State
+
 import traits.Consumes
 import traits.Multiplies
 

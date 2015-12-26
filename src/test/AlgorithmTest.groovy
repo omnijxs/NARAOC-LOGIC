@@ -13,11 +13,10 @@ import resources.popHub.City
 import resources.common.Tile
 import resources.popHub.PopHubOutput
 import resources.popHub.PopHub
-import resources.popUnit.ArmyUnit
 import resources.popUnit.Farmer
 import resources.popUnit.Merchant
 import resources.popUnit.PopUnit
-import resources.popUnit.State
+
 import resources.popUnit.Worker
 
 /**

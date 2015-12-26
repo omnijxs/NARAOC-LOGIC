@@ -6,7 +6,7 @@ import org.junit.Test
 import resources.common.Tile
 import resources.gameActor.GameActor
 import resources.popUnit.PopUnit
-import resources.popUnit.State
+
 import resources.popUnit.obedience.Obedience
 import resources.popUnit.obedience.ViolationRule
 

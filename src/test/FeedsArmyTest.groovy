@@ -2,20 +2,16 @@ package test
 
 import game.GameData
 import resources.common.Buildings
-import resources.common.Product
-import resources.common.Race
 import resources.common.Tile
 import resources.gameActor.GameActor
-import resources.gameActor.Player
 import org.junit.Before
 import org.junit.Test
 import resources.popHub.City
 import resources.popHub.PopHub
 import resources.popHub.PopHubOutput
 import resources.popUnit.ArmyUnit
-import resources.popUnit.Farmer
 import resources.popUnit.PopUnit
-import resources.popUnit.State
+
 import resources.popUnit.Worker
 import traits.FeedsArmy
 
