@@ -1,6 +1,8 @@
 package resources.popUnit
 
+import game.GameData
 import resources.common.Priority
+import resources.gameActor.GameActor
 
 /**
  * Created by Juri on 21.10.2015.

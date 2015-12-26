@@ -10,7 +10,7 @@ trait Multiplies implements Probability {
     
     def multiply(){
 
-        if(resolveMultiply()){
+        if(canMultiply()){
             if(getProbability(multiplicationRate)){
                 return breed()
             }
