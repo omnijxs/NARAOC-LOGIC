@@ -52,25 +52,20 @@ class RefinesTest {
     }
 
     @Test
-    void testNoOutputWithoutProduce() {
-
-        PopHubOutput output = city.refine(gameData)
-
-        assert output.foodProduction == 0
-        assert output.workProduction == 0
-        assert output.tradeProduction == 0
-    }
-
-    @Test
-    void testBasicOutputNoBuildings() {
+    void testBasicPopHubOutputCase() {
 
         gameData.popUnits.each { it.produce(gameData) }
 
         PopHubOutput output = city.refine(gameData)
 
-        assert output.foodProduction == 1
-        assert output.workProduction == 1
-        assert output.tradeProduction == 1
+        assert output.food.size() == 1
+        assert output.food.get(farmer) == 1
+
+        assert output.work.size() == 1
+        assert output.work.get(worker) == 1
+
+        assert output.trade.size() == 1
+        assert output.trade.get(merchant) == 1
     }
 
     @Test

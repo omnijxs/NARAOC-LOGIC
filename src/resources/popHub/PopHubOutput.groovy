@@ -7,9 +7,9 @@ import resources.popUnit.PopUnit
  */
 class PopHubOutput {
 
-    Map<PopUnit, Integer> foodProduction = [:]
-    Map<PopUnit, Integer> workProduction = [:]
-    Map<PopUnit, Integer> tradeProduction = [:]
+    Map<PopUnit, Integer> food = [:]
+    Map<PopUnit, Integer> work = [:]
+    Map<PopUnit, Integer> trade = [:]
 
     Integer surplusFood = 0
     Boolean closed = false
