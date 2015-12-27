@@ -16,7 +16,7 @@ class MultipliesTest {
     private class MockUnit extends PopUnit implements Multiplies, Consumes {
 
         public MockUnit(){
-            this.state = new State(race: new Race())
+            this.race = new Race()
             this.starving = true
         }
     }
@@ -41,7 +41,7 @@ class MultipliesTest {
         MockUnit a = new MockUnit()
         a.starving = true
 
-        a.state.race.multiplicationRate = 100
+        a.multiplicationRate = 100
 
         assert a.multiply().class == MockUnit
 

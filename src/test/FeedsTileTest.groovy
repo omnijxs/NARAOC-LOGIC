@@ -18,9 +18,6 @@ class FeedsTileTest {
 
     private class TileFeeder extends PopUnit implements FeedsTile, Consumes {
 
-        public TileFeeder(){
-            state = new State()
-        }
     }
     
     protected GameData gameData

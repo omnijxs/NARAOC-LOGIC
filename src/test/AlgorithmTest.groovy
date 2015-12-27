@@ -53,9 +53,9 @@ class AlgorithmTest extends Algorithm {
         gameData.popHubs = [city]
         gameData.gameActors = [player]
 
-        farmer = new Farmer(state: new State(tile: new Tile(x: 1, y: 2), race: new Race()), preferredHub: city)
-        worker = new Worker(state: new State(tile: cityTile, race: new Race()))
-        merchant = new Merchant(state: new State(tile: cityTile, race: new Race()))
+        farmer = new Farmer(tile: new Tile(x: 1, y: 2), race: new Race(), preferredHub: city)
+        worker = new Worker(tile: cityTile, race: new Race())
+        merchant = new Merchant(tile: cityTile, race: new Race())
 
         gameData.popUnits = [farmer, worker, merchant]
 
@@ -87,7 +87,7 @@ class AlgorithmTest extends Algorithm {
     @Test
     void testPopUnitsMultiplyAlways() {
 
-        PopUnit p = new Farmer(state: new State(race: new Race(multiplicationRate: 100)))
+        PopUnit p = new Farmer(race: new Race(multiplicationRate: 100))
 
         gameData.popUnits = [p]
 

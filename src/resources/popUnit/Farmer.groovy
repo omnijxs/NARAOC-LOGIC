@@ -24,7 +24,6 @@ class Farmer extends PopUnit implements Consumes,
         this.product = Product.FOOD
         this.productAmount = 2 /** Should be from a config file */ 
         this.priority = Priority.LOW
-        this.state = new State()
     }
     
     @Override

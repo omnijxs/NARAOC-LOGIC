@@ -43,9 +43,9 @@ class RefinesTest {
         gameData.popHubs = [city]
         gameData.gameActors = [player]
 
-        farmer = new Farmer(state: new State(tile: new Tile(), race: new Race()), preferredHub: city)
-        worker = new Worker(state: new State(tile: cityTile, race: new Race()), preferredHub: city)
-        merchant = new Merchant(state: new State(tile: cityTile, race: new Race()), preferredHub: city)
+        farmer = new Farmer(tile: new Tile(), race: new Race(), preferredHub: city)
+        worker = new Worker(tile: cityTile, race: new Race(), preferredHub: city)
+        merchant = new Merchant(tile: cityTile, race: new Race(), preferredHub: city)
 
         gameData.popUnits = [farmer, worker, merchant]
 

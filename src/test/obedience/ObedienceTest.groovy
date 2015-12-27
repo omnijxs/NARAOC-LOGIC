@@ -30,7 +30,7 @@ class ObedienceTest {
     void setUp() {
         gameData = new GameData()
         gameActor = new GameActor()
-        popUnit = new PopUnit(state: new State(obedience: new Obedience()), tile: new Tile())
+        popUnit = new PopUnit(obedience: new Obedience(), tile: new Tile())
     }
 
     @Test

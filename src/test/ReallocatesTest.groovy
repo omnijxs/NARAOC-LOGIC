@@ -17,9 +17,6 @@ class ReallocatesTest {
     protected def gameInput
 
     private class MockUnit extends PopUnit implements Reallocates {
-        public MockUnit(){
-            state = new State()
-        }
     }
 
     @Before

@@ -16,7 +16,6 @@ class ArmyUnit extends PopUnit implements Consumes,
 
     public ArmyUnit(){
         this.priority = Priority.HIGH
-        this.state = new State()
     }
 
 }

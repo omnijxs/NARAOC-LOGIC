@@ -15,6 +15,5 @@ class MagicUnit extends PopUnit implements Consumes,
 
     public MagicUnit(){
         this.priority = Priority.MEDIUM
-        this.state = new State()
     }
 }

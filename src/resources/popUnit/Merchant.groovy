@@ -22,6 +22,5 @@ class Merchant extends PopUnit implements Consumes,
         this.product = Product.TRADE
         this.productAmount = 1 /** Should be from a config file */
         this.priority = Priority.LOW
-        this.state = new State()
     }
 }

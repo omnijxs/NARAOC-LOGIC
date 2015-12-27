@@ -22,6 +22,5 @@ class Worker extends PopUnit implements Consumes,
         this.product = Product.WORK
         this.productAmount = 1 /** Should be from a config file */
         this.priority = Priority.LOW
-        this.state = new State()
     }
 }
