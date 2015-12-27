@@ -20,7 +20,7 @@ class PopUnit {
     Priority priority
 
     public Boolean canMultiply(){
-        return starving
+        return !starving
     }
     
     public Boolean canReallocate(GameData gd, GameActor ga){

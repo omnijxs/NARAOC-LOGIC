@@ -87,7 +87,7 @@ class AlgorithmTest extends Algorithm {
     @Test
     void testPopUnitsMultiplyAlways() {
 
-        PopUnit p = new Farmer(race: new Race(multiplicationRate: 100))
+        PopUnit p = new Farmer(race: new Race(multiplicationRate: 100), starving: false)
 
         gameData.popUnits = [p]
 

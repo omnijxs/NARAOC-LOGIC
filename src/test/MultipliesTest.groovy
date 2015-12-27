@@ -4,7 +4,7 @@ import org.junit.Before
 import org.junit.Test
 import resources.common.Race
 import resources.popUnit.PopUnit
-
+import resources.popUnit.obedience.Obedience
 import traits.Consumes
 import traits.Multiplies
 
@@ -17,7 +17,7 @@ class MultipliesTest {
 
         public MockUnit(){
             this.race = new Race()
-            this.starving = true
+            this.obedience = new Obedience()
         }
     }
 
@@ -39,34 +39,32 @@ class MultipliesTest {
     void testMultiplyAlways() {
 
         MockUnit a = new MockUnit()
-        a.starving = true
+        a.starving = false
 
         a.multiplicationRate = 100
 
         assert a.multiply().class == MockUnit
-
     }
 
     @Test
     void testNeverMultiplyStarving() {
 
         MockUnit a = new MockUnit()
-        a.starving = false
+        a.starving = true
 
         a.multiplicationRate = 100
 
         assert !a.multiply()
-
     }
 
     @Test
     void testMultiplyNever() {
 
         MockUnit a = new MockUnit()
+        a.starving = false
 
         a.multiplicationRate = 0
 
         assert !a.multiply()
-
     }
 }
