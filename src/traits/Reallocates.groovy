@@ -17,13 +17,19 @@ trait Reallocates {
     /** gameInput.gameActor     /** Which gameActor reallocated me. Needed for obedience calculations. */
 
     def reallocate(GameData gd, def gameInput){
+        
+        /** Resolve can the player actually reallocate this pop unit */
         if(canReallocate(gd, gameInput.gameActor)){
-            PopUnit reallocated = reallocate(gameInput)
+            /** Create the new pop unit */
+            PopUnit reallocated = createNewInstance(gameInput)
 
+            /** Resolve its properties */
             reallocated = resolveState(reallocated)
 
+            /** Add it to gameData */
             gd.popUnits.add(reallocated)
 
+            /** Remove the old pop unit from the game data*/
             return manipulateGameData(gd)
         } else
             return gd       /** Should also return error info to UI */
@@ -31,13 +37,12 @@ trait Reallocates {
     }
 
     /**
-     *
      * Create the new PopUnit
      *
      * @param gameInput
      * @return
      */
-    PopUnit reallocate(def gameInput){
+    PopUnit createNewInstance(def gameInput){
 
         GroovyClassLoader c = new GroovyClassLoader()
 
