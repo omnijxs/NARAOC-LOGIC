@@ -1,14 +1,16 @@
 package resources.popHub
 
+import resources.popUnit.PopUnit
+
 /**
  * Created by Juri on 17.11.2015.
  */
 class PopHubOutput {
 
-    /** Use Enum/Integer map instead? */
-    Integer foodProduction = 0
-    Integer workProduction = 0
-    Integer tradeProduction = 0
+    Map<PopUnit, Integer> foodProduction = [:]
+    Map<PopUnit, Integer> workProduction = [:]
+    Map<PopUnit, Integer> tradeProduction = [:]
+
     Integer surplusFood = 0
     Boolean closed = false
 

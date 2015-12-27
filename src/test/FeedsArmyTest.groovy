@@ -1,7 +1,7 @@
 package test
 
 import game.GameData
-import resources.common.Buildings
+import resources.popHub.Buildings
 import resources.common.Tile
 import resources.gameActor.GameActor
 import org.junit.Before

@@ -7,19 +7,19 @@ IMPROVEMENTS:
     {D}: Remove State as an unnecessary abstraction. Will break lots of tests. Fix them. 27.12.2015
     {D}: Use canMultiply() and canReallocate() in correct places. 27.12.2015
     { }: Use canBeTaxed() when taxing a pop unit. Will require major changes to Refines- and Taxes- traits.
-    { }: Create tests for canBeTaxed(), canMultiply(), canReallocate()? canReallocate already indirectly tested via ReallocatesTests.
+    { }: Create tests for isObedient(), canBeTaxed(), canMultiply(), canReallocate()?
+         canReallocate is already indirectly tested via ReallocatesTest and canMultiply via MultiplyTest.
 
 NEW FEATURES:
 [ ]: BUILDINGS: FEATURE!
+[ ]: RESOURCES: FEATURE!
 [ ]: ARMY UNIT: PROTO-PROJECT!
 [ ]: MAGIC UNIT: PROTO-PROJECT!
 
 IMPROVEMENTS:
-
 [ ]: MULTIPLICATION: Copy correct properties and resolve tile of the new PopUnit.
 [ ]: REALLOCATION: Deal with popUnit state: obedience penalties and tile calculation. Will require information about PopUnit 'owner' even though basic pop units don't have an owner.
 [ ]: REALLOCATION: Deal with armyUnit & magicUnit type.
-[ ]: OBEDIENCE: Use isObedient()-method in production and prevention of reallocation.
 [ ]: OBEDIENCE: Use currentTurn to calculate timed violations.
 [ ]: OBEDIENCE: removeObsolete() - method to sanitize violations list: remove unnecessary timed violations.
 [ ]: A better way to map demand to cities.

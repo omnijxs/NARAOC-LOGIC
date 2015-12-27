@@ -1,6 +1,5 @@
 package resources.popHub
 
-import resources.common.Buildings
 import resources.common.Tile
 import traits.FeedsHub
 import traits.Demands

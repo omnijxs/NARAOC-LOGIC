@@ -27,16 +27,17 @@ trait Refines implements PopUnitFinder {
         def tradeProducers = population.findAll { it.product == Product.TRADE }
 
         /** Harvest their production and get possible bonuses from buildings. */
-        foodProducers.each {
-            output.foodProduction += buildings.resolveFoodBonus(it.harvest())
+        foodProducers.each { p ->
+            output.foodProduction.put(p, buildings.resolveFoodBonus(p.harvest()))
         }
 
-        workProducers.each {
-            output.workProduction += buildings.resolveWorkBonus(it.harvest())
+        workProducers.each { p ->
+            output.workProduction.put(p, buildings.resolveWorkBonus(p.harvest()))
+
         }
 
-        tradeProducers.each {
-            output.tradeProduction += buildings.resolveTradeBonus(it.harvest())
+        tradeProducers.each { p ->
+            output.tradeProduction.put(p, buildings.resolveTradeBonus(p.harvest()))
         }
 
         output
