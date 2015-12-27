@@ -7,7 +7,7 @@ IMPROVEMENTS:
     {D}: Remove State as an unnecessary abstraction. Will break lots of tests. Fix them. 27.12.2015
     {D}: Use canMultiply() and canReallocate() in correct places. 27.12.2015
     { }: Use canBeTaxed() when taxing a pop unit. Will require major changes to Refines- and Taxes- traits.
-    { }: Create tests for canBeTaxed(), canMultiply(), canReallocate() and Reallocates.reallocate(gd, playerInput)
+    { }: Create tests for canBeTaxed(), canMultiply(), canReallocate()? canReallocate already indirectly tested via ReallocatesTests.
 
 NEW FEATURES:
 [ ]: BUILDINGS: FEATURE!

@@ -3,15 +3,19 @@ package test
 import game.GameData
 import org.junit.Before
 import org.junit.Test
+import resources.gameActor.GameActor
 import resources.popUnit.Farmer
 import resources.popUnit.PopUnit
-
+import resources.popUnit.obedience.Obedience
 import traits.Reallocates
 
 /**
  * Created by jxs on 6.12.2015.
  */
 class ReallocatesTest {
+
+    // NOTE Add tests to resolveState()
+    // NOTE These tests also indirectly test PopUnit.canReallocate() and PopUnit.isObedient()
 
     private class MockUnit extends PopUnit implements Reallocates { }
     
@@ -23,9 +27,9 @@ class ReallocatesTest {
     @Before
     void setUp() {
         gameData = new GameData()
-        gameActor = new gameActor()
+        gameActor = new GameActor()
         gameInput = [popUnitClass: '', popUnitType: '', reallocator: '', gameActor: null]
-        original = new MockUnit()
+        original = new MockUnit(obedience: new Obedience())
         gameData.popUnits = [original]
     }
 
@@ -36,7 +40,7 @@ class ReallocatesTest {
 
         gameInput.popUnitClass = "resources.popUnit.Farmer"     /** User tries to reallocate it to a Farmer */ 
 
-        gameData = original.reallocate(gameInput, gameActor)
+        gameData = original.reallocate(gameData, gameInput)
 
         assert gameData.popUnits.size() == 1                    /** GameData.popUnits should be unchanged */
         assert gameData.popUnits.first() == original
@@ -48,9 +52,9 @@ class ReallocatesTest {
 
         original.obedience.value = 1                            /** The pop unit is obedient enough */
 
-        gameInput.popUnitClass = "resources.popUnit.Farmer"     /** User tries to reallocate it to a Farmer */ 
+        gameInput.popUnitClass = "resources.popUnit.Farmer"     /** User tries to reallocate it to a Farmer */
 
-        gameData = original.reallocate(gameInput, gameActor)
+        gameData = original.reallocate(gameData, gameInput)
 
         assert gameData.popUnits.size() == 1
         assert gameData.popUnits.first() != original            /** The original should be gone */
@@ -74,7 +78,7 @@ class ReallocatesTest {
 
         def reallocated = original.createNewInstance(gameInput)
 
-        gameData.popUnits = [original, reallocated]
+        gameData.popUnits.add(reallocated)
 
         GameData mutatedGameData = original.manipulateGameData(gameData)
 
@@ -84,6 +88,4 @@ class ReallocatesTest {
 
     }
 
-    // TODO Add tests to resolveState()
-    // NOTE These tests also indirectly test PopUnit.canReallocate() and PopUnit.isObedient()
 }

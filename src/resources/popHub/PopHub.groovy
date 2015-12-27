@@ -13,7 +13,4 @@ class PopHub {
     def propertyMissing(String name){
         null
     }
-
-
-
 }
