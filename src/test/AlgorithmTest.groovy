@@ -18,6 +18,7 @@ import resources.popUnit.Merchant
 import resources.popUnit.PopUnit
 
 import resources.popUnit.Worker
+import resources.popUnit.obedience.Obedience
 
 /**
  * Created by Juri on 16.11.2015.
@@ -53,9 +54,9 @@ class AlgorithmTest extends Algorithm {
         gameData.popHubs = [city]
         gameData.gameActors = [player]
 
-        farmer = new Farmer(tile: new Tile(x: 1, y: 2), race: new Race(), preferredHub: city)
-        worker = new Worker(tile: cityTile, race: new Race())
-        merchant = new Merchant(tile: cityTile, race: new Race())
+        farmer = new Farmer(tile: new Tile(x: 1, y: 2), race: new Race(), preferredHub: city, obedience: new Obedience())
+        worker = new Worker(tile: cityTile, race: new Race(), obedience: new Obedience())
+        merchant = new Merchant(tile: cityTile, race: new Race(), obedience: new Obedience())
 
         gameData.popUnits = [farmer, worker, merchant]
 
@@ -115,9 +116,9 @@ class AlgorithmTest extends Algorithm {
 
         PopHubOutput output = city.getTurnData()
 
-        assert output.foodProduction == 1
-        assert output.workProduction == 1
-        assert output.tradeProduction == 1
+        assert output.food.size() == 1
+        assert output.work.size() == 1
+        assert output.trade.size() == 1
     }
 
 

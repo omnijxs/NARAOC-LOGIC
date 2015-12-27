@@ -16,4 +16,34 @@ class PopHubOutput {
 
     /** Or use a stack where this turns production is on top? */
 
+    Integer getTotalFood(){
+        Integer temp = 0
+
+        food.values().each {
+            temp += it
+        }
+
+        return temp
+    }
+
+    Integer getTotalWork(){
+        Integer temp = 0
+
+        work.values().each {
+            temp += it
+        }
+
+        return temp
+    }
+
+    Integer getTotalTrade(){
+        Integer temp = 0
+
+        trade.values().each {
+            temp += it
+        }
+
+        return temp
+    }
+
 }

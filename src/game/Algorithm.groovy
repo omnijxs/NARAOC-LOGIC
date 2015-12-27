@@ -67,7 +67,7 @@ class Algorithm {
             PopHubOutput output = popHub.refine(gd)
 
             /** Feed the hub population and calculate the surplus food. */
-            output.surplusFood = popHub.feedHub(gd, output.foodProduction)
+            output.surplusFood = popHub.feedHub(gd, output.getTotalFood())
 
             /** Set the turnData. */
             popHub.setTurnData(output)
