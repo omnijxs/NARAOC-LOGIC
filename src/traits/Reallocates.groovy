@@ -14,16 +14,19 @@ trait Reallocates {
     /** gameInput.reallocator   /** Who reallocated me? Usually a popHub. Needed for tile info and possible bonuses. */
     /** gameInput.popUnitClass  /** The class of the new PopUnit */
     /** gameInput.popUnitType   /** For armyUnit and magicUnit type identification */
+    /** gameInput.gameActor     /** Which gameActor reallocated me. Needed for obedience calculations. */
 
     def reallocate(GameData gd, def gameInput){
+        if(canReallocate(gd, gameInput.gameActor)){
+            PopUnit reallocated = reallocate(gameInput)
 
-        PopUnit reallocated = reallocate(gameInput)
+            reallocated = resolveState(reallocated)
 
-        reallocated = resolveState(reallocated)
+            gd.popUnits.add(reallocated)
 
-        gd.popUnits.add(reallocated)
-
-        return manipulateGameData(gd)
+            return manipulateGameData(gd)
+        } else
+            return gd       /** Should also return error info to UI */
 
     }
 

@@ -4,10 +4,10 @@ IMPROVEMENTS:
 [ ]: Improvements to PopUnit - interface
     {D}: Create public methods canBeTaxed(), canMultiply() and canReallocate(). 
          These are the only methods that can be called "outside" pop unit. 23.12.2015
-    { }: Remove State as an unnecessary abstraction. Will break lots of tests. Fix them.
-    { }: Use canMultiply() and canReallocate() in correct places.
+    {D}: Remove State as an unnecessary abstraction. Will break lots of tests. Fix them. 27.12.2015
+    {D}: Use canMultiply() and canReallocate() in correct places. 27.12.2015
     { }: Use canBeTaxed() when taxing a pop unit. Will require major changes to Refines- and Taxes- traits.
-    { }: Create tests for the afore mentioned three methods.
+    { }: Create tests for canBeTaxed(), canMultiply(), canReallocate() and Reallocates.reallocate(gd, playerInput)
 
 NEW FEATURES:
 [ ]: BUILDINGS: FEATURE!

@@ -9,7 +9,6 @@ trait Multiplies implements Probability {
       * I need it to for the state property which tells my probabilities to multiply. */
     
     def multiply(){
-
         if(canMultiply()){
             if(getProbability(multiplicationRate)){
                 return breed()
