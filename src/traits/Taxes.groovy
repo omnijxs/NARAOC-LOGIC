@@ -2,6 +2,7 @@ package traits
 
 import game.GameData
 import resources.gameActor.GameActorOutput
+import resources.popUnit.PopUnit
 
 /**
  * Created by jxs on 16.12.2015.
@@ -36,9 +37,28 @@ trait Taxes {
 
         /** Add all their production */
         loyalHubs.each { popHub ->
-            output.foodTotal += popHub.getTurnData().foodProduction
-            output.workTotal += popHub.getTurnData().workProduction
-            output.tradeTotal += popHub.getTurnData().tradeProduction
+
+            /** Iterate through all food producers and check if they can be taxed */
+            popHub.getTurnData().food.each { PopUnit k, v ->
+                if(k.canBeTaxed(gd, this)){
+                    output.foodTotal += v
+                }
+            }
+
+            /** Iterate through all work producers and check if they can be taxed */
+            popHub.getTurnData().work.each { PopUnit k, v ->
+                if(k.canBeTaxed(gd, this)){
+                    output.workTotal += v
+                }
+            }
+
+            /** Iterate through all trade producers and check if they can be taxed */
+            popHub.getTurnData().trade.each { PopUnit k, v ->
+                if(k.canBeTaxed(gd, this)){
+                    output.tradeTotal += v
+                }
+            }
+
         }
 
         return output
