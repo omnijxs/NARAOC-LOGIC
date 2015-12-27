@@ -79,39 +79,36 @@ class TaxesTest {
     @Test
     void testGetTotalOutputTwoCities() {
 
-        PopHub c_1 = new City(owner: player)
-        PopHubOutput output_1 = new PopHubOutput(foodProduction: 2, workProduction: 1, tradeProduction: 1)
-        c_1.setTurnData(output_1)
+        PopHub city = new City(owner: player)
+        city.setTurnData(output)
 
-        PopHub c_2 = new City(owner: player)
-        PopHubOutput output_2 = new PopHubOutput(foodProduction: 1, workProduction: 2, tradeProduction: 2)
-        c_2.setTurnData(output_2)
+        PopHub city_2 = new City(owner: player)
 
-        gameData.popHubs = [c_1, c_2]
+        city_2.setTurnData(output)
+
+        gameData.popHubs = [city, city_2]
 
         GameActorOutput total = player.getTotalOutput(gameData)
 
-        assert total.foodTotal == 3
-        assert total.workTotal == 3
-        assert total.tradeTotal == 3
+        assert total.foodTotal == 2
+        assert total.workTotal == 2
+        assert total.tradeTotal == 2
     }
 
     @Test
     void testGetTotalOutputSkipUnownedPopHub() {
 
-        PopHub c_1 = new City(owner: player)
-        PopHubOutput output_1 = new PopHubOutput(foodProduction: 2, workProduction: 1, tradeProduction: 1)
-        c_1.setTurnData(output_1)
+        PopHub city = new City(owner: player)
+        city.setTurnData(output)
 
-        PopHub c_2 = new City(owner: new Player())
-        PopHubOutput output_2 = new PopHubOutput(foodProduction: 1, workProduction: 2, tradeProduction: 2)
-        c_2.setTurnData(output_2)
+        PopHub city_2 = new City(owner: new GameActor())
+        city_2.setTurnData(output)
 
-        gameData.popHubs = [c_1, c_2]
+        gameData.popHubs = [city, city_2]
 
         GameActorOutput total = player.getTotalOutput(gameData)
 
-        assert total.foodTotal == 2
+        assert total.foodTotal == 1
         assert total.workTotal == 1
         assert total.tradeTotal == 1
     }
