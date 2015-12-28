@@ -14,8 +14,6 @@ class PopHubOutput {
     Integer surplusFood = 0
     Boolean closed = false
 
-    /** Or use a stack where this turns production is on top? */
-
     Integer getTotalFood(){
         Integer temp = 0
 

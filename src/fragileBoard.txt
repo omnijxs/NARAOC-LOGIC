@@ -1,14 +1,4 @@
-## VERSION 0.11
-
-IMPROVEMENTS:
-[ ]: Improvements to PopUnit - interface
-    {D}: Create public methods canBeTaxed(), canMultiply() and canReallocate(). 
-         These are the only methods that can be called "outside" pop unit. 23.12.2015
-    {D}: Remove State as an unnecessary abstraction. Will break lots of tests. Fix them. 27.12.2015
-    {D}: Use canMultiply() and canReallocate() in correct places. 27.12.2015
-    { }: Use canBeTaxed() when taxing a pop unit. Will require major changes to Refines- and Taxes- traits.
-    { }: Create tests for isObedient(), canBeTaxed(), canMultiply(), canReallocate()?
-         canReallocate is already indirectly tested via ReallocatesTest and canMultiply via MultiplyTest.
+## VERSION 0.12
 
 NEW FEATURES:
 [ ]: BUILDINGS: FEATURE!
@@ -24,6 +14,7 @@ IMPROVEMENTS:
 [ ]: OBEDIENCE: removeObsolete() - method to sanitize violations list: remove unnecessary timed violations.
 [ ]: A better way to map demand to cities.
 [ ]: Create a TestData trait for all test setup scenarios.
+[ ]: Create tests for isObedient(), canBeTaxed(), canMultiply(), canReallocate()? canReallocate is already indirectly tested via ReallocatesTest, canMultiply via MultiplyTest and canBeTaxed TaxesTest.
 
 [ ]: Taxes.tax or game algorithm should take into account player upkeep.
 [ ]: Tests for Taxes.turnData and Refines.turnData behavior.
@@ -35,6 +26,13 @@ BUGS:
 
 ---
 
+IMPROVEMENTS:
+[D]: Improvements to PopUnit - interface 28.12.2015
+    {D}: Create public methods canBeTaxed(), canMultiply() and canReallocate().
+         These are the only methods that can be called "outside" pop unit. 23.12.2015
+    {D}: Remove State as an unnecessary abstraction. Will break lots of tests. Fix them. 27.12.2015
+    {D}: Use canMultiply() and canReallocate() in correct places. 27.12.2015
+    {D}: Use canBeTaxed() when taxing a pop unit. Will require major changes to Refines- and Taxes- traits. 28.12.2015
 [D]: OBEDIENCE: A pop unit now has obedience. No rules implemented and no place to add them in code yet. 22.12.2015
 [D]: TAXATION: Taxes-trait does the trick! 16.12.2015
 [D]: There should be a third popUnitFinder-method: All popUnits should produce only for the preferredCity. 16.12.2015
