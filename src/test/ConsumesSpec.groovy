@@ -17,11 +17,48 @@ class ConsumesSpec extends Specification implements Consumes {
 
         where:
         value     | expected
-        // 0      | 0
-        // null   | 0
+        null      | 0
+        0         | 0
         1         | 0
         2         | 1
         3         | 2
+    }
+
+    def "Test consumes-method starving behaviour."(){
+
+        when:
+        def surplus = consume(value)
+        def starvation = this.starving
+
+        then:
+        starvation == expected
+
+        where:
+        value     | expected
+        null      | true
+        0         | true
+        1         | false
+        2         | false
+        3         | false
+    }
+
+    def "Test that consumes-method work as stateless."(){
+
+        when:
+        def surplus_a = consume(0)
+        def surplus_b = consume(1)
+        def surplus_c = consume(2)
+        def surplus_d = consume(2)
+        def surplus_e = consume(3)
+
+        then:
+        surplus_a == 0
+        surplus_b == 0
+        surplus_c == 1
+        surplus_d == 1
+        surplus_e == 2
+
+
     }
 
 }

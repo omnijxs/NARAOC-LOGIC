@@ -7,9 +7,15 @@ trait Consumes {
     
     Boolean starving = true 
     
-    Integer consume(def food){
-        starving = false
-        food - 1
+    Integer consume(Integer food){
+        Integer consumed = 0
+
+        if(food) {
+            starving = false
+            consumed = food - 1
+        }
+
+        return consumed
     }
 
 }
