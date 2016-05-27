@@ -1,6 +1,8 @@
 package traits
 
 import resources.common.Product
+import resources.common.Race
+import resources.common.Tile
 
 /**
  * Created by Juri on 16.11.2015.
@@ -11,7 +13,7 @@ trait Produces {
     Integer productAmount = 0
     Integer harvestAmount = 0
 
-    void produces(){
+    void produces(Race race, Tile tile){
         harvestAmount = productAmount.intValue()
     }
     

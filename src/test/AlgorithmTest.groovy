@@ -18,7 +18,7 @@ import resources.popUnit.Merchant
 import resources.popUnit.PopUnit
 
 import resources.popUnit.Worker
-import resources.popUnit.obedience.Obedience
+import traits.HasObedience
 
 /**
  * Created by Juri on 16.11.2015.
@@ -54,9 +54,9 @@ class AlgorithmTest extends Algorithm {
         gameData.popHubs = [city]
         gameData.gameActors = [player]
 
-        farmer = new Farmer(tile: new Tile(x: 1, y: 2), race: new Race(), preferredHub: city, obedience: new Obedience())
-        worker = new Worker(tile: cityTile, race: new Race(), obedience: new Obedience())
-        merchant = new Merchant(tile: cityTile, race: new Race(), obedience: new Obedience())
+        farmer = new Farmer(tile: new Tile(x: 1, y: 2), race: new Race(), preferredHub: city, obedience: new HasObedience())
+        worker = new Worker(tile: cityTile, race: new Race(), obedience: new HasObedience())
+        merchant = new Merchant(tile: cityTile, race: new Race(), obedience: new HasObedience())
 
         gameData.popUnits = [farmer, worker, merchant]
 

@@ -6,7 +6,7 @@ import org.junit.Test
 import resources.gameActor.GameActor
 import resources.popUnit.Farmer
 import resources.popUnit.PopUnit
-import resources.popUnit.obedience.Obedience
+import traits.HasObedience
 import traits.Reallocates
 
 /**
@@ -29,7 +29,7 @@ class ReallocatesTest {
         gameData = new GameData()
         gameActor = new GameActor()
         gameInput = [popUnitClass: '', popUnitType: '', reallocator: '', gameActor: null]
-        original = new MockUnit(obedience: new Obedience())
+        original = new MockUnit(obedience: new HasObedience())
         gameData.popUnits = [original]
     }
 

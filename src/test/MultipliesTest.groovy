@@ -4,7 +4,7 @@ import org.junit.Before
 import org.junit.Test
 import resources.common.Race
 import resources.popUnit.PopUnit
-import resources.popUnit.obedience.Obedience
+import traits.HasObedience
 import traits.Consumes
 import traits.Multiplies
 
@@ -17,7 +17,7 @@ class MultipliesTest {
 
         public MockUnit(){
             this.race = new Race()
-            this.obedience = new Obedience()
+            this.obedience = new HasObedience()
         }
     }
 

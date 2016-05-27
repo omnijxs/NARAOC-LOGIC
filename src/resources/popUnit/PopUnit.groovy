@@ -1,14 +1,15 @@
 package resources.popUnit
 
 import game.GameData
+import groovy.transform.CompileStatic
+import groovy.transform.TypeChecked
 import resources.common.Priority
-import resources.common.Product
 import resources.common.Race
 import resources.common.Tile
 import resources.gameActor.GameActor
-import resources.popUnit.obedience.Obedience
 import traits.Consumes
 import traits.Multiplies
+import traits.PopUnitResolver
 import traits.Preferres
 import traits.Produces
 import traits.Reallocates
@@ -16,21 +17,29 @@ import traits.Reallocates
 /**
  * Created by Juri on 21.10.2015.
  */
-class PopUnit implements Consumes, Produces, Preferres, Reallocates, Multiplies {
 
-    @Delegate Obedience obedience
+@CompileStatic
+@TypeChecked
+class PopUnit implements Consumes,
+                         Produces,
+                         Preferres,
+                         Reallocates,
+                         Multiplies,
+                         PopUnitResolver {
+
     @Delegate Race race
     @Delegate Tile tile
 
     Integer age = 0
     Priority priority
+    GameActor owner
 
     Integer consume(Integer food){
         return consumes(food)
     }
 
     void produce(){
-        produces()
+        produces(race, tile)
     }
 
     Integer harvest(){
@@ -41,32 +50,20 @@ class PopUnit implements Consumes, Produces, Preferres, Reallocates, Multiplies 
         preferres(gameData.popHubs, tile)
     }
 
-    List<PopUnit> reallocate(GameData gameData, def gameInput){
-        return reallocates(gameData.popUnits, gameInput)
+    List<PopUnit> reallocate(GameData gameData, GameActor gameActor, def gameInput){
+        if(canReallocate(gameData, gameActor)){
+            return reallocates(gameData.popUnits, gameInput)
+        }
     }
 
     PopUnit multiply(){
-        return multiplies(race.multiplicationRate)
+        if(canMultiply(starving)){
+            return multiplies(multiplicationRate)
+        }
     }
 
-    /*** */
-
-
-    public Boolean canMultiply(){
-        return !starving
+    Boolean tax(GameData gameData, GameActor gameActor){
+        return canBeTaxed(gameData,gameActor)
     }
-    
-    public Boolean canReallocate(GameData gd, GameActor ga){
-        return isObedient(gd, ga)
-    }
-    
-    public Boolean canBeTaxed(GameData gd, GameActor ga){
-        return isObedient(gd, ga)
-    }
-    
-    private Boolean isObedient(GameData gd, GameActor ga){
-        return resolveObedience(gd, ga) > 0
-    }
-
 
 }

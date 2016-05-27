@@ -13,7 +13,7 @@ import resources.popUnit.Farmer
 import resources.popUnit.Merchant
 import resources.popUnit.PopUnit
 import resources.popUnit.Worker
-import resources.popUnit.obedience.Obedience
+import traits.HasObedience
 
 /**
  * Created by jxs on 16.12.2015.
@@ -33,9 +33,9 @@ class TaxesTest {
         gameData = new GameData()
         player = new Player()
 
-        farmer = new Farmer(obedience: new Obedience())
-        worker = new Worker(obedience: new Obedience())
-        merchant = new Merchant(obedience: new Obedience())
+        farmer = new Farmer(obedience: new HasObedience())
+        worker = new Worker(obedience: new HasObedience())
+        merchant = new Merchant(obedience: new HasObedience())
         output = new PopHubOutput()
         output.food.put(farmer, 1)
         output.work.put(farmer, 1)

@@ -1,9 +1,10 @@
 package resources.popHub
 
 import resources.common.Tile
+import resources.gameActor.GameActor
 import traits.FeedsHub
 import traits.Demands
-import traits.IsOwned
+
 import traits.Refines
 
 /**
@@ -11,10 +12,10 @@ import traits.Refines
  */
 class City extends PopHub implements Demands, 
                                      Refines, 
-                                     FeedsHub, 
-                                     IsOwned {
+                                     FeedsHub {
 
     Buildings buildings
     Tile tile
+    GameActor owner
 
 }

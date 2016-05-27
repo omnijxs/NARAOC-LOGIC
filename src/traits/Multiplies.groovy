@@ -11,11 +11,10 @@ trait Multiplies implements Probability {
       * I need it to for the state property which tells my probabilities to multiply. */
     
     PopUnit multiplies(Integer multiplicationRate){
-        if(canMultiply()){
-            if(getProbability(multiplicationRate)){
-                return breed()
-            }
+        if(getProbability(multiplicationRate)){
+            return breed()
         }
+
     }
 
     PopUnit breed(){

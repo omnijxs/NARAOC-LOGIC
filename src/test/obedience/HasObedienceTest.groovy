@@ -7,13 +7,13 @@ import resources.common.Tile
 import resources.gameActor.GameActor
 import resources.popUnit.PopUnit
 
-import resources.popUnit.obedience.Obedience
+import traits.HasObedience
 import resources.popUnit.obedience.ViolationRule
 
 /**
  * Created by jxs on 21.12.2015.
  */
-class ObedienceTest {
+class HasObedienceTest {
 
     GameData gameData
     GameActor gameActor
@@ -30,7 +30,7 @@ class ObedienceTest {
     void setUp() {
         gameData = new GameData()
         gameActor = new GameActor()
-        popUnit = new PopUnit(obedience: new Obedience(), tile: new Tile())
+        // popUnit = new PopUnit(obedience: new HasObedience(), tile: new Tile())
     }
 
     @Test

@@ -1,6 +1,5 @@
 package traits
 
-import game.GameData
 import resources.popUnit.PopUnit
 
 /**
@@ -17,20 +16,18 @@ trait Reallocates {
     /** gameInput.gameActor     /** Which gameActor reallocated me. Needed for obedience calculations. */
 
     List<PopUnit> reallocates(List<PopUnit> popUnits, def gameInput){
-        
-            /** Resolve can the player actually reallocate this pop unit */
 
-            /** Create the new pop unit */
-            PopUnit reallocated = createNewInstance(gameInput)
+        /** Create the new pop unit */
+        PopUnit reallocated = createNewInstance(gameInput)
 
-            /** Resolve its properties */
-            reallocated = resolveState(reallocated)
+        /** Resolve its properties */
+        reallocated = resolveState(reallocated)
 
-            /** Add it to gameData */
-            popUnits.add(reallocated)
+        /** Add it to gameData */
+        popUnits.add(reallocated)
 
-            /** Remove the old pop unit from the game data */
-            return manipulateGameData(popUnits)
+        /** Remove the old pop unit from the game data */
+        return manipulateGameData(popUnits)
     }
 
     /**
@@ -40,11 +37,8 @@ trait Reallocates {
      * @return
      */
     PopUnit createNewInstance(def gameInput){
-
         GroovyClassLoader c = new GroovyClassLoader()
-
         def newClass = c.loadClass(gameInput.popUnitClass)
-
         return newClass.newInstance()
 
     }
