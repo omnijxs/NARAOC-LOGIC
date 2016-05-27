@@ -12,7 +12,7 @@ class MultipliesSpec extends Specification {
 
     }
 
-    def "Test breed-method"(){
+    def "Test breed-method."(){
         setup:
         MockUnit a = new MockUnit()
 

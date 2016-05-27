@@ -7,6 +7,7 @@ import resources.common.Priority
 import resources.common.Race
 import resources.common.Tile
 import resources.gameActor.GameActor
+import resources.popHub.PopHub
 import traits.Consumes
 import traits.Multiplies
 import traits.PopUnitResolver
@@ -34,25 +35,29 @@ class PopUnit implements Consumes,
     Priority priority
     GameActor owner
 
+    /** Tests */
     Integer consume(Integer food){
         return consumes(food)
     }
 
+    /** Tests */
     void produce(GameData gameData){
         if(canProduce(gameData.metadata, this.class.name)){
             produces(race, tile)
         }
     }
 
+    /** Tests */
     Integer harvest(GameData gameData){
         if(canProduce(gameData.metadata, this.class.name)){
             return harvests()
         }
     }
 
-    void prefer(GameData gameData){
+    /** Tests */
+    PopHub prefer(GameData gameData){
         if(canProduce(gameData.metadata, this.class.name)){
-            preferres(gameData.popHubs, tile)
+            preferres(gameData.popHubs, tile, product)
         }
     }
 
@@ -62,6 +67,7 @@ class PopUnit implements Consumes,
         }
     }
 
+    /** Tests */
     PopUnit multiply(GameData gameData){
         if(canMultiply(gameData.metadata, this.class.name, race, starving)){
             return multiplies(multiplicationRate)

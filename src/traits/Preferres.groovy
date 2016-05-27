@@ -1,6 +1,7 @@
 package traits
 
 import game.GameData
+import resources.common.Product
 import resources.common.Tile
 import resources.popHub.PopHub
 
@@ -9,12 +10,9 @@ import resources.popHub.PopHub
  */
 trait Preferres {
 
-    /** Assumptions: I am implemented by an object which has the property Tile.
-      * I need it calculate distances. */
-    
     PopHub preferredHub = null
 
-    void preferres(List<PopHub> popHubs, Tile tile){
+    PopHub preferres(List<PopHub> popHubs, Tile tile, Product product){
 
         /** If there is no city with a preferredValue higher than zero, the Pop Unit does not produce for any city */
         preferredHub = null
@@ -34,6 +32,8 @@ trait Preferres {
             }
                 
         }
+
+        return preferredHub
 
     }
 
