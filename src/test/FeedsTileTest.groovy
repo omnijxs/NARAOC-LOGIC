@@ -15,7 +15,7 @@ import traits.FeedsTile
  * Created by Juri on 22.10.2015.
  */
 class FeedsTileTest {
-
+/*
     private class TileFeeder extends PopUnit implements FeedsTile, Consumes {
 
     }
@@ -93,6 +93,6 @@ class FeedsTileTest {
         assert feeder.feedTile(gameData, 2) == 1
         assert !feeder.starving
         assert !army.starving
-    }
+    }*/
 
 }

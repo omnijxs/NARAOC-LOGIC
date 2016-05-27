@@ -10,7 +10,7 @@ import traits.Produces
  */
 class ProducesTest implements Produces {
 
-    protected GameData gameData
+   /* protected GameData gameData
 
     @Before
     void setUp() {
@@ -45,5 +45,5 @@ class ProducesTest implements Produces {
 
         assert harvestAmount == 0
         assert productAmount == 2
-    }
+    }*/
 }

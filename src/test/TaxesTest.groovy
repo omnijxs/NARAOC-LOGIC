@@ -20,7 +20,7 @@ import traits.HasObedience
  */
 class TaxesTest {
 
-    protected GameData gameData
+  /*  protected GameData gameData
     protected GameActor player
     protected PopUnit farmer
     protected PopUnit worker
@@ -138,8 +138,8 @@ class TaxesTest {
 
         Integer total = player.tax()
 
-        /** Currently we round down. */
+        *//** Currently we round down. *//*
         assert total == 12
-    }
+    }*/
 
 }

@@ -13,7 +13,7 @@ import traits.Multiplies
  */
 class MultipliesTest {
 
-    private class MockUnit extends PopUnit implements Multiplies, Consumes {
+   /* private class MockUnit extends PopUnit implements Multiplies, Consumes {
 
         public MockUnit(){
             this.race = new Race()
@@ -66,5 +66,5 @@ class MultipliesTest {
         a.multiplicationRate = 0
 
         assert !a.multiply()
-    }
+    }*/
 }

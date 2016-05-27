@@ -30,7 +30,7 @@ class AlgorithmTest extends Algorithm {
      * The purpose of these tests is to prototype the main algorithm.
      * */
 
-    protected GameData gameData
+  /*  protected GameData gameData
     protected PopHub city
     protected GameActor player
     protected PopUnit farmer
@@ -65,22 +65,22 @@ class AlgorithmTest extends Algorithm {
     @Test
     void testTurnAlgorithm() {
 
-        /** 1. DEAL WITH POP UNIT MULTIPLICATION. */
-        gameData = popUnitsMultiply(gameData)           /** gameData.popUnits = ...*/
+        *//** 1. DEAL WITH POP UNIT MULTIPLICATION. *//*
+        gameData = popUnitsMultiply(gameData)           *//** gameData.popUnits = ...*//*
 
-        /** 2. DEAL WITH POP UNIT PRODUCTION */
-        gameData = popUnitsProduce(gameData)            /** gameData.popUnits = ...*/
+        *//** 2. DEAL WITH POP UNIT PRODUCTION *//*
+        gameData = popUnitsProduce(gameData)            *//** gameData.popUnits = ...*//*
 
-        /** 3. DEAL WITH POP HUB PRODUCTION */
+        *//** 3. DEAL WITH POP HUB PRODUCTION *//*
         gameData = popHubsRefine(gameData)
 
-        /** 4. DEAL WITH GAME ACTORS */
+        *//** 4. DEAL WITH GAME ACTORS *//*
         gameData = gameActorsSetup(gameData)
 
-        /** 5. TURN-BASED ACTIONS... */
+        *//** 5. TURN-BASED ACTIONS... *//*
         gameData = gameActorInput(gameData)
 
-        /** 6. PREPARE GAME DATA FOR THE NEXT TURN */
+        *//** 6. PREPARE GAME DATA FOR THE NEXT TURN *//*
         gameData = postProcess(gameData)
 
     }
@@ -119,7 +119,7 @@ class AlgorithmTest extends Algorithm {
         assert output.food.size() == 1
         assert output.work.size() == 1
         assert output.trade.size() == 1
-    }
+    }*/
 
 
 }

@@ -20,7 +20,7 @@ import traits.FeedsArmy
  */
 class FeedsArmyTest {
 
-    private class ArmyFeeder extends GameActor implements FeedsArmy {}
+   /* private class ArmyFeeder extends GameActor implements FeedsArmy {}
 
     protected GameData gameData
     protected ArmyFeeder player
@@ -147,6 +147,6 @@ class FeedsArmyTest {
 
         assert surplusFood == 2
     }
-
+*/
 
 }

@@ -17,7 +17,7 @@ class ReallocatesTest {
     // NOTE Add tests to resolveState()
     // NOTE These tests also indirectly test PopUnit.canReallocate() and PopUnit.isObedient()
 
-    private class MockUnit extends PopUnit implements Reallocates { }
+   /* private class MockUnit extends PopUnit implements Reallocates { }
     
     protected GameData gameData
     protected GameActor gameActor
@@ -36,13 +36,13 @@ class ReallocatesTest {
     @Test
     void testCanReallocateFail() {
 
-        original.obedience.value = 0                            /** The pop unit is not obedient */
+        original.obedience.value = 0                            *//** The pop unit is not obedient *//*
 
-        gameInput.popUnitClass = "resources.popUnit.Farmer"     /** User tries to reallocate it to a Farmer */ 
+        gameInput.popUnitClass = "resources.popUnit.Farmer"     *//** User tries to reallocate it to a Farmer *//*
 
         gameData = original.reallocate(gameData, gameInput)
 
-        assert gameData.popUnits.size() == 1                    /** GameData.popUnits should be unchanged */
+        assert gameData.popUnits.size() == 1                    *//** GameData.popUnits should be unchanged *//*
         assert gameData.popUnits.first() == original
         assert gameData.popUnits.first().class == MockUnit
     }
@@ -50,21 +50,21 @@ class ReallocatesTest {
     @Test
     void testCanReallocatePass() {
 
-        original.obedience.value = 1                            /** The pop unit is obedient enough */
+        original.obedience.value = 1                            *//** The pop unit is obedient enough *//*
 
-        gameInput.popUnitClass = "resources.popUnit.Farmer"     /** User tries to reallocate it to a Farmer */
+        gameInput.popUnitClass = "resources.popUnit.Farmer"     *//** User tries to reallocate it to a Farmer *//*
 
         gameData = original.reallocate(gameData, gameInput)
 
         assert gameData.popUnits.size() == 1
-        assert gameData.popUnits.first() != original            /** The original should be gone */
-        assert gameData.popUnits.first().class == Farmer        /** And the new one should be in it's place */
+        assert gameData.popUnits.first() != original            *//** The original should be gone *//*
+        assert gameData.popUnits.first().class == Farmer        *//** And the new one should be in it's place *//*
     }
     
     @Test
     void testCreateNewInstance() {
 
-        gameInput.popUnitClass = "resources.popUnit.Farmer"         /** Not optimal to test de facto classes but unable to load mockClass inside testClass */
+        gameInput.popUnitClass = "resources.popUnit.Farmer"         *//** Not optimal to test de facto classes but unable to load mockClass inside testClass *//*
 
         def reallocated = original.createNewInstance(gameInput)
 
@@ -87,5 +87,5 @@ class ReallocatesTest {
         assert !mutatedGameData.popUnits.contains(original)
 
     }
-
+*/
 }

@@ -22,7 +22,7 @@ class Farmer extends PopUnit implements FeedsTile  {
     }
     
     @Override
-    Integer produce(GameData gd){
+    void produce(GameData gd){
         harvestAmount = feedTile(gd, productAmount)
     }
 

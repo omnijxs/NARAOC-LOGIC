@@ -16,7 +16,7 @@ class PopUnitSorterTest implements PopUnitSorter {
     /**
      * Tests for default sort 1) Pop Unit class (priority) 2) Pop Unit age
      */
-    @Test
+    /*@Test
     void testDefaultSortByPriority() {
 
         PopUnit a = new ArmyUnit()
@@ -70,9 +70,9 @@ class PopUnitSorterTest implements PopUnitSorter {
         assert defaultSort(popUnits) == [e, f, d, b, c, a]
     }
 
-    /**
+    *//**
      * Tests for default sort 1) Pop Unit class (priority) 2) Pop Unit age
-     */
+     *//*
     @Test
     void testSenioritySort() {
 
@@ -85,9 +85,9 @@ class PopUnitSorterTest implements PopUnitSorter {
         assert senioritySort(popUnits) == [c, b, a]
     }
 
-    /**
+    *//**
      * Tests for production sort 1) Pop Unit class (priority) 2) Pop Unit productivity 3) Pop Unit age
-     */
+     *//*
     @Test
     void testProductionSort() {
 
@@ -114,6 +114,6 @@ class PopUnitSorterTest implements PopUnitSorter {
         List<PopUnit> popUnits = [a, b, c, d, e]
 
         assert productionSort(popUnits) == [d, e, a, c, b]
-    }
+    }*/
 
 }

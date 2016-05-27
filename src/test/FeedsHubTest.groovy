@@ -16,7 +16,7 @@ import resources.popUnit.PopUnit
  */
 class FeedsHubTest {
 
-    protected GameData gameData
+    /*protected GameData gameData
     protected City city
     protected Tile nonCityTile
     protected Tile cityTile
@@ -86,6 +86,6 @@ class FeedsHubTest {
         assert !armyInsideCity.starving
         assert !nonArmyInsideCity.starving
         assert nonArmyOutsideCity.starving
-    }
+    }*/
 
 }

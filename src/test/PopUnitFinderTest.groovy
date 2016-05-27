@@ -16,7 +16,7 @@ import traits.Preferres
  */
 class PopUnitFinderTest implements PopUnitFinder {
 
-    protected GameData gameData
+    /*protected GameData gameData
     protected PopHub city
     protected Tile cityTile
 
@@ -75,5 +75,5 @@ class PopUnitFinderTest implements PopUnitFinder {
         gameData.popUnits = [a, b, c, d]
 
         assert popHubPopulationStarving(gameData, city) == [a, c]
-    }
+    }*/
 }
