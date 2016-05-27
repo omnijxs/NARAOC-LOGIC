@@ -42,7 +42,7 @@ class Algorithm {
         gd.popUnits.each { popUnit ->
 
             /** All pop units calculate to which city they will produce to. */
-            popUnit.resolvepreferredHub(gd)
+            popUnit.prefer(gd)
 
             /** Set production flags up in all popUnits.
              * TileFeeding popUnits feed their tiles and set the surplus as their this turns production. */

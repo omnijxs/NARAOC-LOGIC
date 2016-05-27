@@ -12,11 +12,11 @@ trait Produces {
     Integer productAmount = 0
     Integer harvestAmount = 0
     
-    Integer produce(GameData gd){
+    Integer produces(GameData gd){
         harvestAmount = productAmount.intValue()
     }
     
-    Integer harvest(){
+    Integer harvests(){
         Integer temp = harvestAmount.intValue()
 		harvestAmount = 0
 		temp

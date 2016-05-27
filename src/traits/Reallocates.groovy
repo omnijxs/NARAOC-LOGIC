@@ -16,7 +16,7 @@ trait Reallocates {
     /** gameInput.popUnitType   /** For armyUnit and magicUnit type identification */
     /** gameInput.gameActor     /** Which gameActor reallocated me. Needed for obedience calculations. */
 
-    def reallocate(GameData gd, def gameInput){
+    def reallocates(GameData gd, def gameInput){
         
         /** Resolve can the player actually reallocate this pop unit */
         if(canReallocate(gd, gameInput.gameActor)){

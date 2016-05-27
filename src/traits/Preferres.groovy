@@ -13,7 +13,7 @@ trait Preferres {
     
     PopHub preferredHub = null
 
-    void resolvepreferredHub(GameData gd){
+    void preferres(GameData gd){
 
         /** If there is no city with a preferredValue higher than zero, the Pop Unit does not produce for any city */
         preferredHub = null

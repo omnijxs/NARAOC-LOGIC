@@ -25,28 +25,25 @@ class PopUnit implements Consumes, Produces, Preferres, Reallocates, Multiplies 
     Integer age = 0
     Priority priority
 
-    def consume(){
-
+    def consume(Integer food){
+        consumes(food)
     }
 
-    def produce(){
-
+    def produce(GameData gameData){
+        produces(gameData)
     }
 
-    def prefer(){
-
+    def prefer(GameData gameData){
+        preferres(gameData)
     }
 
-    def reallocate(){
-
+    def reallocate(GameData gameData, def gameInput){
+        reallocates(gameData, gameInput)
     }
 
     def multiply(){
-
+        multiplies(race.multiplicationRate)
     }
-
-
-
 
     public Boolean canMultiply(){
         return !starving
@@ -64,12 +61,5 @@ class PopUnit implements Consumes, Produces, Preferres, Reallocates, Multiplies 
         return resolveObedience(gd, ga) > 0
     }
 
-    def methodMissing(String name, args) {
-        null
-    }
-
-    def propertyMissing(String name){
-        null
-    }
 
 }
