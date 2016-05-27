@@ -38,16 +38,22 @@ class PopUnit implements Consumes,
         return consumes(food)
     }
 
-    void produce(){
-        produces(race, tile)
+    void produce(GameData gameData){
+        if(canProduce(gameData.metadata, this.class.name)){
+            produces(race, tile)
+        }
     }
 
-    Integer harvest(){
-        return harvests()
+    Integer harvest(GameData gameData){
+        if(canProduce(gameData.metadata, this.class.name)){
+            return harvests()
+        }
     }
 
     void prefer(GameData gameData){
-        preferres(gameData.popHubs, tile)
+        if(canProduce(gameData.metadata, this.class.name)){
+            preferres(gameData.popHubs, tile)
+        }
     }
 
     List<PopUnit> reallocate(GameData gameData, GameActor gameActor, def gameInput){
@@ -56,8 +62,8 @@ class PopUnit implements Consumes,
         }
     }
 
-    PopUnit multiply(){
-        if(canMultiply(starving)){
+    PopUnit multiply(GameData gameData){
+        if(canMultiply(gameData.metadata, this.class.name, race, starving)){
             return multiplies(multiplicationRate)
         }
     }

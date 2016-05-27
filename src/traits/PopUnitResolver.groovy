@@ -1,6 +1,7 @@
 package traits
 
 import game.GameData
+import resources.common.Race
 import resources.gameActor.GameActor
 
 /**
@@ -8,8 +9,8 @@ import resources.gameActor.GameActor
  */
 trait PopUnitResolver implements HasObedience {
 
-    public Boolean canMultiply(Boolean starving){
-        return !starving
+    public Boolean canMultiply(def config, String className, Race race, Boolean starving){
+        return !starving && resolveConfigurationItem(config, className, race)
     }
 
     public Boolean canReallocate(GameData gameData, GameActor gameActor){
@@ -20,8 +21,17 @@ trait PopUnitResolver implements HasObedience {
         return isObedient(gameData, gameActor)
     }
 
+    public Boolean canProduce(def config, String className){
+        return resolveConfigurationItem(config, className, null)
+    }
+
     private Boolean isObedient(GameData gameData, GameActor gameActor){
         return resolveObedience(gameData, gameActor) > 0
+    }
+
+    private Boolean resolveConfigurationItem(def config, String className, Race race){
+        // DO MAGIC
+
     }
 
 
