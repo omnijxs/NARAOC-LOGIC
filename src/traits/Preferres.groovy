@@ -1,6 +1,7 @@
 package traits
 
 import game.GameData
+import resources.common.Tile
 import resources.popHub.PopHub
 
 /**
@@ -13,13 +14,13 @@ trait Preferres {
     
     PopHub preferredHub = null
 
-    void preferres(GameData gd){
+    void preferres(List<PopHub> popHubs, Tile tile){
 
         /** If there is no city with a preferredValue higher than zero, the Pop Unit does not produce for any city */
         preferredHub = null
         Integer preferredValue = 0
 
-        gd.popHubs.each { c ->
+        popHubs.each { c ->
 
             /** Resolve how far the city is from the Pop Unit*/
             Integer distance = resolveDistance(tile.x, tile.y, c.tile.x, c.tile.y)

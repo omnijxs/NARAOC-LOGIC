@@ -16,10 +16,10 @@ trait Reallocates {
     /** gameInput.popUnitType   /** For armyUnit and magicUnit type identification */
     /** gameInput.gameActor     /** Which gameActor reallocated me. Needed for obedience calculations. */
 
-    def reallocates(GameData gd, def gameInput){
+    List<PopUnit> reallocates(List<PopUnit> popUnits, def gameInput){
         
-        /** Resolve can the player actually reallocate this pop unit */
-        if(canReallocate(gd, gameInput.gameActor)){
+            /** Resolve can the player actually reallocate this pop unit */
+
             /** Create the new pop unit */
             PopUnit reallocated = createNewInstance(gameInput)
 
@@ -27,13 +27,10 @@ trait Reallocates {
             reallocated = resolveState(reallocated)
 
             /** Add it to gameData */
-            gd.popUnits.add(reallocated)
+            popUnits.add(reallocated)
 
-            /** Remove the old pop unit from the game data*/
-            return manipulateGameData(gd)
-        } else
-            return gd       /** Should also return error info to UI */
-
+            /** Remove the old pop unit from the game data */
+            return manipulateGameData(popUnits)
     }
 
     /**
@@ -61,11 +58,9 @@ trait Reallocates {
 
     /** Is the game data manipulation done on this level? or higher? */
     /** Put into correct place after architectural and data flow decisions */
-    GameData manipulateGameData(GameData gd){
-
-        gd.popUnits.remove(this)
-
-        return gd
+    List<PopUnit> manipulateGameData(List<PopUnit> popUnits){
+        popUnits.remove(this)
+        return popUnits
     }
 
 }
