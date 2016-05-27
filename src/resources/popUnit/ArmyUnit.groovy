@@ -10,9 +10,7 @@ import traits.Reallocates
  * Created by Juri on 22.10.2015.
  */
 
-class ArmyUnit extends PopUnit implements Consumes,
-                                          Reallocates,
-                                          IsOwned {
+class ArmyUnit extends PopUnit {
 
     public ArmyUnit(){
         this.priority = Priority.HIGH
