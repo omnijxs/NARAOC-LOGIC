@@ -18,16 +18,13 @@ trait Reallocates {
     List<PopUnit> reallocates(List<PopUnit> popUnits, def gameInput){
 
         /** Create the new pop unit */
-        PopUnit reallocated = createNewInstance(gameInput)
+        PopUnit popUnit = createNewPopUnit(gameInput.popUnitClass)
 
         /** Resolve its properties */
-        reallocated = resolveState(reallocated)
-
-        /** Add it to gameData */
-        popUnits.add(reallocated)
+        popUnit = resolvePopUnitState(popUnit)
 
         /** Remove the old pop unit from the game data */
-        return manipulateGameData(popUnits)
+        return updatePopUnits(popUnits, popUnit)
     }
 
     /**
@@ -36,23 +33,24 @@ trait Reallocates {
      * @param gameInput
      * @return
      */
-    PopUnit createNewInstance(def gameInput){
+    PopUnit createNewPopUnit(String popUnitClass){
         GroovyClassLoader c = new GroovyClassLoader()
-        def newClass = c.loadClass(gameInput.popUnitClass)
+        def newClass = c.loadClass(popUnitClass)
         return newClass.newInstance()
 
     }
 
-    PopUnit resolveState(def reallocated){
+    // TODO
+    PopUnit resolvePopUnitState(PopUnit popUnit){
         /** Deal with obedience */
         /** Calculate new tile */
-        return reallocated
+        return popUnit
     }
-
 
     /** Is the game data manipulation done on this level? or higher? */
     /** Put into correct place after architectural and data flow decisions */
-    List<PopUnit> manipulateGameData(List<PopUnit> popUnits){
+    List<PopUnit> updatePopUnits(List<PopUnit> popUnits, PopUnit popUnit){
+        popUnits.add(popUnit)
         popUnits.remove(this)
         return popUnits
     }
