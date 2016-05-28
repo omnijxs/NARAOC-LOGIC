@@ -1,16 +1,19 @@
 package resources.popHub
 
+import resources.common.Tile
+import resources.gameActor.GameActor
+import traits.Demands
+import traits.FeedsHub
+import traits.Refines
 
 /**
  * Created by Juri on 17.11.2015.
  */
-class PopHub {
+class PopHub implements Demands,
+                        Refines,
+                        FeedsHub {
 
-    def methodMissing(String name, args) {
-        null
-    }
+    Tile tile
+    GameActor owner
 
-    def propertyMissing(String name){
-        null
-    }
 }
