@@ -21,12 +21,13 @@ class PopHub implements Demands,
     @Delegate Tile tile
     @Delegate GameActor owner
 
+    PopHubDemand setDemand(GameData gameData){
+        setDemands(gameData.popUnits, this)
+    }
+
     Integer feedHub(GameData gameData, Integer foodAmount){
         return feedsHub(gameData.popUnits, this, foodAmount)
     }
 
-    void setDemand(GameData gameData){
-        setDemands(gameData.popUnits, this)
-    }
 
 }

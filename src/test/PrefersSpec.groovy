@@ -12,7 +12,7 @@ import spock.lang.Specification
  * Created by jxs on 27.5.2016.
  */
 
-class PreferresSpec extends Specification {
+class PrefersSpec extends Specification {
 
     @Shared
     GameData gameData

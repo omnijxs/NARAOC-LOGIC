@@ -11,7 +11,7 @@ import resources.popHub.PopHub
 import traits.Consumes
 import traits.Multiplies
 import traits.PopUnitResolver
-import traits.Preferres
+import traits.Prefers
 import traits.Produces
 import traits.Reallocates
 
@@ -23,7 +23,7 @@ import traits.Reallocates
 @TypeChecked
 class PopUnit implements Consumes,
                          Produces,
-                         Preferres,
+                         Prefers,
                          Reallocates,
                          Multiplies,
                          PopUnitResolver {
@@ -57,7 +57,7 @@ class PopUnit implements Consumes,
     /** Tests */
     PopHub prefer(GameData gameData){
         if(canProduce(gameData.metadata, this.class.name)){
-            preferres(gameData.popHubs, tile, product)
+            prefers(gameData.popHubs, tile, product)
         }
     }
 

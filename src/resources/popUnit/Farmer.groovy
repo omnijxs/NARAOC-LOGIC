@@ -3,12 +3,7 @@ package resources.popUnit
 import resources.common.Priority
 import resources.common.Product
 import game.GameData
-import traits.Consumes
 import traits.FeedsTile
-import traits.Multiplies
-import traits.Preferres
-import traits.Produces
-import traits.Reallocates
 
 /**
  * Created by Juri on 21.10.2015.

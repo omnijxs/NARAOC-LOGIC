@@ -1,15 +1,6 @@
 package test
 
-import game.GameData
-import org.junit.Before
-import org.junit.Test
-import resources.common.Tile
-import resources.popHub.City
-import resources.popHub.PopHub
-import resources.popUnit.PopUnit
-import traits.Consumes
 import traits.PopUnitFinder
-import traits.Preferres
 
 /**
  * Created by Juri on 18.11.2015.

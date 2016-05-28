@@ -8,11 +8,11 @@ import resources.popHub.PopHub
 /**
  * Created by Juri on 23.10.2015.
  */
-trait Preferres {
+trait Prefers {
 
     PopHub preferredHub = null
 
-    PopHub preferres(List<PopHub> popHubs, Tile tile, Product product){
+    PopHub prefers(List<PopHub> popHubs, Tile tile, Product product){
 
         /** If there is no city with a preferredValue higher than zero, the Pop Unit does not produce for any city */
         preferredHub = null

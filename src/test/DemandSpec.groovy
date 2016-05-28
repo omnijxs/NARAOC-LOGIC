@@ -1,13 +1,9 @@
-import game.GameData
-import org.junit.Test
-import resources.common.Product
 import resources.common.Tile
 import resources.popHub.City
 import resources.popUnit.PopUnit
-import spock.lang.IgnoreRest
 import spock.lang.Shared
 import spock.lang.Specification
-import traits.Preferres
+import traits.Prefers
 
 
 /**
@@ -21,7 +17,7 @@ class DemandSpec extends Specification {
     @Shared
     protected Tile cityTile
 
-    private class MockUnit extends PopUnit implements Preferres {
+    private class MockUnit extends PopUnit implements Prefers {
         Tile tile
     }
 

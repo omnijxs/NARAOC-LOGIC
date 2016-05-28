@@ -9,7 +9,7 @@ import resources.popHub.PopHubOutput
  */
 trait Refines implements PopUnitFinder {
 
-    private List<PopHubOutput> turnData = []
+    private List<PopHubOutput> outputData = []
 
     /** Assumptions: I am implemented by an object which implements PopHub-interface.
      * I need it for access to buildings. And for my population. */
@@ -45,13 +45,11 @@ trait Refines implements PopUnitFinder {
         output
     }
 
-    def setTurnData(PopHubOutput data){
-        turnData.add(data)
+    def setOutputData(PopHubOutput data){
+        outputData.add(data)
     }
 
-    def getTurnData(){
-        /** We now assume that list.add() always adds to the end of list */
-        return turnData.last()
+    def getOutputData(){
+        return outputData.last()
     }
-
 }
