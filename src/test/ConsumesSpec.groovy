@@ -1,4 +1,5 @@
 import spock.lang.Specification
+import spock.lang.Unroll
 import traits.Consumes
 
 
@@ -7,6 +8,7 @@ import traits.Consumes
  */
 class ConsumesSpec extends Specification implements Consumes {
 
+    @Unroll
     def "Test consumes-method surplus behaviour."(){
 
         when:
@@ -24,6 +26,7 @@ class ConsumesSpec extends Specification implements Consumes {
         3         | 2
     }
 
+    @Unroll
     def "Test consumes-method starving behaviour."(){
 
         when:
@@ -42,7 +45,8 @@ class ConsumesSpec extends Specification implements Consumes {
         3         | false
     }
 
-    def "Test that consumes-method work as stateless."(){
+    @Unroll
+    def "Test that consumes-method works as stateless."(){
 
         when:
         def surplus_a = consumes(0)
@@ -57,8 +61,5 @@ class ConsumesSpec extends Specification implements Consumes {
         surplus_c == 1
         surplus_d == 1
         surplus_e == 2
-
-
     }
-
 }

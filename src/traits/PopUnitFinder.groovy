@@ -35,12 +35,12 @@ trait PopUnitFinder {
      * Finds those populationUnits which are to be fed by the popHub:
      * Find all non-starving population units of the popHub
      *
-     * @param gd
+     * @param popUnits
      * @param popHub
      * @return
      */
-    List<PopUnit> popHubPopulationStarving(GameData gd, PopHub popHub){
-        return gd.popUnits.findAll { (it.preferredHub == popHub || it.tile == popHub.tile) && it.starving }
+    List<PopUnit> popHubPopulationStarving(List<PopUnit> popUnits, PopHub popHub){
+        return popUnits.findAll { (it?.preferredHub == popHub || it?.tile == popHub.tile) && it?.starving }
     }
 
 }
