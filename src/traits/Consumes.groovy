@@ -7,7 +7,7 @@ trait Consumes {
     
     Boolean starving = true 
     
-    Integer consume(Integer food){
+    Integer consumes(Integer food){
         Integer consumed = 0
 
         if(food) {

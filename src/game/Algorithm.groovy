@@ -16,19 +16,19 @@ class Algorithm {
      * @param gd
      * @return
      */
-    protected GameData popUnitsMultiply(GameData gd){
+    protected GameData popUnitsMultiply(GameData gameData){
 
         List<PopUnit> newPopUnits = []
 
-        gd.popUnits.each { popUnit ->
-            def a = popUnit.multiply()
+        gameData.popUnits.each { popUnit ->
+            def a = popUnit.multiply(gameData)
             if(a)
-                newPopUnits.add(popUnit.multiply())
+                newPopUnits.add(popUnit.multiply(gameData))
         }
 
-        gd.popUnits.addAll(newPopUnits)
+        gameData.popUnits.addAll(newPopUnits)
 
-        return gd
+        return gameData
     }
 
     /**
@@ -38,18 +38,18 @@ class Algorithm {
      * @param gd
      * @return
      */
-    protected GameData popUnitsProduce(GameData gd){
-        gd.popUnits.each { popUnit ->
+    protected GameData popUnitsProduce(GameData gameData){
+        gameData.popUnits.each { popUnit ->
 
             /** All pop units calculate to which city they will produce to. */
-            popUnit.resolvepreferredHub(gd)
+            popUnit.prefer(gameData)
 
             /** Set production flags up in all popUnits.
              * TileFeeding popUnits feed their tiles and set the surplus as their this turns production. */
-            popUnit.produce(gd)
+            popUnit.produce(gameData)
         }
 
-        return gd
+        return gameData
     }
 
     /**
@@ -59,21 +59,21 @@ class Algorithm {
      * @param gd
      * @return
      */
-    protected GameData popHubsRefine(GameData gd){
+    protected GameData popHubsRefine(GameData gameData){
 
-        gd.popHubs.each { popHub ->
+        gameData.popHubs.each { popHub ->
 
             /** Calculate bonuses, deal with buildings etc. */
-            PopHubOutput output = popHub.refine(gd)
+            PopHubOutput output = popHub.refine(gameData)
 
             /** Feed the hub population and calculate the surplus food. */
-            output.surplusFood = popHub.feedHub(gd, output.getTotalFood())
+            output.surplusFood = popHub.feedHub(gameData, output.getTotalFood())
 
             /** Set the turnData. */
             popHub.setTurnData(output)
         }
 
-        return gd
+        return gameData
     }
 
     /** No tests. Multiple functions. */
@@ -83,19 +83,19 @@ class Algorithm {
      * @param gd
      * @return
      */
-    protected GameData gameActorsSetup(GameData gd){
-        gd.gameActors.each { player ->
+    protected GameData gameActorsSetup(GameData gameData){
+        gameData.gameActors.each { player ->
             /** Lets feed your roaming armies...*/
 
             /** Calculate how much extra food pob hubs loyal to you produce.
              *  And then feed them */
-            Integer totalFood = player.getSurplusFood(gd)
-            Integer surplusFood = player.feedArmy(gd, totalFood)
+            Integer totalFood = player.getSurplusFood(gameData)
+            Integer surplusFood = player.feedArmy(gameData, totalFood)
 
             /** Lets tax those pesky pop units...*/
 
             /** Get total production of your loyal popHubs */
-            GameActorOutput output = player.getTotalOutput(gd)
+            GameActorOutput output = player.getTotalOutput(gameData)
             output.surplusFood = surplusFood
 
             /** Set the turnData. */
@@ -106,7 +106,7 @@ class Algorithm {
 
         }
 
-        return gd
+        return gameData
     }
 
     /** No tests. No full implementation. */
@@ -118,41 +118,41 @@ class Algorithm {
      * @param gd
      * @return
      */
-    protected GameData postProcess(GameData gd){
+    protected GameData postProcess(GameData gameData){
 
         /** Calculate demand for pop hubs */
-        gd.popHubs.each { popHub ->
-            popHub.setDemand(gd)
+        gameData.popHubs.each { popHub ->
+            popHub.setDemand(gameData)
         }
 
         /** Deal with pop unit obedience. Note that this MUST be done before we set them to starving. */
-        gd.popUnits.each { popUnit ->
+        gameData.popUnits.each { popUnit ->
             // popUnit.dealWithObedience()
         }
 
         /** Set all PopUnits to starving for next turn. Could be done in pre-process. */
-        gd.popUnits.each { popUnit ->
+        gameData.popUnits.each { popUnit ->
             popUnit.starving = true
         }
 
-        return gd
+        return gameData
 
     }
 
     /** The actual player input */
 
     /** No tests. Multiple functions. */
-    protected GameData gameActorInput(GameData gd){
-        gd.gameActors.each { player ->
-            gd = yieldControl(gd, player)
+    protected GameData gameActorInput(GameData gameData){
+        gameData.gameActors.each { player ->
+            gameData = yieldControl(gameData, player)
         }
 
-        return gd
+        return gameData
     }
 
     /** No tests. No implementation. */
-    protected GameData yieldControl(GameData gd, GameActor a){
-        return gd
+    protected GameData yieldControl(GameData gameData, GameActor gameActor){
+        return gameData
         /** The actual player/AI input */
     }
 }

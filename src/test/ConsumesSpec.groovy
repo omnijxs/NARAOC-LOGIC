@@ -10,7 +10,7 @@ class ConsumesSpec extends Specification implements Consumes {
     def "Test consumes-method surplus behaviour."(){
 
         when:
-        def surplus = consume(value)
+        def surplus = consumes(value)
 
         then:
         surplus == expected
@@ -27,7 +27,7 @@ class ConsumesSpec extends Specification implements Consumes {
     def "Test consumes-method starving behaviour."(){
 
         when:
-        def surplus = consume(value)
+        def surplus = consumes(value)
         def starvation = this.starving
 
         then:
@@ -45,11 +45,11 @@ class ConsumesSpec extends Specification implements Consumes {
     def "Test that consumes-method work as stateless."(){
 
         when:
-        def surplus_a = consume(0)
-        def surplus_b = consume(1)
-        def surplus_c = consume(2)
-        def surplus_d = consume(2)
-        def surplus_e = consume(3)
+        def surplus_a = consumes(0)
+        def surplus_b = consumes(1)
+        def surplus_c = consumes(2)
+        def surplus_d = consumes(2)
+        def surplus_e = consumes(3)
 
         then:
         surplus_a == 0

@@ -14,7 +14,7 @@ import traits.Preferres
  */
 class DemandSpec extends Specification {
 
-    @Shared
+   /* @Shared
     GameData gameData
 
     @Shared
@@ -105,5 +105,5 @@ class DemandSpec extends Specification {
         city.demand.get(Product.FOOD) == 0
         city.demand.get(Product.WORK) == 0
         city.demand.get(Product.TRADE) == 0
-    }
+    }*/
 }

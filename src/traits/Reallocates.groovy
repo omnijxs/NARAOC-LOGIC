@@ -1,6 +1,5 @@
 package traits
 
-import game.GameData
 import resources.popUnit.PopUnit
 
 /**
@@ -16,24 +15,16 @@ trait Reallocates {
     /** gameInput.popUnitType   /** For armyUnit and magicUnit type identification */
     /** gameInput.gameActor     /** Which gameActor reallocated me. Needed for obedience calculations. */
 
-    def reallocate(GameData gd, def gameInput){
-        
-        /** Resolve can the player actually reallocate this pop unit */
-        if(canReallocate(gd, gameInput.gameActor)){
-            /** Create the new pop unit */
-            PopUnit reallocated = createNewInstance(gameInput)
+    List<PopUnit> reallocates(List<PopUnit> popUnits, def gameInput){
 
-            /** Resolve its properties */
-            reallocated = resolveState(reallocated)
+        /** Create the new pop unit */
+        PopUnit popUnit = createNewPopUnit(gameInput.popUnitClass)
 
-            /** Add it to gameData */
-            gd.popUnits.add(reallocated)
+        /** Resolve its properties */
+        popUnit = resolvePopUnitState(popUnit)
 
-            /** Remove the old pop unit from the game data*/
-            return manipulateGameData(gd)
-        } else
-            return gd       /** Should also return error info to UI */
-
+        /** Remove the old pop unit from the game data */
+        return updatePopUnits(popUnits, popUnit)
     }
 
     /**
@@ -42,30 +33,26 @@ trait Reallocates {
      * @param gameInput
      * @return
      */
-    PopUnit createNewInstance(def gameInput){
-
+    PopUnit createNewPopUnit(String popUnitClass){
         GroovyClassLoader c = new GroovyClassLoader()
-
-        def newClass = c.loadClass(gameInput.popUnitClass)
-
+        def newClass = c.loadClass(popUnitClass)
         return newClass.newInstance()
 
     }
 
-    PopUnit resolveState(def reallocated){
+    // TODO
+    PopUnit resolvePopUnitState(PopUnit popUnit){
         /** Deal with obedience */
         /** Calculate new tile */
-        return reallocated
+        return popUnit
     }
-
 
     /** Is the game data manipulation done on this level? or higher? */
     /** Put into correct place after architectural and data flow decisions */
-    GameData manipulateGameData(GameData gd){
-
-        gd.popUnits.remove(this)
-
-        return gd
+    List<PopUnit> updatePopUnits(List<PopUnit> popUnits, PopUnit popUnit){
+        popUnits.add(popUnit)
+        popUnits.remove(this)
+        return popUnits
     }
 
 }

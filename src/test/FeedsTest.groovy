@@ -9,13 +9,13 @@ import traits.Feeds
  * Created by Juri on 29.10.2015.
  */
 class FeedsTest implements Feeds {
-
+/*
     private class MockUnit extends PopUnit implements Consumes {}
 
     @Test
     void testFeedWithObject() {
 
-        /** Feed method is ignorant of PopUnit type. They all behave the same way from it's perspective. */
+        *//** Feed method is ignorant of PopUnit type. They all behave the same way from it's perspective. *//*
         PopUnit a = new MockUnit()
 
         def surplusFood = feed(a, 1)
@@ -61,6 +61,6 @@ class FeedsTest implements Feeds {
         assert !a.starving
         assert b.starving
         assert surplusFood == 0
-    }
+    }*/
 
 }

@@ -40,21 +40,21 @@ trait Taxes {
 
             /** Iterate through all food producers and check if they can be taxed */
             popHub.getTurnData().food.each { k, v ->
-                if(k.canBeTaxed(gd, this)){
+                if(k.tax(gd, this)){
                     output.foodTotal += v
                 }
             }
 
             /** Iterate through all work producers and check if they can be taxed */
             popHub.getTurnData().work.each { k, v ->
-                if(k.canBeTaxed(gd, this)){
+                if(k.tax(gd, this)){
                     output.workTotal += v
                 }
             }
 
             /** Iterate through all trade producers and check if they can be taxed */
             popHub.getTurnData().trade.each { k, v ->
-                if(k.canBeTaxed(gd, this)){
+                if(k.tax(gd, this)){
                     output.tradeTotal += v
                 }
             }

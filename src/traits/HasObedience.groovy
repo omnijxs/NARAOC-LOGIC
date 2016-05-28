@@ -1,20 +1,16 @@
-package resources.popUnit.obedience
+package traits
 
 import game.GameData
 import resources.gameActor.GameActor
+import resources.popUnit.obedience.ViolationRule
 
 /**
  * Created by jxs on 2.12.2015.
  */
-class Obedience {
+trait HasObedience {
 
-    Integer value
-    List<ViolationRule> violations
-
-    public Obedience(){
-        value = 100 /** From config */
-        violations = []
-    }
+    Integer value = 100
+    List<ViolationRule> violations = []
 
     Integer resolveObedience(GameData gd, GameActor ga){
         Integer temp = 0

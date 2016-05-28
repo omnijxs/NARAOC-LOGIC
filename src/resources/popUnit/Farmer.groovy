@@ -13,12 +13,7 @@ import traits.Reallocates
 /**
  * Created by Juri on 21.10.2015.
  */
-class Farmer extends PopUnit implements Consumes,
-                                        Produces,
-                                        Preferres, 
-                                        Multiplies,
-                                        Reallocates,
-                                        FeedsTile  {
+class Farmer extends PopUnit implements FeedsTile  {
     
     public Farmer(){
         this.product = Product.FOOD
@@ -27,7 +22,7 @@ class Farmer extends PopUnit implements Consumes,
     }
     
     @Override
-    Integer produce(GameData gd){
+    void produce(GameData gd){
         harvestAmount = feedTile(gd, productAmount)
     }
 

@@ -1,25 +1,26 @@
 package traits
 
 import resources.common.Product
-import game.GameData
+import resources.common.Race
+import resources.common.Tile
 
 /**
  * Created by Juri on 16.11.2015.
  */
 trait Produces {
-    
+
     Product product
     Integer productAmount = 0
     Integer harvestAmount = 0
-    
-    Integer produce(GameData gd){
+
+    void produces(Race race, Tile tile){
         harvestAmount = productAmount.intValue()
     }
     
-    Integer harvest(){
+    Integer harvests(){
         Integer temp = harvestAmount.intValue()
 		harvestAmount = 0
-		temp
+		return temp
     }
 
 }

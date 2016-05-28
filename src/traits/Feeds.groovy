@@ -1,5 +1,7 @@
 package traits
 
+import resources.popUnit.PopUnit
+
 /**
  * Created by Juri on 29.10.2015.
  */
@@ -13,14 +15,14 @@ trait Feeds {
      * @param foodAmount
      * @return
      */
-    Integer feed(def popUnits, def foodAmount){
+    Integer feed(List<PopUnit> popUnits, Integer foodAmount){
 
         popUnits.each {
             if(foodAmount)
                 foodAmount = it.consume(foodAmount)
         }
 
-        foodAmount
+        return foodAmount
 
     }
 
