@@ -25,4 +25,8 @@ class PopHub implements Demands,
         return feedsHub(gameData.popUnits, this, foodAmount)
     }
 
+    void setDemand(GameData gameData){
+        setDemands(gameData.popUnits, this)
+    }
+
 }

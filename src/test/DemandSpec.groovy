@@ -4,6 +4,7 @@ import resources.common.Product
 import resources.common.Tile
 import resources.popHub.City
 import resources.popUnit.PopUnit
+import spock.lang.IgnoreRest
 import spock.lang.Shared
 import spock.lang.Specification
 import traits.Preferres
@@ -13,9 +14,6 @@ import traits.Preferres
  * Created by jxs on 26.5.2016.
  */
 class DemandSpec extends Specification {
-
-   /* @Shared
-    GameData gameData
 
     @Shared
     protected City city
@@ -28,55 +26,46 @@ class DemandSpec extends Specification {
     }
 
     void setup(){
-        gameData = new GameData()
-
         cityTile = new Tile()
-
         city = new City(tile: cityTile)
-
-        gameData.popHubs = [city]
     }
 
     def "No popUnit. No demand."(){
 
         when:
-        city.setDemand(gameData)
+        city.setDemands(null, city)
 
         then:
-        city.demand.get(Product.FOOD) == 0
-        city.demand.get(Product.WORK) == 0
-        city.demand.get(Product.TRADE) == 0
+        city.foodDemand() == 0
+        city.workDemand() == 0
+        city.tradeDemand() == 0
     }
-
 
     def "PopUnits in city proper."(){
         setup:
         PopUnit a = new MockUnit(tile: cityTile, preferredHub: null)
 
         when:
-        gameData.popUnits = [a]
-        city.setDemand(gameData)
+        city.setDemands([a], city)
 
         then:
-        city.demand.get(Product.FOOD) == 1
-        city.demand.get(Product.WORK) == 1
-        city.demand.get(Product.TRADE) == 1
+        city.foodDemand() == 1
+        city.workDemand() == 1
+        city.tradeDemand() == 1
     }
 
-    def "PopUnits outside city proper."() {
+    def "PopUnits outside city proper but prefers."() {
         setup:
         PopUnit a = new MockUnit(tile: null, preferredHub: city)
 
         when:
-        gameData.popUnits = [a]
-        city.setDemand(gameData)
+        city.setDemands([a], city)
 
         then:
-        city.demand.get(Product.FOOD) == 1
-        city.demand.get(Product.WORK) == 1
-        city.demand.get(Product.TRADE) == 1
+        city.foodDemand() == 1
+        city.workDemand() == 1
+        city.tradeDemand() == 1
     }
-
 
     def "PopUnits in and outside city proper."() {
         setup:
@@ -84,13 +73,12 @@ class DemandSpec extends Specification {
         PopUnit b = new MockUnit(tile: cityTile, preferredHub: null)
 
         when:
-        gameData.popUnits = [a, b]
-        city.setDemand(gameData)
+        city.setDemands([a, b], city)
 
         then:
-        city.demand.get(Product.FOOD) == 2
-        city.demand.get(Product.WORK) == 2
-        city.demand.get(Product.TRADE) == 2
+        city.foodDemand() == 2
+        city.workDemand() == 2
+        city.tradeDemand() == 2
     }
 
     def "PopUnits outside city proper. No demand."() {
@@ -98,12 +86,11 @@ class DemandSpec extends Specification {
         PopUnit a = new MockUnit(tile: new Tile(), preferredHub: new City())
 
         when:
-        gameData.popUnits = [a]
-        city.setDemand(gameData)
+        city.setDemands([a], city)
 
         then:
-        city.demand.get(Product.FOOD) == 0
-        city.demand.get(Product.WORK) == 0
-        city.demand.get(Product.TRADE) == 0
-    }*/
+        city.foodDemand() == 0
+        city.workDemand() == 0
+        city.tradeDemand() == 0
+    }
 }

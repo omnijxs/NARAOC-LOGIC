@@ -16,8 +16,8 @@ trait PopUnitFinder {
      * @param popHub
      * @return
      */
-    List<PopUnit> popHubPopulation(GameData gd, PopHub popHub){
-        return gd.popUnits.findAll { it.preferredHub == popHub || it.tile == popHub.tile }
+    List<PopUnit> popHubPopulation(List<PopUnit> popUnits, PopHub popHub){
+        return popUnits.findAll { it?.preferredHub == popHub || it?.tile == popHub?.tile }
     }
     
     /**
