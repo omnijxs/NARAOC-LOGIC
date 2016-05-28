@@ -10,7 +10,7 @@ import resources.gameActor.GameActor
 trait PopUnitResolver implements HasObedience {
 
     public Boolean canMultiply(def config, String className, Race race, Boolean starving){
-        return !starving && resolveConfigurationItem(config, className, race)
+        return resolveConfigurationItem(config, className, race) && !starving
     }
 
     public Boolean canReallocate(GameData gameData, GameActor gameActor){
@@ -31,10 +31,5 @@ trait PopUnitResolver implements HasObedience {
 
     private Boolean resolveConfigurationItem(def config, String className, Race race){
         // DO MAGIC
-
     }
-
-
-
-
 }

@@ -61,6 +61,7 @@ class PopUnit implements Consumes,
         }
     }
 
+    /** Tests */
     List<PopUnit> reallocate(GameData gameData, GameActor gameActor, def gameInput){
         if(canReallocate(gameData, gameActor)){
             return reallocates(gameData.popUnits, gameInput)
