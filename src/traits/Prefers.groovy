@@ -20,7 +20,7 @@ trait Prefers {
         popHubs.each { c ->
 
             /** Resolve how far the city is from the Pop Unit*/
-            Integer distance = resolveDistance(tile.x, tile.y, c.tile.x, c.tile.y)
+            Integer distance = resolveDistance(tile.x, tile.y, c.x, c.y)
 
             /** The preferredValue is city's demand for the Pop Units' product minus distance to the city */
             Integer tempPreferredValue =  c.resolveDemandForProduct(product) - distance
