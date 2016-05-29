@@ -1,6 +1,7 @@
 package traits
 
 import game.GameData
+import resources.gameActor.GameActor
 import resources.popUnit.ArmyUnit
 import resources.popUnit.PopUnit
 
@@ -8,14 +9,11 @@ import resources.popUnit.PopUnit
  * Created by Juri on 03.11.2015.
  */
 trait FeedsArmy implements PopUnitSorter, Feeds {
-    
-    /** Assumptions: I am implemented by an object which implements GameActor-interface.
-      * I need it to find ArmyUnits to feed. */
 
-    Integer feedArmy(GameData gd, Integer foodAmount){
+    Integer feedsArmy(List<PopUnit> popUnits, GameActor gameActor, Integer foodAmount){
 
-        /** Find armyUnits to feed. Currently we also feed starving armyUnits on cityTiles. */
-        def armyUnitsToFeed = gd.popUnits.findAll { it.owner == this && it.starving && it.class == ArmyUnit }
+        /** Find armyUnits to feed. Currently we also feed starving armyUnits on cityTile. */
+        def armyUnitsToFeed = popUnits.findAll { it?.owner == gameActor && it?.starving && it?.class == ArmyUnit }
 
         /** Sort by Pop Unit age. Perhaps some day also by distance. But how to calculate diestance? From what city? */
         def sortedPopUnits = senioritySort(armyUnitsToFeed)
