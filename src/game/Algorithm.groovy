@@ -103,7 +103,7 @@ class Algorithm {
             player.setGameActorOutput(output)
 
             /** Tax their asses! */
-            player.tax()
+            player.tax(output)
 
         }
 

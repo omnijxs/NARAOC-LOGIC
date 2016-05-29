@@ -18,18 +18,19 @@ trait Taxes {
     Integer workTaxRate = 0
     Integer tradeTaxRate = 0
 
-    Integer tax(){
+    Integer tax(GameActorOutput output){
 
-       /* def data = getTurnData()
+        output.foodTaxOutput = taxProduct(output.foodTotal, foodTaxRate)
+        output.workTaxOutput = taxProduct(output.workTotal, workTaxRate)
+        output.tradeTaxOutput = taxProduct(output.tradeTotal, tradeTaxRate)
 
-        data.foodTaxOutput = data.foodTotal / 100 * foodTaxRate
-        data.workTaxOutput = data.workTotal / 100 * workTaxRate
-        data.tradeTaxOutput = data.tradeTotal / 100 * tradeTaxRate
+        output.totalTaxAmount = output.foodTaxOutput + output.workTaxOutput + output.tradeTaxOutput
 
-        data.totalTaxAmount = data.foodTaxOutput + data.workTaxOutput + data.tradeTaxOutput
+        return output.totalTaxAmount
+    }
 
-        return data.totalTaxAmount*/
-
+    Integer taxProduct(Integer output, Integer taxRate){
+        return output / 100 * taxRate
     }
 
     /** An own trait, perhaps? */
