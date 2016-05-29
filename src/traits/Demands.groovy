@@ -1,28 +1,53 @@
 package traits
 
-import game.GameData
 import resources.common.Product
+import resources.popHub.PopHub
+import resources.popHub.PopHubDemand
+import resources.popUnit.PopUnit
 
 /**
  * Created by Juri on 7.11.2015.
  */
 trait Demands implements PopUnitFinder {
 
-     // TODO not the optimal way to bind production of a pop unit and city demand to together!
-    Map<Product, Integer> demand = [(Product.FOOD): 0, (Product.WORK): 0, (Product.TRADE) :0]
-    
-    // TODO the problem with not knowing how city alters the demand also. Return back to City Object?
-    void setDemand(GameData gd){
+    private List<PopHubDemand> demandData = []
 
-        /** Search for all pop units in the city proper and pop units outside city proper producing for the city */
-        def basicDemand = popHubPopulation(gd, this).size()
+    public PopHubDemand setDemands(List<PopUnit> popUnits, PopHub popHub){
 
-        // TODO AWFUL SYNTAX!!!
-        demand.put((Product.FOOD), basicDemand)
-        demand.put((Product.WORK), basicDemand)
-        demand.put((Product.TRADE), basicDemand)
+        /** Search for all pop units in the city proper and pop units outside city proper producing for the city. Currently the only strategy. */
+        def basicDemand = resolveBasicDemand(popUnits, popHub)
 
-        
+        PopHubDemand demand = new PopHubDemand(foodDemand: basicDemand, workDemand: basicDemand, tradeDemand: basicDemand)
+
+        return demand
     }
-    
+
+    def setDemandData(PopHubDemand data){
+        demandData.add(data)
+    }
+
+    def getDemandData(){
+        return demandData.last()
+    }
+
+    public Integer demandForProduct(Product product){
+
+        def demand = getDemandData()
+
+        switch (product){
+            case Product.FOOD:
+                return demand.foodDemand
+            case Product.WORK:
+                return demand.workDemand
+            case Product.TRADE:
+                return demand.tradeDemand
+            default:
+                return 0
+        }
+    }
+
+    private Integer resolveBasicDemand(List<PopUnit> popUnits, PopHub popHub){
+        return popHubPopulation(popUnits, popHub).size()
+    }
+
 }

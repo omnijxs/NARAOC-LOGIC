@@ -1,6 +1,5 @@
 package traits
 
-import game.GameData
 import resources.common.Product
 import resources.common.Tile
 import resources.popHub.PopHub
@@ -8,11 +7,11 @@ import resources.popHub.PopHub
 /**
  * Created by Juri on 23.10.2015.
  */
-trait Preferres {
+trait Prefers {
 
     PopHub preferredHub = null
 
-    PopHub preferres(List<PopHub> popHubs, Tile tile, Product product){
+    PopHub prefers(List<PopHub> popHubs, Tile tile, Product product){
 
         /** If there is no city with a preferredValue higher than zero, the Pop Unit does not produce for any city */
         preferredHub = null
@@ -21,10 +20,10 @@ trait Preferres {
         popHubs.each { c ->
 
             /** Resolve how far the city is from the Pop Unit*/
-            Integer distance = resolveDistance(tile.x, tile.y, c.tile.x, c.tile.y)
+            Integer distance = resolveDistance(tile.x, tile.y, c.x, c.y)
 
             /** The preferredValue is city's demand for the Pop Units' product minus distance to the city */
-            Integer tempPreferredValue =  c.demand.get(product) - distance
+            Integer tempPreferredValue =  c.resolveDemandForProduct(product) - distance
 
             if(tempPreferredValue > preferredValue ) {
                 preferredHub = c

@@ -11,7 +11,7 @@ import resources.popHub.PopHub
 import traits.Consumes
 import traits.Multiplies
 import traits.PopUnitResolver
-import traits.Preferres
+import traits.Prefers
 import traits.Produces
 import traits.Reallocates
 
@@ -23,7 +23,7 @@ import traits.Reallocates
 @TypeChecked
 class PopUnit implements Consumes,
                          Produces,
-                         Preferres,
+                         Prefers,
                          Reallocates,
                          Multiplies,
                          PopUnitResolver {
@@ -35,40 +35,32 @@ class PopUnit implements Consumes,
     Priority priority
     GameActor owner
 
-    /** Tests */
     Integer consume(Integer food){
         return consumes(food)
     }
 
-    /** Tests */
     void produce(GameData gameData){
         if(canProduce(gameData.metadata, this.class.name)){
             produces(race, tile)
         }
     }
 
-    /** Tests */
-    Integer harvest(GameData gameData){
-        if(canProduce(gameData.metadata, this.class.name)){
-            return harvests()
-        }
+    Integer harvest(){
+        return harvests()
     }
 
-    /** Tests */
     PopHub prefer(GameData gameData){
         if(canProduce(gameData.metadata, this.class.name)){
-            preferres(gameData.popHubs, tile, product)
+            prefers(gameData.popHubs, tile, product)
         }
     }
 
-    /** Tests */
     List<PopUnit> reallocate(GameData gameData, GameActor gameActor, def gameInput){
         if(canReallocate(gameData, gameActor)){
             return reallocates(gameData.popUnits, gameInput)
         }
     }
 
-    /** Tests */
     PopUnit multiply(GameData gameData){
         if(canMultiply(gameData.metadata, this.class.name, race, starving)){
             return multiplies(multiplicationRate)
