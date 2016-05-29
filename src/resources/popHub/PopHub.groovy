@@ -3,6 +3,7 @@ package resources.popHub
 import game.GameData
 import groovy.transform.CompileStatic
 import groovy.transform.TypeChecked
+import resources.common.Product
 import resources.common.Tile
 import resources.gameActor.GameActor
 import traits.Demands
@@ -29,5 +30,8 @@ class PopHub implements Demands,
         return feedsHub(gameData.popUnits, this, foodAmount)
     }
 
+    Integer resolveDemandForProduct(Product product){
+        return demandForProduct(product)
+    }
 
 }

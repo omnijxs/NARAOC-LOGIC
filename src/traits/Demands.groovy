@@ -1,5 +1,6 @@
 package traits
 
+import resources.common.Product
 import resources.popHub.PopHub
 import resources.popHub.PopHubDemand
 import resources.popUnit.PopUnit
@@ -9,20 +10,16 @@ import resources.popUnit.PopUnit
  */
 trait Demands implements PopUnitFinder {
 
-   private List<PopHubDemand> demandData = []
-    
+    private List<PopHubDemand> demandData = []
+
     public PopHubDemand setDemands(List<PopUnit> popUnits, PopHub popHub){
 
-        /** Search for all pop units in the city proper and pop units outside city proper producing for the city. Currently only strategy. */
+        /** Search for all pop units in the city proper and pop units outside city proper producing for the city. Currently the only strategy. */
         def basicDemand = resolveBasicDemand(popUnits, popHub)
 
         PopHubDemand demand = new PopHubDemand(foodDemand: basicDemand, workDemand: basicDemand, tradeDemand: basicDemand)
 
         return demand
-    }
-
-    Integer resolveBasicDemand(List<PopUnit> popUnits, PopHub popHub){
-        return popHubPopulation(popUnits, popHub).size()
     }
 
     def setDemandData(PopHubDemand data){
@@ -31,6 +28,26 @@ trait Demands implements PopUnitFinder {
 
     def getDemandData(){
         return demandData.last()
+    }
+
+    public Integer demandForProduct(Product product){
+
+        def demand = getDemandData()
+
+        switch (product){
+            case Product.FOOD:
+                return demand.foodDemand
+            case Product.WORK:
+                return demand.workDemand
+            case Product.TRADE:
+                return demand.tradeDemand
+            default:
+                return 0
+        }
+    }
+
+    private Integer resolveBasicDemand(List<PopUnit> popUnits, PopHub popHub){
+        return popHubPopulation(popUnits, popHub).size()
     }
 
 }
