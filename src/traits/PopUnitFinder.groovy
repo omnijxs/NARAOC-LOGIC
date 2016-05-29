@@ -1,6 +1,5 @@
 package traits
 
-import game.GameData
 import resources.popHub.PopHub
 import resources.popUnit.PopUnit
 

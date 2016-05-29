@@ -35,40 +35,32 @@ class PopUnit implements Consumes,
     Priority priority
     GameActor owner
 
-    /** Tests */
     Integer consume(Integer food){
         return consumes(food)
     }
 
-    /** Tests */
     void produce(GameData gameData){
         if(canProduce(gameData.metadata, this.class.name)){
             produces(race, tile)
         }
     }
 
-    /** Tests */
-    Integer harvest(GameData gameData){
-        if(canProduce(gameData.metadata, this.class.name)){
-            return harvests()
-        }
+    Integer harvest(){
+        return harvests()
     }
 
-    /** Tests */
     PopHub prefer(GameData gameData){
         if(canProduce(gameData.metadata, this.class.name)){
             prefers(gameData.popHubs, tile, product)
         }
     }
 
-    /** Tests */
     List<PopUnit> reallocate(GameData gameData, GameActor gameActor, def gameInput){
         if(canReallocate(gameData, gameActor)){
             return reallocates(gameData.popUnits, gameInput)
         }
     }
 
-    /** Tests */
     PopUnit multiply(GameData gameData){
         if(canMultiply(gameData.metadata, this.class.name, race, starving)){
             return multiplies(multiplicationRate)

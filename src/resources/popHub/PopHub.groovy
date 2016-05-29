@@ -27,7 +27,7 @@ class PopHub implements Demands,
     }
 
     PopHubOutput refine(GameData gameData){
-        return refines(gameData, this)
+        return refines(gameData.popUnits, this)
     }
 
     Integer feedHub(GameData gameData, Integer foodAmount){
