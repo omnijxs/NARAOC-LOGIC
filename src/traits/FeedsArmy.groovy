@@ -1,7 +1,7 @@
 package traits
 
-import game.GameData
 import resources.gameActor.GameActor
+import resources.popHub.PopHub
 import resources.popUnit.ArmyUnit
 import resources.popUnit.PopUnit
 
@@ -21,22 +21,22 @@ trait FeedsArmy implements PopUnitSorter, Feeds {
         return feed(sortedPopUnits, foodAmount)
     }
 
-    // TODO RELOCATE!!!
-/*    Integer getSurplusFood(GameData gd){
+    /** An own trait, perhaps? */
+    Integer getSurplusFood(List<PopHub> popHubs, GameActor gameActor){
 
         Integer foodForArmies = 0
 
-        *//** Find cities which produce for me... *//*
-        def loyalHubs = gd.popHubs.findAll { it.owner == this }
+        /** Find cities which produce for me... */
+        def loyalHubs = popHubs.findAll { it?.owner == gameActor }
 
-        *//** Calculate total surplus food. *//*
+        /** Calculate total surplus food. */
         loyalHubs.each { popHub ->
-            def turnData = popHub.getTurnData()
+            def turnData = popHub.getPopHubOutput()
             foodForArmies += turnData.surplusFood
         }
 
         return foodForArmies
-    }*/
+    }
 
 
 }

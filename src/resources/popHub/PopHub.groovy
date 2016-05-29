@@ -26,7 +26,7 @@ class PopHub implements Demands,
         setDemands(gameData.popUnits, this)
     }
 
-    PopHubOutput refine(GameData gameData){
+    PopHubOutput produce(GameData gameData){
         return refines(gameData.popUnits, this)
     }
 
@@ -40,6 +40,10 @@ class PopHub implements Demands,
 
     PopHubOutput getPopHubOutput(){
         return getOutputData()
+    }
+
+    Boolean setPopHubOutput(PopHubOutput data){
+        return setOutputData(data)
     }
 
 }

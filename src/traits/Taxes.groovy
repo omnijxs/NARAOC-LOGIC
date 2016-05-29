@@ -32,13 +32,12 @@ trait Taxes {
 
     }
 
-    // TODO RELOCATE
-    GameActorOutput resolveGameActorOutput(GameData gameData, GameActor gameActor, Integer surplusFood){
+    /** An own trait, perhaps? */
+    GameActorOutput gather(GameData gameData, GameActor gameActor){
         GameActorOutput output = new GameActorOutput()
 
-        output.surplusFood = surplusFood
         /** Find cities which produce for me... */
-        def loyalHubs = gameData.popHubs.findAll { it.owner == this }
+        def loyalHubs = gameData.popHubs.findAll { it?.owner == gameActor }
 
         /** Add all their production */
         loyalHubs.each { PopHub popHub ->
@@ -68,12 +67,10 @@ trait Taxes {
 
         }
 
-        setOutPutData(output)
-
         return output
     }
 
-    void setOutPutData(GameActorOutput data){
+    Boolean setOutPutData(GameActorOutput data){
         outPutData.add(data)
     }
 

@@ -1,6 +1,7 @@
 package resources.gameActor
 
 import game.GameData
+import resources.popHub.PopHub
 import traits.FeedsArmy
 import traits.Taxes
 
@@ -12,6 +13,22 @@ class GameActor implements FeedsArmy,
 
     Integer feedArmy(GameData gameData, Integer foodAmount){
         return feedsArmy(gameData.popUnits, this, foodAmount)
+    }
+
+    GameActorOutput produce(GameData gameData, GameActor gameActor, Integer surplusFood){
+        return gather(gameData, gameActor, surplusFood)
+    }
+
+    Integer resolveSurplusFood(List<PopHub> popHubs, GameActor gameActor){
+        return getSurplusFood(popHubs, gameActor)
+    }
+
+    GameActorOutput getGameActorOutput(){
+        return getOutPutData()
+    }
+
+    Boolean setGameActorOutput(GameActorOutput data){
+        return setOutPutData(data)
     }
 
    /* GameActorOutput getGameActorOutput(){
