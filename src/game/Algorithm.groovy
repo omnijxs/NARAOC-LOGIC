@@ -2,6 +2,7 @@ package game
 
 import resources.gameActor.GameActor
 import resources.gameActor.GameActorOutput
+import resources.popHub.PopHub
 import resources.popHub.PopHubOutput
 import resources.popUnit.PopUnit
 
@@ -61,7 +62,7 @@ class Algorithm {
      */
     protected GameData popHubsRefine(GameData gameData){
 
-        gameData.popHubs.each { popHub ->
+        gameData.popHubs.each { PopHub popHub ->
 
             /** Calculate bonuses, deal with buildings etc. */
             PopHubOutput output = popHub.refine(gameData)
@@ -69,8 +70,6 @@ class Algorithm {
             /** Feed the hub population and calculate the surplus food. */
             output.surplusFood = popHub.feedHub(gameData, output.getTotalFood())
 
-            /** Set the turnData. */
-            popHub.setTurnData(output)
         }
 
         return gameData

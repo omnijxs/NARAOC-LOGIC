@@ -19,14 +19,16 @@ trait Demands implements PopUnitFinder {
 
         PopHubDemand demand = new PopHubDemand(foodDemand: basicDemand, workDemand: basicDemand, tradeDemand: basicDemand)
 
+        setDemandData(demand)
+
         return demand
     }
 
-    def setDemandData(PopHubDemand data){
-        demandData.add(data)
+    Boolean setDemandData(PopHubDemand demand){
+        demandData.add(demand)
     }
 
-    def getDemandData(){
+    PopHubDemand getDemandData(){
         return demandData.last()
     }
 
