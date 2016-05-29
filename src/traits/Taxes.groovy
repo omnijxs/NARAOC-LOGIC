@@ -1,7 +1,10 @@
 package traits
 
 import game.GameData
+import resources.gameActor.GameActor
 import resources.gameActor.GameActorOutput
+import resources.popHub.PopHub
+import resources.popHub.PopHubOutput
 import resources.popUnit.PopUnit
 
 /**
@@ -9,52 +12,56 @@ import resources.popUnit.PopUnit
  */
 trait Taxes {
 
-    private List<GameActorOutput> turnData = []
+    private List<GameActorOutput> outPutData = []
 
     Integer foodTaxRate = 0
     Integer workTaxRate = 0
     Integer tradeTaxRate = 0
 
-    Integer tax(){
+    Integer tax(GameActorOutput output){
 
-        def data = getTurnData()
+        output.foodTaxOutput = taxProduct(output.foodTotal, foodTaxRate)
+        output.workTaxOutput = taxProduct(output.workTotal, workTaxRate)
+        output.tradeTaxOutput = taxProduct(output.tradeTotal, tradeTaxRate)
 
-        data.foodTaxOutput = data.foodTotal / 100 * foodTaxRate
-        data.workTaxOutput = data.workTotal / 100 * workTaxRate
-        data.tradeTaxOutput = data.tradeTotal / 100 * tradeTaxRate
+        output.totalTaxAmount = output.foodTaxOutput + output.workTaxOutput + output.tradeTaxOutput
 
-        data.totalTaxAmount = data.foodTaxOutput + data.workTaxOutput + data.tradeTaxOutput
-
-        return data.totalTaxAmount
-
+        return output.totalTaxAmount
     }
 
-    GameActorOutput getTotalOutput(GameData gd){
+    Integer taxProduct(Integer output, Integer taxRate){
+        return output / 100 * taxRate
+    }
+
+    /** An own trait, perhaps? */
+    GameActorOutput gather(GameData gameData, GameActor gameActor){
         GameActorOutput output = new GameActorOutput()
 
         /** Find cities which produce for me... */
-        def loyalHubs = gd.popHubs.findAll { it.owner == this }
+        def loyalHubs = gameData.popHubs.findAll { it?.owner == gameActor }
 
         /** Add all their production */
-        loyalHubs.each { popHub ->
+        loyalHubs.each { PopHub popHub ->
+
+            PopHubOutput popHubOutput = popHub.getPopHubOutput()
 
             /** Iterate through all food producers and check if they can be taxed */
-            popHub.getTurnData().food.each { k, v ->
-                if(k.tax(gd, this)){
+            popHubOutput?.food?.each { k, v ->
+                if(k.tax(gameData, gameActor)){
                     output.foodTotal += v
                 }
             }
 
             /** Iterate through all work producers and check if they can be taxed */
-            popHub.getTurnData().work.each { k, v ->
-                if(k.tax(gd, this)){
+            popHubOutput?.work?.each { k, v ->
+                if(k.tax(gameData, gameActor)){
                     output.workTotal += v
                 }
             }
 
             /** Iterate through all trade producers and check if they can be taxed */
-            popHub.getTurnData().trade.each { k, v ->
-                if(k.tax(gd, this)){
+            popHubOutput?.trade?.each { k, v ->
+                if(k.tax(gameData, gameActor)){
                     output.tradeTotal += v
                 }
             }
@@ -64,13 +71,12 @@ trait Taxes {
         return output
     }
 
-    def setTurnData(GameActorOutput data){
-        turnData.add(data)
+    Boolean setOutPutData(GameActorOutput data){
+        outPutData.add(data)
     }
 
-    def getTurnData(){
-        /** We now assume that list.add() always adds to the end of list */
-        return turnData.last()
+    GameActorOutput getOutPutData(){
+        return outPutData.last()
     }
 
 }

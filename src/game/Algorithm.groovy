@@ -65,10 +65,14 @@ class Algorithm {
         gameData.popHubs.each { PopHub popHub ->
 
             /** Calculate bonuses, deal with buildings etc. */
-            PopHubOutput output = popHub.refine(gameData)
+            PopHubOutput output = popHub.produce(gameData)
 
             /** Feed the hub population and calculate the surplus food. */
-            output.surplusFood = popHub.feedHub(gameData, output.getTotalFood())
+            Integer surplusFood = popHub.feedHub(gameData, output.getTotalFood())
+
+            output.surplusFood = surplusFood
+
+            popHub.setPopHubOutput(output)
 
         }
 
@@ -88,20 +92,20 @@ class Algorithm {
 
             /** Calculate how much extra food pob hubs loyal to you produce.
              *  And then feed them */
-            Integer totalFood = player.getSurplusFood(gameData)
+            Integer totalFood = player.resolveSurplusFood(gameData.popHubs, player)
             Integer surplusFood = player.feedArmy(gameData, totalFood)
 
             /** Lets tax those pesky pop units...*/
 
             /** Get total production of your loyal popHubs */
-            GameActorOutput output = player.getTotalOutput(gameData)
+            GameActorOutput output = player.produce(gameData, player)
+
             output.surplusFood = surplusFood
 
-            /** Set the turnData. */
-            player.setTurnData(output)
+            player.setGameActorOutput(output)
 
             /** Tax their asses! */
-            player.tax()
+            player.tax(output)
 
         }
 

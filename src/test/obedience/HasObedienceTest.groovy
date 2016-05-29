@@ -15,7 +15,7 @@ import resources.popUnit.obedience.ViolationRule
  */
 class HasObedienceTest {
 
-    GameData gameData
+/*    GameData gameData
     GameActor gameActor
     PopUnit popUnit
 
@@ -52,7 +52,7 @@ class HasObedienceTest {
 
         popUnit.violate(violation)
 
-        assert popUnit.resolveObedience(gameData, gameActor) == 90 /** 100 - 10 */
+        assert popUnit.resolveObedience(gameData, gameActor) == 90 *//** 100 - 10 *//*
     }
 
     @Test
@@ -64,6 +64,6 @@ class HasObedienceTest {
         ViolationRule violation_b = new MockViolationRule(power: 25, duration: 0, turn: 0, violator: null)
         popUnit.violate(violation_b)
 
-        assert popUnit.resolveObedience(gameData, gameActor) == 65 /** 100 - 35 */
-    }
+        assert popUnit.resolveObedience(gameData, gameActor) == 65 *//** 100 - 35 *//*
+    }*/
 }

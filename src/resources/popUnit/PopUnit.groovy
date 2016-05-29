@@ -68,7 +68,7 @@ class PopUnit implements Consumes,
     }
 
     Boolean tax(GameData gameData, GameActor gameActor){
-        return canBeTaxed(gameData,gameActor)
+        return canBeTaxed(gameData, gameActor)
     }
 
 }
