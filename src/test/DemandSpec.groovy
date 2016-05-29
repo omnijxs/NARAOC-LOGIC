@@ -1,5 +1,6 @@
 import resources.common.Tile
 import resources.popHub.City
+import resources.popHub.PopHubDemand
 import resources.popUnit.PopUnit
 import spock.lang.Shared
 import spock.lang.Specification
@@ -29,12 +30,12 @@ class DemandSpec extends Specification {
     def "No popUnit. No demand."(){
 
         when:
-        city.setDemands(null, city)
+        PopHubDemand demand = city.setDemands(null, city)
 
         then:
-        city.foodDemand() == 0
-        city.workDemand() == 0
-        city.tradeDemand() == 0
+        demand.foodDemand == 0
+        demand.workDemand == 0
+        demand.tradeDemand == 0
     }
 
     def "PopUnits in city proper."(){
@@ -42,12 +43,12 @@ class DemandSpec extends Specification {
         PopUnit a = new MockUnit(tile: cityTile, preferredHub: null)
 
         when:
-        city.setDemands([a], city)
+        PopHubDemand demand = city.setDemands([a], city)
 
         then:
-        city.foodDemand() == 1
-        city.workDemand() == 1
-        city.tradeDemand() == 1
+        demand.foodDemand == 1
+        demand.workDemand == 1
+        demand.tradeDemand == 1
     }
 
     def "PopUnits outside city proper but prefers."() {
@@ -55,12 +56,12 @@ class DemandSpec extends Specification {
         PopUnit a = new MockUnit(tile: null, preferredHub: city)
 
         when:
-        city.setDemands([a], city)
+        PopHubDemand demand = city.setDemands([a], city)
 
         then:
-        city.foodDemand() == 1
-        city.workDemand() == 1
-        city.tradeDemand() == 1
+        demand.foodDemand == 1
+        demand.workDemand == 1
+        demand.tradeDemand == 1
     }
 
     def "PopUnits in and outside city proper."() {
@@ -69,12 +70,12 @@ class DemandSpec extends Specification {
         PopUnit b = new MockUnit(tile: cityTile, preferredHub: null)
 
         when:
-        city.setDemands([a, b], city)
+        PopHubDemand demand = city.setDemands([a, b], city)
 
         then:
-        city.foodDemand() == 2
-        city.workDemand() == 2
-        city.tradeDemand() == 2
+        demand.foodDemand == 2
+        demand.workDemand == 2
+        demand.tradeDemand == 2
     }
 
     def "PopUnits outside city proper. No demand."() {
@@ -82,11 +83,11 @@ class DemandSpec extends Specification {
         PopUnit a = new MockUnit(tile: new Tile(), preferredHub: new City())
 
         when:
-        city.setDemands([a], city)
+        PopHubDemand demand = city.setDemands([a], city)
 
         then:
-        city.foodDemand() == 0
-        city.workDemand() == 0
-        city.tradeDemand() == 0
+        demand.foodDemand == 0
+        demand.workDemand == 0
+        demand.tradeDemand == 0
     }
 }

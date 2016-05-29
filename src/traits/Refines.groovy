@@ -4,7 +4,6 @@ import game.GameData
 import resources.common.Product
 import resources.popHub.PopHub
 import resources.popHub.PopHubOutput
-import resources.popUnit.PopUnit
 
 /**
  * Created by Juri on 20.11.2015.
