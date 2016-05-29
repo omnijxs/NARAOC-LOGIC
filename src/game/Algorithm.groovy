@@ -94,11 +94,7 @@ class Algorithm {
             /** Lets tax those pesky pop units...*/
 
             /** Get total production of your loyal popHubs */
-            GameActorOutput output = player.getTotalOutput(gameData)
-            output.surplusFood = surplusFood
-
-            /** Set the turnData. */
-            player.setTurnData(output)
+            GameActorOutput output = player.getGameActorOutput(gameData, player, surplusFood)
 
             /** Tax their asses! */
             player.tax()

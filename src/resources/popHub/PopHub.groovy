@@ -20,7 +20,7 @@ class PopHub implements Demands,
                         FeedsHub {
 
     @Delegate Tile tile
-    @Delegate GameActor owner
+    GameActor owner
 
     PopHubDemand setDemand(GameData gameData){
         setDemands(gameData.popUnits, this)
@@ -36,6 +36,10 @@ class PopHub implements Demands,
 
     Integer resolveDemandForProduct(Product product){
         return demandForProduct(product)
+    }
+
+    PopHubOutput getPopHubOutput(){
+        return getOutputData()
     }
 
 }

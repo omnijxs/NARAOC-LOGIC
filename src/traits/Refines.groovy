@@ -47,11 +47,11 @@ trait Refines implements PopUnitFinder {
         return output
     }
 
-    def setOutputData(PopHubOutput data){
+    void setOutputData(PopHubOutput data){
         outputData.add(data)
     }
 
-    def getOutputData(){
+    PopHubOutput getOutputData(){
         return outputData.last()
     }
 }
