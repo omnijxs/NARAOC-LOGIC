@@ -68,7 +68,9 @@ class Algorithm {
             PopHubOutput output = popHub.produce(gameData)
 
             /** Feed the hub population and calculate the surplus food. */
-            output.surplusFood = popHub.feedHub(gameData, output.getTotalFood())
+            Integer surplusFood = popHub.feedHub(gameData, output.getTotalFood())
+
+            output.surplusFood = surplusFood
 
             popHub.setPopHubOutput(output)
 
@@ -96,7 +98,7 @@ class Algorithm {
             /** Lets tax those pesky pop units...*/
 
             /** Get total production of your loyal popHubs */
-            GameActorOutput output = player.produce(gameData, player, surplusFood)
+            GameActorOutput output = player.produce(gameData, player)
 
             output.surplusFood = surplusFood
 

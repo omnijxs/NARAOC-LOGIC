@@ -1,6 +1,8 @@
 package resources.gameActor
 
 import game.GameData
+import groovy.transform.CompileStatic
+import groovy.transform.TypeChecked
 import resources.popHub.PopHub
 import traits.FeedsArmy
 import traits.Taxes
@@ -8,6 +10,8 @@ import traits.Taxes
 /**
  * Created by Juri on 1.12.2015.
  */
+@CompileStatic
+@TypeChecked
 class GameActor implements FeedsArmy,
                            Taxes {
 
@@ -15,8 +19,8 @@ class GameActor implements FeedsArmy,
         return feedsArmy(gameData.popUnits, this, foodAmount)
     }
 
-    GameActorOutput produce(GameData gameData, GameActor gameActor, Integer surplusFood){
-        return gather(gameData, gameActor, surplusFood)
+    GameActorOutput produce(GameData gameData, GameActor gameActor){
+        return gather(gameData, gameActor)
     }
 
     Integer resolveSurplusFood(List<PopHub> popHubs, GameActor gameActor){
@@ -30,15 +34,5 @@ class GameActor implements FeedsArmy,
     Boolean setGameActorOutput(GameActorOutput data){
         return setOutPutData(data)
     }
-
-   /* GameActorOutput getGameActorOutput(){
-        return getOutPutData()
-    }
-
-    GameActorOutput getGameActorOutput(GameData gameData, GameActor gameActor, Integer surplusFood){
-        resolveGameActorOutput(gameData, gameActor, surplusFood)
-    }
-*/
-
 
 }
