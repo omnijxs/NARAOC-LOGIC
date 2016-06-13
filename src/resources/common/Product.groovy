@@ -8,8 +8,10 @@ enum Product {
     
     FOOD("Food"),
     WORK("Work"),
-    TRADE("Trade")
-    
+    TRADE("Trade"),
+    MAGIC("Magic"),
+    WAR("War")
+
     final String label
     
     private Product(String label){
