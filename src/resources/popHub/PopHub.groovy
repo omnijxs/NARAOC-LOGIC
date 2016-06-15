@@ -49,7 +49,7 @@ class PopHub implements Demands,
     }
 
     List<Building> buildBuildings(PopHubOutput output){
-        build(output)
+        builds(output)
     }
 
 }

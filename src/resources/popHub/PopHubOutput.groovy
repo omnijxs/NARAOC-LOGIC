@@ -44,4 +44,8 @@ class PopHubOutput {
         return temp
     }
 
+    Map<PopUnit, Integer> getAllPopUnits(){
+        return food + work + trade
+    }
+
 }
