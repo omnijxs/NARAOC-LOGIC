@@ -8,6 +8,7 @@ import resources.common.Tile
 import resources.gameActor.GameActor
 import traits.Demands
 import traits.FeedsHub
+import traits.HasBuildings
 import traits.Refines
 
 /**
@@ -17,7 +18,8 @@ import traits.Refines
 @TypeChecked
 class PopHub implements Demands,
                         Refines,
-                        FeedsHub {
+                        FeedsHub,
+                        HasBuildings {
 
     @Delegate Tile tile
     GameActor owner
@@ -44,6 +46,10 @@ class PopHub implements Demands,
 
     Boolean setPopHubOutput(PopHubOutput data){
         return setOutputData(data)
+    }
+
+    List<Building> buildBuildings(PopHubOutput output){
+        build(output)
     }
 
 }

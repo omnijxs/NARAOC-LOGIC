@@ -5,5 +5,4 @@ package resources.popHub
  */
 class City extends PopHub {
 
-    Buildings buildings
 }
