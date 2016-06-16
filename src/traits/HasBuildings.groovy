@@ -63,8 +63,6 @@ trait HasBuildings {
 
         // TODO combine production values for same buildings within different trees!!!
 
-        // TODO deal with building upkeep!!!
-
         return buildings.unique()
     }
 }

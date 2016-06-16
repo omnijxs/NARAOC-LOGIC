@@ -10,13 +10,12 @@ class Building {
 
     Race race
     Product product /** Army, Magic, Food, Work, Trade */
-    Integer priority /** 1, 2, 3, 4, 5 not needed anymore? */
     Integer upkeep
     Integer build
     // List<Perk> buildingPerks
 
     public getValue(){
-        return build    // TODO take care of upkeep
+        return build + upkeep
     }
 
 }
