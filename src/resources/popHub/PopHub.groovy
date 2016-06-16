@@ -48,8 +48,13 @@ class PopHub implements Demands,
         return setOutputData(data)
     }
 
-    List<Building> buildBuildings(PopHubOutput output){
-        builds(output)
+    List<BuildingProduction> buildBuildings(PopHubOutput output){
+        return builds(output)
     }
+
+    List<Building> resolveBuildings(){
+        return buildingsForPaths()
+    }
+
 
 }

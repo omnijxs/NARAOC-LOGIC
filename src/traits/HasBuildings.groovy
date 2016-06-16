@@ -61,6 +61,8 @@ trait HasBuildings {
             buildings.addAll(buildingsForPath(it.race, it.product, it.value))
         }
 
+        // TODO combine production values for same buildings within different trees.
+
         return buildings.unique()
     }
 }
