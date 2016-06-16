@@ -87,6 +87,34 @@ class HasBuildingsSpec extends Specification implements HasBuildings {
         buildingProductions.size() == 2
     }
 
-    // build
+    def "Tests for build-method: Add new building production. "() {
+        setup:
+        farmer.race = orc
+
+        when:
+        def production = build(farmer, 2)
+
+        then:
+        production.race == orc
+        production.product == farmer.product
+        production.value == 2
+        buildingProductions.size() == 1
+    }
+
+    def "Tests for build-method: Add to existing building production. "() {
+        setup:
+        farmer.race = orc
+        BuildingProduction p = new BuildingProduction(race: orc, product: Product.FOOD, value: 2)
+        buildingProductions.add(p)
+
+        when:
+        def production = build(farmer, 2)
+
+        then:
+        production.race == orc
+        production.product == farmer.product
+        production.value == 4
+        buildingProductions.size() == 1
+    }
 
 }
