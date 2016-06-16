@@ -12,36 +12,41 @@ import resources.popUnit.PopUnit
  */
 trait HasBuildings {
 
-    List<BuildingProduction> production = []
-    List<Building> buildingConfiguration = [] // TODO FROM CONFIG
+    List<BuildingProduction> buildingProductions = []
+    List<Building> buildingConfiguration = [] /** Comes from an external config */
 
-    List<Building> builds(PopHubOutput output){
-
-        List<Building> buildings = []
+    List<BuildingProduction> builds(PopHubOutput output){
 
         output.getAllPopUnits().each { popUnit, value ->
             build(popUnit, value)
         }
 
-        return buildings
+        return buildingProductions
     }
 
     BuildingProduction build(PopUnit popUnit, Integer value){
 
-        BuildingProduction prod = production.find { it.race == popUnit.race && it.product == popUnit.product }
+        BuildingProduction buildingProduction = resolveBuildingProduction(popUnit)
 
-        if(!prod){
-            prod = new BuildingProduction(race: popUnit.race, product: popUnit.product, value: 0)
-            production.add(prod)        // TODO do this elsewhere
+        buildingProduction.value += value
+
+        return buildingProduction
+    }
+
+    BuildingProduction resolveBuildingProduction(PopUnit popUnit){
+
+        BuildingProduction buildingProduction = buildingProductions.find { it.race == popUnit.race && it.product == popUnit.product }
+
+        if(!buildingProduction){
+            buildingProduction = new BuildingProduction(race: popUnit.race, product: popUnit.product, value: 0)
+            buildingProductions.add(buildingProduction)
         }
 
-        prod.value += value
+        return buildingProduction
 
-        return prod
     }
 
     List<Building> buildingsForPath(Race race, Product product, Integer value){
-        // Integer value = production.find { it.race == race && it.product == product }.value
 
         List<Building> buildings = buildingConfiguration.findAll { it.race == race && it.product == product && it.value <= value }
 
@@ -52,10 +57,10 @@ trait HasBuildings {
 
         List<Building> buildings = []
 
-        production.each { it ->
+        buildingProductions.each { it ->
             buildings.addAll(buildingsForPath(it.race, it.product, it.value))
         }
 
-        return buildings
+        return buildings.unique()
     }
 }
