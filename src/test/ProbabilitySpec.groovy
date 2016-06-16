@@ -12,10 +12,10 @@ class ProbabilitySpec extends Specification implements Probability {
     def "Test getComparison-method"(){
 
         when:
-        def hit = getComparison(a, b)
+        def comparison = getComparison(a, b)
 
         then:
-        hit == expected
+        comparison == expected
 
         where:
         a   | b  | expected
