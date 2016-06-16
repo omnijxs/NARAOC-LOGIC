@@ -11,7 +11,7 @@ trait Probability {
         return getComparison(probability, getRandom())
     }
 
-    def getComparison(Integer a, Integer b){
+    Boolean getComparison(Integer a, Integer b){
         return a >= b
     }
 
